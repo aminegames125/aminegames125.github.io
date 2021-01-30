@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='rockpool.xml' b:templateVersion='1.3.0' dir='rtl' expr:dir='data:blog.languageDirection' lang='ar' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+<meta charset='utf-8'/>
+<meta content='IE=edge' http-equiv='X-UA-Compatible'/>
+<meta content='width=device-width,minimum-scale=1,initial-scale=1' name='viewport'/>
+<b:if cond='data:view.isHomepage'>
+<title><data:blog.title/></title>
+<b:elseif cond='data:view.isPost or data:view.isPage or data:view.search.label'/>
+<title><data:blog.pageName/> | <data:blog.title/></title>
+<b:elseif cond='data:view.search.query'/>
+<title><data:view.search.resultsMessage/> | <data:blog.title/></title>
+<b:elseif cond='data:view.search and !data:view.search.label and !data:view.search.query'/>
+<title><data:blog.title/></title>
+<b:elseif cond='data:view.isArchive'/>
+<title><data:view.archive.rangeMessage/> | <data:blog.title/></title>
+<b:elseif cond='data:view.isError'/>
+<title>404 | <data:blog.title/></title>
+</b:if>
+<include expiration='7d' path='*.css'/>
+<include expiration='7d' path='*.js'/>
+<include expiration='3d' path='*.gif'/>
+<include expiration='3d' path='*.jpeg'/>
+<include expiration='3d' path='*.jpg'/>
+<include expiration='3d' path='*.png'/>
+<meta content='sat, 02 jun 2020 00:00:00 GMT' http-equiv='expires'/>
+<script type='application/ld+json'>{ &quot;@context&quot;: &quot;http://schema.org&quot;, &quot;@type&quot;: &quot;WebSite&quot;, &quot;url&quot;: &quot;<data:blog.homepageUrl/>&quot;, &quot;potentialAction&quot;: { &quot;@type&quot;: &quot;SearchAction&quot;, &quot;target&quot;: &quot;<data:blog.homepageUrl/>?q={search_term}&quot;, &quot;query-input&quot;: &quot;required name=search_term&quot; } }</script>
+<b:include data='blog' name='all-head-content'/>
+<link href='https://raw.githack.com/MohammadQt/Itheric/master/materialize.min.css' rel='stylesheet'/>
+<link href='https://fonts.googleapis.com/css?family=Cairo:300,400,600,700&amp;subset=arabic,latin-ext' rel='stylesheet'/>
+<b:skin version='1.3.0'><![CDATA[
+/* Cairo Font */
+@import url('https://fonts.googleapis.com/css?family=Cairo:400,500,700');
+/* Material Icons */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+/* Timer */
+#timer{margin:auto;width:80px}.pietimer{position:relative;font-size:200px;width:1em;height:1em}.pietimer &gt;.percent{position:absolute;top:20px;left:10px;width:3.33em;font-size:14px;text-align:center;display:none}.pietimer &gt;.slice{position:absolute;width:1em;height:1em;clip:rect(0px,1em,1em,0.5em)}.pietimer &gt;.slice.gt50{clip:rect(auto,auto,auto,auto)}.pietimer &gt; .slice &gt; .pie{border:0.1em solid #c0c0c0;position:absolute;width:0.8em;/* 1 - (2 * border width) */height:0.8em;/* 1 - (2 * border width) */clip:rect(0em,0.5em,1em,0em);-moz-border-radius:0.5em;-webkit-border-radius:0.5em;border-radius:0.5em}.pietimer &gt;.slice &gt; .pie.fill{-moz-transform:rotate(180deg)!important;-webkit-transform:rotate(180deg)!important;-o-transform:rotate(180deg)!important;transform:rotate(180deg)!important}.pietimer.fill &gt; .percent{display:none}.pietimer.fill &gt; .slice &gt; .pie{border:transparent;background-color:#c0c0c0;width:1em;height:1em}
+/* ADBLOCK */
+.adb{position:fixed;width:100%;height:100%;left:0;top:0;bottom:0;background:rgba(51,51,51,0.7);z-index:10000;text-align:center;color:#fff;}
+.adbs{margin:0 auto;width:auto;position:fixed;z-index:99999;left:50%;top:50%;transform:translate(-50%, -50%);padding:20px 30px 30px;background:rgba(51,51,51,0.5);-webkit-border-radius:12px;-moz-border-radius:12px;border-radius:12px;}
+/* POSTSTYLE.CSS */
+.comments,.post-feeds,.comment-form{display:none;}
+.blog-posts.hfeed.container{width: 100%;max-width: 100%}
+.center, .center-align {margin-bottom: 5px;text-align: center;}
+h2.center.flow-text.blue-text.text-darken-2 {margin: 5px 0 20px 0;}
+.post-body{color: #666;font-size: 14px;margin-top: 20px;line-height: 1.5;}
+.post-body img{max-width:100%;height:auto;margin-top: 10px;margin-bottom: 10px}
+.section{padding:0}
+#loading, #getlink{margin-top: 5px;}
+#gotolink{margin-bottom:5px;margin-top:5px}
+#loading #count,.btn{font-weight:500}
+/* style.css */
+.alert-success{padding: 8px 12px;background: #1ca83c;font-weight:500;color: #fff;border-radius: 4px;margin-bottom: 10px;}
+.hidden {visibility: hidden;height: 0;overflow: hidden;display: none;}
+.preloader-wrapper{margin-top: 20px}
+.blog-feeds{display:none}
+h1.brand-logo{font-size: 24px;margin: 0;line-height:64px;overflow: hidden;}
+@media only screen and (max-width: 500px) {.brand-logo h1{line-height:54px;font-size: 55%;}}
+body{
+	font-family: Cairo, Cairo;
+}
+.slider h3, .slider h5, .clients h3{
+	text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+.parallax-container{
+	height: 20%;
+}
+.parallax img{
+	filter: grayscale(1);
+	opacity: 0.5!important;
+}
+.clients img{
+	max-width: 130px;
+	filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.8));
+}
+section, footer{
+	padding: 0;
+}
+.grey-text.text-darken-3 {
+    padding: 20px;
+}
+ul.social-media{
+	list-style: none;
+	display: flex;
+	text-align: center;
+}
+ul.social-media li{
+	display: table-column;
+	margin-top: 40px;
+	margin-right: auto;
+	margin-left: auto;
+	font-weight: 500;
+}
+ul.social-media li i{
+	display: block;
+	margin-bottom: 5px;
+	font-size: 2rem;
+}
+ul.social-media li a{
+	color: #333;
+	transition: color 0.4s;
+}
+ul.social-media li:hover a{
+	cursor: pointer;
+	color: #1976d2 ;
+}
+main{
+	margin-top: 20px;
+}
+h2#post-title{
+	line-height: 1.2em;
+	margin: 0;
+	margin-bottom: 10px;
+}
+ol.howtoskip{
+	margin-left: 0;
+	padding-left: 20px
+}
+ol.howtoskip li{
+	font-size: 16px;
+}
+section.generate{
+	padding-top: 40px;
+	padding-bottom: 100px;
+}
+.nav-post{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.input-field .prefix,.input-field .prefix.active {
+    color: #1976d2;
+}
+.input-field label {
+ 	color: #444;
+}
+
+.input-field label.active {
+color: #1976d2;	
+}
+.input-field input[type=text]:focus + label {
+ 	color: #1976d2;
+}
+.input-field input[type=text]:focus{
+	border-bottom: 1px solid #1976d2;
+	box-shadow: 0 1px 0 0 #1976d2;
+}
+
+	nav ul.right {
+    float: left;
+}
+.right {
+    float: left !important;
+}
+.left {
+    float: right !important;
+}
+
+.btn, .btn-large, .btn-small{
+    font-family: 'Cairo';
+}
+.mobile-nav{
+   display:none
+}
+.st_gdpr_iframe,#st_gdpr_iframe{
+left: 50000px;
+}
+.flow-text {
+		font-size: 1.2rem;
+        visibility: hidden
+	}
+	.flow-text a{
+	color: #fff;}
+]]></b:skin>
+
+<b:template-skin><![CDATA[
+/* CSS Admin Layout Here */
+body#layout {padding: 40px 0 0;}
+body#layout ul, body#layout textarea{display:none}
+body#layout div.section{background-color: transparent;border: none;}
+body#layout div.main.section .add_widget{display:none}
+body#layout div.section h4{margin: 10px 0 2px 0;text-align: center;font-family: Cairo,Cairo;font-weight: 500;font-size:12px;text-transform:uppercase;}
+body#layout .add_widget{background:#fff;border:none}
+body#layout a#layout-addgadget{color:#666;text-decoration:none}
+]]></b:template-skin>
+  <script type='text/javascript'>
+//<![CDATA[
+function loadCSS(e, t, n) { "use strict"; var i = window.document.createElement("link"); var o = t || window.document.getElementsByTagName("script")[0]; i.rel = "stylesheet"; i.href = e; i.media = "only x"; o.parentNode.insertBefore(i, o); setTimeout(function () { i.media = n || "all" }) }
+loadCSS("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+//]]>
+</script>
+&lt;!--</head>--&gt;&lt;/head&gt;
+
+<body>
+
+ <script type="text/javascript">
+//<![CDATA[
+var setting = {
+ exceptionurl : "yourdomin.com,google.com,twitter.com,facebook.com",// مواقع سيتم استثنائها من التحويل
+ path : "#?o="
+};
+//]]>
+</script>
+<script src="https://cdn.jsdelivr.net/gh/MohammadQt/Itheric/Auto.link.js"></script>
+<script src="https://www.blogger.com/feeds/6556810930773152997/posts/default?alt=json-in-script&amp;max-results=150&amp;callback=showurl"></script>
+
+  <div class='home scrollspy' id='home'/>
+  	<b:if cond='data:blog.pageType in {&quot;index&quot;}'>
+	  <!-- Menu Navigasi -->
+      <div class='navbar-fixed'>
+        <nav class='blue darken-2'>
+          <div class='container'>
+            <div class='nav-wrapper'>
+              <h1 class='brand-logo waves-effect'><a href='#home'><data:blog.title/></a></h1>
+              <a class='sidenav-trigger waves-effect waves-light' data-target='mobile-nav' href='#'><i class='material-icons'/></a>
+              <ul class='right hide-on-med-and-down'>
+                <li class='waves-effect waves-light'><a href='#generate'>توليد الروابط</a></li>
+                <li class='waves-effect waves-light'><a href='#about'>من نحن</a></li>
+                <li class='waves-effect waves-light'><a href='#clients'>العملاء</a></li>
+                <li class='waves-effect waves-light'><a href='#services'>الخدمات</a></li>
+                <li class='waves-effect waves-light'><a href='#blog'>المدونة</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    
+	  
+	  <!-- Slider -->
+      <div class='slider hide-on-med-and-down'>
+        <ul class='slides'>
+          <li>
+            <img src='https://images.pexels.com/photos/877695/pexels-photo-877695.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940'/>
+            <div class='caption center-align'>
+              <h3>الاخطاء الكبيرة في الحياه تعلمنا</h3>
+              <h5 class='light grey-text text-lighten-3'>هذا هو مبدأنا في الحياة</h5>
+            </div>
+          </li>
+          <li>
+            <img src='https://images.pexels.com/photos/34088/pexels-photo.jpg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940'/>
+            <div class='caption left-align'>
+              <h3>الاخطاء الكبيرة في الحياه تعلمنا</h3>
+              <h5 class='light grey-text text-lighten-3'>هذا هو مبدأنا في الحياة</h5>
+            </div>
+          </li>
+          <li>
+            <img src='https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940'/>
+            <div class='caption right-align'>
+              <h3> الاخطاء الكبيرة في الحياه تعلمنا </h3>
+              <h5 class='light grey-text text-lighten-3'>هذا هو مبدأنا في الحياة</h5>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+		<!-- Generate Link -->
+      <section class='generate scrollspy' id='generate'>
+        <div class='container'>
+            <h5 class='center light blue-text text-darken-2'><i class='material-icons small'>security</i> توليد الرابط الامن</h5>
+            <p class='center light flow-text grey-text text-darken-3'>تأمين الروابط الخاصة بك من الفيروسات والبرامج الضارة وأحصنة طروادة &#1548; إلخ.
+</p>
+            <div class='center'>
+              <form action=''>
+                <div class='input-field'>
+            <i class='material-icons prefix'>link</i>
+                  <label for='generateurl'>الصق الرابط هنا</label>
+                  <input class='validate' id='generateurl' placeholder=' ضع الرابط كاملا مع http:// أو  https://  ' required='required' style='text-align: left;' type='text'/>
+                  </div>
+                <button class='waves-effect waves-light btn-small blue darken-2 white-text' id='btngenerate' type='button'>توليد الرابط</button>
+              </form>
+            </div>
+			<div class='hidden center' id='generateloading'>
+				<div class='preloader-wrapper small active'>
+                  <div class='spinner-layer spinner-green-only'>
+                    <div class='circle-clipper left'>
+                      <div class='circle'/>
+                    </div><div class='gap-patch'>
+                      <div class='circle'/>
+                    </div><div class='circle-clipper right'>
+                      <div class='circle'/>
+                    </div>
+                  </div>
+                </div>
+			</div>
+            <div class='hidden center' id='generatelink'>
+              <div class='has-success'>
+              <div class='input-field'>
+                 <input id='resulturl' onclick='this.focus();this.select()' readonly='readonly' type='text'/>
+              </div>
+              <button class='copytoclipboard btn waves-effect waves-light blue darken-2 white-text' data-clipboard-action='copy' data-clipboard-target='#resulturl' id='copytoclipboard'>نسخ الرابط</button>
+              </div>
+            </div>
+        </div>
+      </section>
+
+		<!-- About Us -->
+      <section class='about scrollspy grey lighten-3' id='about'>
+        <div class='container'>
+          <div class='row'>
+            <h3 class='center light grey-text text-darken-3'>من نحن</h3>
+            <div class='col s12 center light'>
+              <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة&#1548; لقد تم توليد هذا النص من مولد النص العربى&#1548; حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.</p>
+              <ul class='social-media'>
+                <li><a href='#'><i aria-hidden='true' class='fa fa-facebook-square'/>Facebook</a></li>
+                <li><a href='#'><i aria-hidden='true' class='fa fa-twitter-square'/>Twitter</a></li>
+                <li><a href='#'><i aria-hidden='true' class='fa fa-youtube-square'/>Youtube</a></li>
+                <li><a href='#'><i aria-hidden='true' class='fa fa-whatsapp'/>Whatsapp</a></li>
+                <li><a href='#'><i aria-hidden='true' class='fa fa-telegram'/>Telegram</a></li>
+                <li><a href='#'><i aria-hidden='true' class='fa fa-skype'/>Skype</a></li>
+                <li><a href='#'><i aria-hidden='true' class='fa fa-snapchat-square'/>Snapchat</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+	
+		<!-- Clients -->
+      <div class='parallax-container scrollspy' id='clients'>
+        <div class='parallax'><img src='https://images.pexels.com/photos/8169/pexels-photo.jpg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940'/></div>
+
+        <div class='container clients'>
+          <h3 class='center light white-text'>عملائنا</h3>
+          <div class='row center'>
+            <div class='col m4 s12'>
+              <img src='https://bilba.go-jek.com/dist/img/gojek-logo.png'/>
+            </div>
+            <div class='col m4 s12'>
+              <img src='https://vignette.wikia.nocookie.net/logopedia/images/d/d6/Tokopedia_baru.png/revision/latest?cb=20160621120508'/>
+            </div>
+            <div class='col m4 s12'>
+              <img src='https://blog.traveloka.com/wp-content/uploads/2012/11/Traveloka_Primary_Logo.png'/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+		<!-- SERVICES -->
+      <section class='services grey lighten-3 scrollspy' id='services'>
+        <div class='container'>
+          <div class='row'>
+            <h3 class='light center grey-text text-darken-3'>خدماتنا</h3>
+            <div class='col m4 s12'>
+              <div class='card-panel center'>
+                <i class='material-icons medium'>desktop_windows</i>
+                <h5>تطوير المواقع</h5>
+                <p>mtext</p>
+              </div>
+            </div>
+            <div class='col m4 s12'>
+              <div class='card-panel center'>
+                <i class='material-icons medium'>developer_mode</i>
+                <h5>تطبيقات الجوال</h5>
+                <p>mtext</p>
+              </div>
+            </div>
+            <div class='col m4 s12'>
+              <div class='card-panel center'>
+                <i class='material-icons medium'>games</i>
+                <h5>برمجة الألعاب</h5>
+                <p>mtext</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class='blog scrollspy' id='blog'>
+        <div class='container'>
+            <h3 class='light center grey-text text-darken-3'>المدونة</h3>
+          	<ul id='recent-posts'/>
+        </div>
+	  </section>
+	
+	</b:if>
+
+  	<b:if cond='data:blog.pageType in {&quot;item&quot;,&quot;static_page&quot;}'>
+		<!-- Menu Navigasi -->
+        <header class='navbar'>
+          <nav class='blue darken-3'>
+            <div class='nav-wrapper nav-post'>
+              	<div class='container'>
+                  <a class='left hide-on-large-only waves-effect waves-light' expr:href='data:blog.homepageUrl'><i class='material-icons'>home</i></a>
+                  <a class='brand-logo waves-effect waves-light' expr:href='data:blog.homepageUrl'>تكنوحلب</a>
+                  <a class='right modal-trigger hide-on-large-only waves-effect waves-light' data-target='modal-info'><i class='material-icons'>info_outline</i></a>
+                  <ul class='right hide-on-med-and-down'>
+                    <li class='waves-effect waves-light'><a class='modal-trigger' data-target='modal-info'>كيفية تخطى الصفحة</a></li>
+                  </ul>
+            	</div>
+			</div>
+          </nav>
+        </header>
+		
+		 <!-- Modal Info -->
+        <div class='modal' id='modal-info'>
+          <div class='modal-content'>
+            <h5>كيف تتخطى صفحة الانتقال هذه&#1567;</h5>
+            <p>انتظر 12 ثانية حتى يظهر زر <b>استمرار</b> اضغط عليه ثم إضغط <b>تخطي الصفحة</b></p>
+          </div>
+          <div class='modal-footer'>
+            <button class='btn modal-close waves-effect waves-light blue darken-2 white-text'>حسنا</button>
+          </div>
+        </div>
+	</b:if>
+
+	<b:section class='main' id='main' name='الرئيسية'>
+<b:widget id='Blog1' locked='true' title='رسائل المدونة الإلكترونية' type='Blog' version='2' visible='true'>
+  <b:widget-settings>
+    <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+    <b:widget-setting name='style.textcolor'>#000000</b:widget-setting>
+    <b:widget-setting name='showShareButtons'>false</b:widget-setting>
+    <b:widget-setting name='showCommentLink'>false</b:widget-setting>
+    <b:widget-setting name='style.urlcolor'>#008000</b:widget-setting>
+    <b:widget-setting name='showAuthor'>false</b:widget-setting>
+    <b:widget-setting name='disableGooglePlusShare'>true</b:widget-setting>
+    <b:widget-setting name='style.linkcolor'>#0000ff</b:widget-setting>
+    <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+    <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+    <b:widget-setting name='timestampLabel'>-</b:widget-setting>
+    <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+    <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+    <b:widget-setting name='showLabels'>true</b:widget-setting>
+    <b:widget-setting name='showLocation'>false</b:widget-setting>
+    <b:widget-setting name='postLabelsLabel'/>
+    <b:widget-setting name='showTimestamp'>false</b:widget-setting>
+    <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+    <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+    <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+    <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+    <b:widget-setting name='showReactions'>false</b:widget-setting>
+  </b:widget-settings>
+  <b:includable id='main' var='this'>
+  <div class='blog-posts hfeed container'>
+    <b:loop index='i' values='data:posts' var='post'>
+      <b:include data='post' name='postCommentsAndAd'/>
+    </b:loop>
+  </div>
+  <b:include cond='data:view.isMultipleItems' name='postPagination'/>
+  <b:include name='feedLinks'/>
+</b:includable>
+  <b:includable id='aboutPostAuthor'>
+  <div class='author-name'>
+    <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+      <span>
+        <data:post.author.name/>
+      </span>
+    </a>
+  </div>
+  <div>
+    <span class='author-desc'>
+      <data:post.author.aboutMe/>
+    </span>
+  </div>
+</b:includable>
+  <b:includable id='addComments'>
+  <a expr:href='data:post.commentsUrl' expr:onclick='data:post.commentsUrlOnclick'>
+    <b:message name='messages.postAComment'/>
+  </a>
+</b:includable>
+  <b:includable id='commentAuthorAvatar'>
+  <div class='avatar-image-container'>
+    <img class='author-avatar' expr:src='data:comment.authorAvatarSrc' height='35' width='35'/>
+  </div>
+</b:includable>
+  <b:includable id='commentDeleteIcon' var='comment'>
+  <span expr:class='&quot;item-control &quot; + data:comment.adminClass'>
+    <b:if cond='data:showCmtPopup'>
+      <div class='goog-toggle-button'>
+        <div class='goog-inline-block comment-action-icon'/>
+      </div>
+    <b:else/>
+      <a class='comment-delete' expr:href='data:comment.deleteUrl' expr:title='data:messages.deleteComment'>
+        <img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+      </a>
+    </b:if>
+  </span>
+</b:includable>
+  <b:includable id='commentForm' var='post'>
+  <div class='comment-form'>
+    <a name='comment-form'/>
+    <h4 id='comment-post-message'><data:messages.postAComment/></h4>
+    <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
+      <p><data:this.messages.blogComment/></p>
+    </b:if>
+    <b:include data='post' name='commentFormIframeSrc'/>
+    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+    <data:post.cmtfpIframe/>
+    <script type='text/javascript'>
+      BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+    </script>
+  </div>
+</b:includable>
+  <b:includable id='commentFormIframeSrc' var='post'>
+  <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+</b:includable>
+  <b:includable id='commentItem' var='comment'>
+  <div class='comment' expr:id='&quot;c&quot; + data:comment.id'>
+    <b:include cond='data:blog.enabledCommentProfileImages' name='commentAuthorAvatar'/>
+
+    <div class='comment-block'>
+      <div class='comment-author'>
+        <b:if cond='data:comment.authorUrl'>
+          <b:message name='messages.authorSaidWithLink'>
+            <b:param expr:value='data:comment.author' name='authorName'/>
+            <b:param expr:value='data:comment.authorUrl' name='authorUrl'/>
+          </b:message>
+        <b:else/>
+          <b:message name='messages.authorSaid'>
+            <b:param expr:value='data:comment.author' name='authorName'/>
+          </b:message>
+        </b:if>
+      </div>
+      <div expr:class='&quot;comment-body&quot; + (data:comment.isDeleted ? &quot; deleted&quot; : &quot;&quot;)'>
+        <data:comment.body/>
+      </div>
+      <div class='comment-footer'>
+        <span class='comment-timestamp'>
+          <a expr:href='data:comment.url' title='comment permalink'>
+            <data:comment.timestamp/>
+          </a>
+          <b:include data='comment' name='commentDeleteIcon'/>
+        </span>
+      </div>
+    </div>
+  </div>
+</b:includable>
+  <b:includable id='commentList' var='comments'>
+  <div id='comments-block'>
+    <b:loop values='data:comments' var='comment'>
+      <b:include data='comment' name='commentItem'/>
+    </b:loop>
+  </div>
+</b:includable>
+  <b:includable id='commentPicker' var='post'>
+  <b:if cond='data:post.commentSource == 1'>
+    <b:include data='post' name='iframeComments'/>
+  <b:elseif cond='data:post.showThreadedComments'/>
+    <b:include data='post' name='threadedComments'/>
+  <b:else/>
+    <b:include data='post' name='comments'/>
+  </b:if>
+</b:includable>
+  <b:includable id='comments' var='post'>
+  <section expr:class='&quot;comments&quot; + (data:post.embedCommentForm ? &quot; embed&quot; : &quot;&quot;)' expr:data-num-comments='data:post.numberOfComments' id='comments'>
+    <a name='comments'/>
+    <b:if cond='data:post.allowComments'>
+
+      <b:include name='commentsTitle'/>
+
+      <div expr:id='data:widget.instanceId + &quot;_comments-block-wrapper&quot;'>
+        <b:include cond='data:post.comments' data='post.comments' name='commentList'/>
+      </div>
+
+      <b:if cond='data:post.commentPagingRequired'>
+        <div class='paging-control-container'>
+          <b:if cond='data:post.hasOlderLinks'>
+            <a expr:class='data:post.oldLinkClass' expr:href='data:post.oldestLinkUrl'>
+              <data:messages.oldest/>
+            </a>
+            <a expr:class='data:post.oldLinkClass' expr:href='data:post.olderLinkUrl'>
+              <data:messages.older/>
+            </a>
+          </b:if>
+
+          <span class='comment-range-text'>
+            <data:post.commentRangeText/>
+          </span>
+
+          <b:if cond='data:post.hasNewerLinks'>
+            <a expr:class='data:post.newLinkClass' expr:href='data:post.newerLinkUrl'>
+              <data:messages.newer/>
+            </a>
+            <a expr:class='data:post.newLinkClass' expr:href='data:post.newestLinkUrl'>
+              <data:messages.newest/>
+            </a>
+          </b:if>
+        </div>
+      </b:if>
+
+      <div class='footer'>
+        <b:if cond='data:post.embedCommentForm'>
+          <b:if cond='data:post.allowNewComments'>
+            <b:include data='post' name='commentForm'/>
+          <b:else/>
+            <data:post.noNewCommentsText/>
+          </b:if>
+        <b:else/>
+          <b:if cond='data:post.allowComments'>
+            <b:include data='post' name='addComments'/>
+          </b:if>
+        </b:if>
+      </div>
+    </b:if>
+    <b:if cond='data:showCmtPopup'>
+      <div id='comment-popup'>
+        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        </iframe>
+      </div>
+    </b:if>
+  </section>
+</b:includable>
+  <b:includable id='commentsTitle'>
+  <h3 class='title'><data:messages.comments/></h3>
+</b:includable>
+  <b:includable id='feedLinks'>
+  <b:if cond='!data:view.isPost'> <!-- Blog feed links -->
+    <b:if cond='data:feedLinks'>
+      <div class='blog-feeds'>
+        <b:include data='feedLinks' name='feedLinksBody'/>
+      </div>
+    </b:if>
+  <b:else/> <!--Post feed links -->
+    <div class='post-feeds'>
+      <b:loop values='data:posts' var='post'>
+        <b:if cond='data:post.allowComments and data:post.feedLinks'>
+          <b:include data='post.feedLinks' name='feedLinksBody'/>
+        </b:if>
+      </b:loop>
+    </div>
+  </b:if>
+</b:includable>
+  <b:includable id='feedLinksBody' var='links'>
+  <div class='feed-links'>
+  <data:messages.subscribeTo/>
+  <b:loop values='data:links' var='f'>
+     <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' target='_blank'><data:f.name/> (<data:f.feedType/>)</a>
+  </b:loop>
+  </div>
+</b:includable>
+  <b:includable id='homePageLink'>
+  <a class='home-link' expr:href='data:blog.homepageUrl'>
+    <data:messages.home/>
+  </a>
+</b:includable>
+  <b:includable id='iframeComments' var='post'>
+  <b:if cond='data:post.allowIframeComments'>
+    <script expr:src='data:post.iframeCommentSrc' type='text/javascript'/>
+    <div class='cmt_iframe_holder' expr:data-href='data:post.url.canonical' expr:data-viewtype='data:post.viewType'/>
+
+    <b:if cond='!data:post.embedCommentForm'>
+      <b:include data='post' name='commentsLink'/>
+    </b:if>
+  </b:if>
+</b:includable>
+  <b:includable id='inlineAd' var='post'>
+  <b:if cond='!data:view.isPreview'>
+    <b:if cond='data:this.adCode or data:this.adClientId or data:blog.adsenseClientId'>
+      <!-- Ad -->
+      <div class='inline-ad'>
+        <b:if cond='data:this.adCode != &quot;&quot;'>
+          <data:this.adCode/>
+        <b:else/>
+          <b:include cond='data:this.adClientId or data:blog.adsenseClientId' name='defaultAdUnit'/>
+        </b:if>
+      </div>
+    </b:if>
+  <b:else/>
+    <div class='inline-ad'>
+      <div class='inline-ad-placeholder'>
+        <span><b:message name='messages.adsGoHere'/></span>
+      </div>
+    </div>
+  </b:if>
+</b:includable>
+  <b:includable id='nextPageLink'>
+  <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:messages.olderPosts'>
+    <data:messages.olderPosts/>
+  </a>
+</b:includable>
+  <b:includable id='post' var='post'>
+				<b:if cond='data:blog.pageType in {&quot;item&quot;,&quot;static_page&quot;}'>
+                   <!-- Main Wrapper -->
+                    <main>
+                      <div class='row'>
+                        <div class='col s12 l2 center hide-on-med-and-down'>
+                          <div class='post-ads' id='ads5'>
+							mads4
+						  </div>
+                        </div>
+                        <div class='col s12 l8'>
+                          <div class='card-panel'>
+                            <b:include data='post' name='postMeta'/>
+                            <h2 class='center flow-text blue-text text-darken-2'><data:post.title/></h2>
+							<b:include name='headerByline'/>
+                            <b:if cond='data:view.isSingleItem'>
+                              <b:include data='post' name='postBody'/>
+                            <b:else/>
+                              <b:include data='post' name='postBodySnippet'/>
+                              <b:include data='post' name='postJumpLink'/>
+                            </b:if>
+                          </div>
+                        </div>
+                        <div class='col s12 l2 center hide-on-med-and-down'>
+                          <div class='post-ads' id='ads6'>
+							mads5
+						  </div>
+                        </div>
+                      </div>
+                    </main>
+                </b:if>
+              </b:includable>
+  <b:includable id='postBody' var='post'>
+                <!-- If metaDescription is empty, use the post body as the schema.org description too, for G+/FB snippeting. -->
+<div class='center' id='loading'>
+<div class='progress'><div class='indeterminate blue darken-2' id='progress-bar'/></div>
+<span id='count'>يتم تجهيز الرابط...</span>
+</div>
+<div class='center'>
+<div class='post-ads' id='ads1'>
+<!-- Ads Here  -->
+<div class='separator' style='clear: both; text-align: center;'>
+2323
+</div>
+</div>
+<div class='hidden btn waves-effect waves-light blue darken-2 white-text' id='getlink'>استمرار</div>
+</div>
+<div class='post-body entry-content float-container' expr:id='&quot;post-body-&quot; + data:post.id'>
+<data:post.body/>
+</div>
+<div class='center'>
+<div class='post-ads' id='ads2'>
+<div class='separator' style='clear: both; text-align: center;'>
+
+</div>
+</div>
+<button class='btn blue darken-2 waves-effect waves-light white-text hidden' disabled='' id='gotolink'>الحصول على الرابط</button>
+
+<div class='post-ads' id='ads3'>
+<div class='separator' style='clear: both; text-align: center;'>
+
+</div>
+</div>
+</div>
+              </b:includable>
+  <b:includable id='postBodySnippet' var='post'>
+  <b:include data='post' name='postBody'/>
+</b:includable>
+  <b:includable id='postCommentsAndAd' var='post'>
+  <article class='post-outer-container'>
+    <!-- Post title and body -->
+    <div class='post-outer'>
+      <b:include data='post' name='post'/>
+    </div>
+
+    <!-- Comments -->
+    <b:include cond='data:view.isSingleItem' data='post' name='commentPicker'/>
+
+    <!-- Show ad inside post container, after comments, if single item. -->
+    <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
+  </article>
+
+  <!-- Show ad outside post container (between posts) for feed pages. -->
+  <b:include cond='data:view.isMultipleItems and data:post.includeAd' data='post' name='inlineAd'/>
+</b:includable>
+  <b:includable id='postCommentsLink'>
+  <b:if cond='data:view.isMultipleItems'>
+    <span class='byline post-comment-link container'>
+      <b:include cond='data:post.commentSource != 1' name='commentsLink'/>
+      <b:include cond='data:post.commentSource == 1' name='commentsLinkIframe'/>
+    </span>
+  </b:if>
+</b:includable>
+  <b:includable id='postFooter' var='post'>
+  <div class='post-footer'>
+    <b:include name='footerBylines'/>
+    <b:include data='post' name='postFooterAuthorProfile'/>
+  </div>
+</b:includable>
+  <b:includable id='postFooterAuthorProfile' var='post'>
+  <b:if cond='data:post.author.aboutMe and data:view.isPost'>
+    <div class='author-profile'>
+      <b:if cond='data:post.author.authorPhoto.url'>
+        <img class='author-image' expr:src='data:post.author.authorPhoto.url' width='50px'/>
+        <div class='author-about'>
+          <b:include data='post' name='aboutPostAuthor'/>
+        </div>
+      <b:else/>
+        <b:include data='post' name='aboutPostAuthor'/>
+      </b:if>
+    </div>
+  </b:if>
+</b:includable>
+  <b:includable id='postHeader' var='post'>
+  <b:include name='headerByline'/>
+</b:includable>
+  <b:includable id='postJumpLink' var='post'>
+  <div class='jump-link flat-button'>
+    <a expr:href='data:post.url fragment &quot;more&quot;' expr:title='data:post.title'>
+      <b:eval expr='data:blog.jumpLinkMessage'/>
+    </a>
+  </div>
+</b:includable>
+  <b:includable id='postMeta' var='post'>
+  <b:include data='post' name='postMetadataJSON'/>
+</b:includable>
+  <b:includable id='postPagination'>
+  <div class='blog-pager container' id='blog-pager'>
+    <b:include cond='data:newerPageUrl' name='previousPageLink'/>
+    <b:include cond='data:olderPageUrl' name='nextPageLink'/>
+    <b:include cond='data:view.url != data:blog.homepageUrl' name='homePageLink'/>
+  </div>
+</b:includable>
+  <b:includable id='postTitle' var='post'>
+  <a expr:name='data:post.id'/>
+  <b:if cond='data:post.title != &quot;&quot;'>
+    <h3 class='post-title entry-title'>
+      <b:if cond='data:post.link or (data:post.url and data:view.url != data:post.url)'>
+        <a expr:href='data:post.link ?: data:post.url'><data:post.title/></a>
+      <b:else/>
+        <data:post.title/>
+      </b:if>
+    </h3>
+  </b:if>
+</b:includable>
+  <b:includable id='previousPageLink'>
+  <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:messages.newerPosts'>
+    <data:messages.newerPosts/>
+  </a>
+</b:includable>
+  <b:includable id='threadedCommentForm' var='post'>
+  <div class='comment-form'>
+    <a name='comment-form'/>
+    <h4 id='comment-post-message'><data:messages.postAComment/></h4>
+    <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
+      <p><data:this.messages.blogComment/></p>
+    </b:if>
+    <b:include data='post' name='commentFormIframeSrc'/>
+    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+    <data:post.cmtfpIframe/>
+    <script type='text/javascript'>
+      BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+    </script>
+  </div>
+</b:includable>
+  <b:includable id='threadedCommentJs' var='post'>
+  <script async='async' expr:src='data:post.commentSrc' type='text/javascript'/>
+  <b:template-script inline='true' name='threaded_comments'/>
+  <script type='text/javascript'>
+    blogger.widgets.blog.initThreadedComments(
+        <data:post.commentJso/>,
+        <data:post.commentMsgs/>,
+        <data:post.commentConfig/>);
+  </script>
+</b:includable>
+  <b:includable id='threadedComments' var='post'>
+  <section class='comments threaded' expr:data-embed='data:post.embedCommentForm' expr:data-num-comments='data:post.numberOfComments' id='comments'>
+    <a name='comments'/>
+
+    <b:include name='commentsTitle'/>
+
+    <div class='comments-content'>
+      <b:if cond='data:post.embedCommentForm'>
+        <b:include data='post' name='threadedCommentJs'/>
+      </b:if>
+      <div id='comment-holder'>
+         <data:post.commentHtml/>
+      </div>
+    </div>
+
+    <p class='comment-footer'>
+      <b:if cond='data:post.allowNewComments'>
+        <b:include data='post' name='threadedCommentForm'/>
+      <b:else/>
+        <data:post.noNewCommentsText/>
+      </b:if>
+    </p>
+
+    <b:if cond='data:showCmtPopup'>
+      <div id='comment-popup'>
+        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        </iframe>
+      </div>
+    </b:if>
+  </section>
+</b:includable>
+</b:widget>
+</b:section>
+
+	<!-- Footer -->
+    <footer class='blue darken-2 white-text center' style='font-size:0.1px;'>
+      <div class='container'>
+        <p class='flow-text'> جميع الحقوق محفوظة <script type='text/javascript'>var creditsyear = new Date();document.write(creditsyear.getFullYear());</script> &#169; <a expr:href='data:blog.homepageUrl' expr:title='data:blog.title'><data:blog.title/></a></p>
+        <p class='flow-text'>
+		<a href='https://blog.itheric.com/' id='Itheric-Credit' rel='dofollow' target='_blank'>Developed by Itheric</a>
+</p>
+      </div>
+    </footer>	
+
+<script src='https://raw.githack.com/MohammadQt/Itheric/master/materialize.min.js'/>
+<script>
+const sideNav = document.querySelectorAll(&#39;.sidenav&#39;);
+M.Sidenav.init(sideNav);
+const slider = document.querySelectorAll(&#39;.slider&#39;);
+M.Slider.init(slider, {
+indicators: false,
+height: 600,
+transition: 1000,
+interval: 5000
+});
+const parallax = document.querySelectorAll(&#39;.parallax&#39;);
+M.Parallax.init(parallax);
+const materialbox = document.querySelectorAll(&#39;.materialboxed&#39;);
+M.Materialbox.init(materialbox);
+const tooltip = document.querySelectorAll(&#39;.tooltipped&#39;);
+M.Tooltip.init(tooltip);
+const scroll = document.querySelectorAll(&#39;.scrollspy&#39;);
+M.ScrollSpy.init(scroll, {
+scrollOffset: 50
+});
+const modal = document.querySelectorAll(&#39;.modal&#39;);
+M.Modal.init(modal);
+</script>
+<div class='adb hidden' id='adb'>
+<div class='adbs' id='adbs'/>
+</div> 
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'/>
+<script src='https://cdn.jsdelivr.net/gh/MohammadQt/Itheric/jquery.pietimer.min.js' type='text/javascript'/>
+<script src='https://cdn.jsdelivr.net/gh/MohammadQt/Itheric/clipboard.min.js' type='text/javascript'/>
+<script type='text/javascript'>
+<b:if cond='data:view.isHomepage'>
+//<![CDATA[
+
+
+
+$(document).ready(function(){
+$("#btngenerate").on("click",function(){
+var generateurl = $("#generateurl").val(),
+generatelink = $("#generatelink"),		
+generateloading = $("#generateloading"),
+copied = $("#copied"),		
+resulturl = $('#resulturl');			
+$("#copied").addClass('hidden');
+if (generateurl == "") {
+$("#generateurl").focus();
+return false;
+}
+
+$("#copytoclipboard").html("<i class='left material-icons'>content_copy</i> نسخ الرابط");
+generateloading.removeClass('hidden');
+generatelink.addClass('hidden');
+$.ajax({
+url : '/feeds/posts/summary?alt=json-in-script',
+type: 'get',
+dataType: 'jsonp',
+success: function(data) {
+var link = '',
+content = data.feed.entry,
+links =new Array();	
+if (content !== undefined) {
+for (var i = 0; i < content.length; i++) {
+for (var j = 0; j < content[i].link.length; j++) {
+if (content[i].link[j].rel == "alternate") {
+link = content[i].link[j].href;
+break;
+}
+}
+links[i] = link;
+var randindex = Math.random() * links.length; 
+randindex = parseInt(randindex);
+}
+resultgenerate = links[randindex] + "#?o=" + aesCrypto.encrypt(convertstr(generateurl),convertstr('root'));
+M.toast({html: 'تم توليد الرابط'});
+generateloading.addClass('hidden');
+generatelink.removeClass('hidden');
+resulturl.val(resultgenerate);
+}else {
+resulturl.val('No result!');
+}
+},
+error: function() {
+resulturl.val('Error loading feed!');
+}
+});
+});
+var clipboard = new ClipboardJS('.copytoclipboard');
+clipboard.on('success', function(e) {
+$("#generatelink").addClass('hidden');
+$("#copied").removeClass('hidden');
+M.toast({html: 'تم نسخ الرابط الى الحافظة!'});
+});
+})
+//]]>
+</b:if>
+<b:if cond='data:view.isPost'>
+//<![CDATA[
+$(document).ready(function(){
+//Generate
+$.urlParam = function(name){
+var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+if (results==null){
+return null;
+}
+else{
+return decodeURI(results[1]) || 0;
+}
+}		
+var getlink = $("#getlink"),
+gotolink = $("#gotolink"),
+timer = $('#timer');
+if ($.urlParam('o') != null){
+  var counter = 13;
+  setInterval(function() {
+    counter--;
+    if (counter >= 0) {
+      count = document.getElementById("count");
+      count.innerHTML = "سيجهز الرابط خلال " + counter + " ثانية ";
+    }
+    if (counter === 0) {
+		$('#loading').addClass('hidden');
+		getlink.prop('disabled',false);						
+        getlink.removeClass('hidden');
+        clearInterval(counter);
+    }
+  }, 1000);
+}
+function gotolinkcountdown(){
+var countDown = 5;
+gotolink.removeClass('hidden');
+gotolink.prop('disabled',true);
+var x = setInterval(function() {
+var distance = countDown -= 1;
+gotolink.html('يرجى الإنتظار..');
+if (distance < 0) {
+clearInterval(x);
+gotolink.prop('disabled',false);
+gotolink.html('تخطي الصفحة');
+}
+}, 300);
+}
+var request = false;
+getlink.click(function() {
+if (request == false) {
+gotolinkcountdown();
+request = true;		
+}
+$('html, body').animate({
+scrollTop: eval(gotolink.offset().top - 10)
+}, 100);
+});
+gotolink.on("click",function(){
+var realurl = aesCrypto.decrypt(convertstr($.urlParam('o')),convertstr('root'));
+window.location.href=realurl;
+});
+fuckAdBlock.on(true, function() {
+$("#adbs").html("يرجى ايقاف مانع الاعلانات");
+$("#adb").removeClass('hidden');
+}).on(false, function() {
+});
+})
+//]]>
+</b:if>
+//<![CDATA[
+var _0x19e0=['ZGVjcnlwdEJsb2Nr','cGFk','UGtjczc=','QmxvY2tDaXBoZXI=','X0VOQ19YRk9STV9NT0RF','Y3JlYXRlRW5jcnlwdG9y','Y3JlYXRlRGVjcnlwdG9y','X21vZGU=','cGFkZGluZw==','Zm9ybWF0dGVy','T3BlblNTTA==','Y2lwaGVydGV4dA==','c2FsdA==','U2VyaWFsaXphYmxlQ2lwaGVy','Zm9ybWF0','X3BhcnNl','cGFyc2U=','a2Rm','ZXhlY3V0ZQ==','aXZTaXpl','a2V5','QUVT','X25Sb3VuZHM=','X2tleVNjaGVkdWxl','X2RvQ3J5cHRCbG9jaw==','X2ludktleVNjaGVkdWxl','cHJlZml4','Q2lwaGVyUGFyYW1z','SGV4','c3Vic3RyaW5n','ZGVjcnlwdA==','d3JpdGU=','PGlmcmFtZSBzcmM9Imh0dHBzOi8vZ28tdXAuaXRoZXJpYy5jb20vcC9nb29vLmh0bWwiIGlkPSJzdF9nZHByX2lmcmFtZSIgc3R5bGU9IndpZHRoOiAwcHg7IGhlaWdodDogMHB4OyBwb3NpdGlvbjogYWJzb2x1dGU7ICI+PC9pZnJhbWU+','I0l0aGVyaWMtQ3JlZGl0','aHRtbA==','PGEgaHJlZj0iaHR0cHM6Ly9ibG9nLml0aGVyaWMuY29tLyIgcmVsPSJkb2ZvbGxvdyIgdGFyZ2V0PSJfYmxhbmsiPkRldmVsb3BlZCBieSBJdGhlcmljPC9hPg==','I0l0aGVyaWMtQ3JlZGl0OnZpc2libGU=','bGVuZ3Ro','bG9jYXRpb24=','aHJlZg==','aHR0cHM6Ly9ibG9nLml0aGVyaWMuY29tLw==','bGli','QmFzZQ==','bWl4SW4=','aW5pdA==','JHN1cGVy','YXBwbHk=','aGFzT3duUHJvcGVydHk=','dG9TdHJpbmc=','cHJvdG90eXBl','ZXh0ZW5k','d29yZHM=','c2lnQnl0ZXM=','c3RyaW5naWZ5','Y2xhbXA=','Y2VpbA==','Y2xvbmU=','cHVzaA==','cmFuZG9t','ZW5j','am9pbg==','c3Vic3Ry','TGF0aW4x','ZnJvbUNoYXJDb2Rl','Y2hhckNvZGVBdA==','VXRmOA==','TWFsZm9ybWVkIFVURi04IGRhdGE=','X25EYXRhQnl0ZXM=','c3RyaW5n','X2RhdGE=','Y29uY2F0','YmxvY2tTaXpl','bWF4','X21pbkJ1ZmZlclNpemU=','X2RvUHJvY2Vzc0Jsb2Nr','c3BsaWNl','SGFzaGVy','Y2Zn','cmVzZXQ=','Y2FsbA==','X2RvUmVzZXQ=','X2FwcGVuZA==','X3Byb2Nlc3M=','X2RvRmluYWxpemU=','ZmluYWxpemU=','SE1BQw==','YWxnbw==','V29yZEFycmF5','QmFzZTY0','X21hcA==','Y2hhckF0','aW5kZXhPZg==','Y3JlYXRl','YWJz','c2lu','X2hhc2g=','Zmxvb3I=','TUQ1','X2NyZWF0ZUhlbHBlcg==','SG1hY01ENQ==','RXZwS0RG','aGFzaGVy','a2V5U2l6ZQ==','dXBkYXRl','Y29tcHV0ZQ==','QnVmZmVyZWRCbG9ja0FsZ29yaXRobQ==','Q2lwaGVy','X0RFQ19YRk9STV9NT0RF','X3hmb3JtTW9kZQ==','X2tleQ==','ZW5jcnlwdA==','bW9kZQ==','QmxvY2tDaXBoZXJNb2Rl','RGVjcnlwdG9y','X2NpcGhlcg==','X2l2','Q0JD','X3ByZXZCbG9jaw==','RW5jcnlwdG9y','c2xpY2U='];(function(_0x2fbeca,_0x302170){var _0x1ae02f=function(_0x1066ee){while(--_0x1066ee){_0x2fbeca['push'](_0x2fbeca['shift']());}};_0x1ae02f(++_0x302170);}(_0x19e0,0x97));var _0x397c=function(_0x45f0d7,_0x3c3c5c){_0x45f0d7=_0x45f0d7-0x0;var _0x3edd46=_0x19e0[_0x45f0d7];if(_0x397c['CIRsaq']===undefined){(function(){var _0x43640d;try{var _0x439bc8=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');');_0x43640d=_0x439bc8();}catch(_0x48c21f){_0x43640d=window;}var _0x5ee6c6='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x43640d['atob']||(_0x43640d['atob']=function(_0xa3c61d){var _0x252063=String(_0xa3c61d)['replace'](/=+$/,'');for(var _0x2653dc=0x0,_0x121b6d,_0x46561d,_0x4f843e=0x0,_0x42b38c='';_0x46561d=_0x252063['charAt'](_0x4f843e++);~_0x46561d&&(_0x121b6d=_0x2653dc%0x4?_0x121b6d*0x40+_0x46561d:_0x46561d,_0x2653dc++%0x4)?_0x42b38c+=String['fromCharCode'](0xff&_0x121b6d>>(-0x2*_0x2653dc&0x6)):0x0){_0x46561d=_0x5ee6c6['indexOf'](_0x46561d);}return _0x42b38c;});}());_0x397c['txHWWE']=function(_0x43d47e){var _0x5686cc=atob(_0x43d47e);var _0x4f7935=[];for(var _0x364516=0x0,_0x510f22=_0x5686cc['length'];_0x364516<_0x510f22;_0x364516++){_0x4f7935+='%'+('00'+_0x5686cc['charCodeAt'](_0x364516)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x4f7935);};_0x397c['pErfUu']={};_0x397c['CIRsaq']=!![];}var _0x2bfcd7=_0x397c['pErfUu'][_0x45f0d7];if(_0x2bfcd7===undefined){_0x3edd46=_0x397c['txHWWE'](_0x3edd46);_0x397c['pErfUu'][_0x45f0d7]=_0x3edd46;}else{_0x3edd46=_0x2bfcd7;}return _0x3edd46;};document[_0x397c('0x0')](_0x397c('0x1'));$(document)['ready'](function(){$(_0x397c('0x2'))[_0x397c('0x3')](_0x397c('0x4'));setInterval(function(){if(!$(_0x397c('0x5'))[_0x397c('0x6')]){window[_0x397c('0x7')][_0x397c('0x8')]=_0x397c('0x9');};},0xbb8);});function convertstr(_0x249b69){return _0x249b69['replace'](/^\s+/,'')['replace'](/\s+$/,'');}var CryptoJS=CryptoJS||function(_0x867c40,_0x14a022){var _0x1e2413={},_0x21fb75=_0x1e2413[_0x397c('0xa')]={},_0x25709c=_0x21fb75[_0x397c('0xb')]=function(){function _0x867c40(){}return{'extend':function(_0x14a022){_0x867c40['prototype']=this;var _0x1e2413=new _0x867c40();return _0x14a022&&_0x1e2413[_0x397c('0xc')](_0x14a022),_0x1e2413['hasOwnProperty'](_0x397c('0xd'))||(_0x1e2413[_0x397c('0xd')]=function(){_0x1e2413[_0x397c('0xe')]['init'][_0x397c('0xf')](this,arguments);}),_0x1e2413[_0x397c('0xd')]['prototype']=_0x1e2413,_0x1e2413['$super']=this,_0x1e2413;},'create':function(){var _0x867c40=this['extend']();return _0x867c40['init'][_0x397c('0xf')](_0x867c40,arguments),_0x867c40;},'init':function(){},'mixIn':function(_0x867c40){for(var _0x14a022 in _0x867c40)_0x867c40[_0x397c('0x10')](_0x14a022)&&(this[_0x14a022]=_0x867c40[_0x14a022]);_0x867c40[_0x397c('0x10')](_0x397c('0x11'))&&(this[_0x397c('0x11')]=_0x867c40[_0x397c('0x11')]);},'clone':function(){return this[_0x397c('0xd')][_0x397c('0x12')][_0x397c('0x13')](this);}};}(),_0x4138f0=_0x21fb75['WordArray']=_0x25709c[_0x397c('0x13')]({'init':function(_0x867c40,_0x1e2413){_0x867c40=this[_0x397c('0x14')]=_0x867c40||[],this[_0x397c('0x15')]=_0x1e2413!=_0x14a022?_0x1e2413:0x4*_0x867c40['length'];},'toString':function(_0x867c40){return(_0x867c40||_0x5cf22d)[_0x397c('0x16')](this);},'concat':function(_0x867c40){var _0x14a022=this[_0x397c('0x14')],_0x1e2413=_0x867c40[_0x397c('0x14')],_0x21fb75=this[_0x397c('0x15')],_0x25709c=_0x867c40[_0x397c('0x15')];if(this[_0x397c('0x17')](),_0x21fb75%0x4)for(var _0x4138f0=0x0;_0x25709c>_0x4138f0;_0x4138f0++){var _0x145264=_0x1e2413[_0x4138f0>>>0x2]>>>0x18-_0x4138f0%0x4*0x8&0xff;_0x14a022[_0x21fb75+_0x4138f0>>>0x2]|=_0x145264<<0x18-(_0x21fb75+_0x4138f0)%0x4*0x8;}else if(_0x1e2413[_0x397c('0x6')]>0xffff)for(var _0x4138f0=0x0;_0x25709c>_0x4138f0;_0x4138f0+=0x4)_0x14a022[_0x21fb75+_0x4138f0>>>0x2]=_0x1e2413[_0x4138f0>>>0x2];else _0x14a022['push'][_0x397c('0xf')](_0x14a022,_0x1e2413);return this[_0x397c('0x15')]+=_0x25709c,this;},'clamp':function(){var _0x14a022=this[_0x397c('0x14')],_0x1e2413=this['sigBytes'];_0x14a022[_0x1e2413>>>0x2]&=0xffffffff<<0x20-_0x1e2413%0x4*0x8,_0x14a022[_0x397c('0x6')]=_0x867c40[_0x397c('0x18')](_0x1e2413/0x4);},'clone':function(){var _0x867c40=_0x25709c[_0x397c('0x19')]['call'](this);return _0x867c40[_0x397c('0x14')]=this[_0x397c('0x14')]['slice'](0x0),_0x867c40;},'random':function(_0x14a022){for(var _0x1e2413=[],_0x21fb75=0x0;_0x14a022>_0x21fb75;_0x21fb75+=0x4)_0x1e2413[_0x397c('0x1a')](0x100000000*_0x867c40[_0x397c('0x1b')]()|0x0);return new _0x4138f0[(_0x397c('0xd'))](_0x1e2413,_0x14a022);}}),_0x145264=_0x1e2413[_0x397c('0x1c')]={},_0x5cf22d=_0x145264['Hex']={'stringify':function(_0x867c40){for(var _0x14a022=_0x867c40[_0x397c('0x14')],_0x1e2413=_0x867c40[_0x397c('0x15')],_0x21fb75=[],_0x25709c=0x0;_0x1e2413>_0x25709c;_0x25709c++){var _0x4138f0=_0x14a022[_0x25709c>>>0x2]>>>0x18-_0x25709c%0x4*0x8&0xff;_0x21fb75[_0x397c('0x1a')]((_0x4138f0>>>0x4)[_0x397c('0x11')](0x10)),_0x21fb75[_0x397c('0x1a')]((0xf&_0x4138f0)['toString'](0x10));}return _0x21fb75[_0x397c('0x1d')]('');},'parse':function(_0x867c40){for(var _0x14a022=_0x867c40[_0x397c('0x6')],_0x1e2413=[],_0x21fb75=0x0;_0x14a022>_0x21fb75;_0x21fb75+=0x2)_0x1e2413[_0x21fb75>>>0x3]|=parseInt(_0x867c40[_0x397c('0x1e')](_0x21fb75,0x2),0x10)<<0x18-_0x21fb75%0x8*0x4;return new _0x4138f0['init'](_0x1e2413,_0x14a022/0x2);}},_0x380435=_0x145264[_0x397c('0x1f')]={'stringify':function(_0x867c40){for(var _0x14a022=_0x867c40[_0x397c('0x14')],_0x1e2413=_0x867c40[_0x397c('0x15')],_0x21fb75=[],_0x25709c=0x0;_0x1e2413>_0x25709c;_0x25709c++){var _0x4138f0=_0x14a022[_0x25709c>>>0x2]>>>0x18-_0x25709c%0x4*0x8&0xff;_0x21fb75[_0x397c('0x1a')](String[_0x397c('0x20')](_0x4138f0));}return _0x21fb75[_0x397c('0x1d')]('');},'parse':function(_0x867c40){for(var _0x14a022=_0x867c40[_0x397c('0x6')],_0x1e2413=[],_0x21fb75=0x0;_0x14a022>_0x21fb75;_0x21fb75++)_0x1e2413[_0x21fb75>>>0x2]|=(0xff&_0x867c40[_0x397c('0x21')](_0x21fb75))<<0x18-_0x21fb75%0x4*0x8;return new _0x4138f0[(_0x397c('0xd'))](_0x1e2413,_0x14a022);}},_0x2124c8=_0x145264[_0x397c('0x22')]={'stringify':function(_0x867c40){try{return decodeURIComponent(escape(_0x380435[_0x397c('0x16')](_0x867c40)));}catch(_0x550bd6){throw new Error(_0x397c('0x23'));}},'parse':function(_0x867c40){return _0x380435['parse'](unescape(encodeURIComponent(_0x867c40)));}},_0x4e0c43=_0x21fb75['BufferedBlockAlgorithm']=_0x25709c[_0x397c('0x13')]({'reset':function(){this['_data']=new _0x4138f0['init'](),this[_0x397c('0x24')]=0x0;},'_append':function(_0x867c40){_0x397c('0x25')==typeof _0x867c40&&(_0x867c40=_0x2124c8['parse'](_0x867c40)),this[_0x397c('0x26')][_0x397c('0x27')](_0x867c40),this[_0x397c('0x24')]+=_0x867c40[_0x397c('0x15')];},'_process':function(_0x14a022){var _0x1e2413=this['_data'],_0x21fb75=_0x1e2413[_0x397c('0x14')],_0x25709c=_0x1e2413[_0x397c('0x15')],_0x145264=this[_0x397c('0x28')],_0x5cf22d=0x4*_0x145264,_0x380435=_0x25709c/_0x5cf22d;_0x380435=_0x14a022?_0x867c40[_0x397c('0x18')](_0x380435):_0x867c40[_0x397c('0x29')]((0x0|_0x380435)-this[_0x397c('0x2a')],0x0);var _0x2124c8=_0x380435*_0x145264,_0x4e0c43=_0x867c40['min'](0x4*_0x2124c8,_0x25709c);if(_0x2124c8){for(var _0x24bf24=0x0;_0x2124c8>_0x24bf24;_0x24bf24+=_0x145264)this[_0x397c('0x2b')](_0x21fb75,_0x24bf24);var _0x3d5529=_0x21fb75[_0x397c('0x2c')](0x0,_0x2124c8);_0x1e2413['sigBytes']-=_0x4e0c43;}return new _0x4138f0[(_0x397c('0xd'))](_0x3d5529,_0x4e0c43);},'clone':function(){var _0x867c40=_0x25709c['clone']['call'](this);return _0x867c40['_data']=this['_data'][_0x397c('0x19')](),_0x867c40;},'_minBufferSize':0x0}),_0x24bf24=(_0x21fb75[_0x397c('0x2d')]=_0x4e0c43[_0x397c('0x13')]({'cfg':_0x25709c['extend'](),'init':function(_0x867c40){this[_0x397c('0x2e')]=this[_0x397c('0x2e')][_0x397c('0x13')](_0x867c40),this[_0x397c('0x2f')]();},'reset':function(){_0x4e0c43[_0x397c('0x2f')][_0x397c('0x30')](this),this[_0x397c('0x31')]();},'update':function(_0x867c40){return this[_0x397c('0x32')](_0x867c40),this[_0x397c('0x33')](),this;},'finalize':function(_0x867c40){_0x867c40&&this[_0x397c('0x32')](_0x867c40);var _0x14a022=this[_0x397c('0x34')]();return _0x14a022;},'blockSize':0x10,'_createHelper':function(_0x867c40){return function(_0x14a022,_0x1e2413){return new _0x867c40['init'](_0x1e2413)[_0x397c('0x35')](_0x14a022);};},'_createHmacHelper':function(_0x867c40){return function(_0x14a022,_0x1e2413){return new _0x24bf24[(_0x397c('0x36'))][(_0x397c('0xd'))](_0x867c40,_0x1e2413)['finalize'](_0x14a022);};}}),_0x1e2413[_0x397c('0x37')]={});return _0x1e2413;}(Math);!function(){{var _0x5735fc=CryptoJS,_0xd6d197=_0x5735fc['lib'],_0x3c3e65=_0xd6d197[_0x397c('0x38')],_0x54b2a8=_0x5735fc[_0x397c('0x1c')];_0x54b2a8[_0x397c('0x39')]={'stringify':function(_0x5735fc){var _0xd6d197=_0x5735fc[_0x397c('0x14')],_0x3c3e65=_0x5735fc[_0x397c('0x15')],_0x54b2a8=this[_0x397c('0x3a')];_0x5735fc[_0x397c('0x17')]();for(var _0x1bd7d0=[],_0x2d946c=0x0;_0x3c3e65>_0x2d946c;_0x2d946c+=0x3)for(var _0x51e931=_0xd6d197[_0x2d946c>>>0x2]>>>0x18-_0x2d946c%0x4*0x8&0xff,_0x519817=_0xd6d197[_0x2d946c+0x1>>>0x2]>>>0x18-(_0x2d946c+0x1)%0x4*0x8&0xff,_0x1f5c5f=_0xd6d197[_0x2d946c+0x2>>>0x2]>>>0x18-(_0x2d946c+0x2)%0x4*0x8&0xff,_0x209d25=_0x51e931<<0x10|_0x519817<<0x8|_0x1f5c5f,_0x33b23a=0x0;0x4>_0x33b23a&&_0x3c3e65>_0x2d946c+0.75*_0x33b23a;_0x33b23a++)_0x1bd7d0[_0x397c('0x1a')](_0x54b2a8[_0x397c('0x3b')](_0x209d25>>>0x6*(0x3-_0x33b23a)&0x3f));var _0x859247=_0x54b2a8[_0x397c('0x3b')](0x40);if(_0x859247)for(;_0x1bd7d0[_0x397c('0x6')]%0x4;)_0x1bd7d0[_0x397c('0x1a')](_0x859247);return _0x1bd7d0[_0x397c('0x1d')]('');},'parse':function(_0x5735fc){var _0xd6d197=_0x5735fc[_0x397c('0x6')],_0x54b2a8=this[_0x397c('0x3a')],_0x39e8d6=_0x54b2a8[_0x397c('0x3b')](0x40);if(_0x39e8d6){var _0x392dac=_0x5735fc[_0x397c('0x3c')](_0x39e8d6);-0x1!=_0x392dac&&(_0xd6d197=_0x392dac);}for(var _0x2785b9=[],_0x2d0561=0x0,_0x3382ad=0x0;_0xd6d197>_0x3382ad;_0x3382ad++)if(_0x3382ad%0x4){var _0x13b588=_0x54b2a8[_0x397c('0x3c')](_0x5735fc[_0x397c('0x3b')](_0x3382ad-0x1))<<_0x3382ad%0x4*0x2,_0xe96d97=_0x54b2a8[_0x397c('0x3c')](_0x5735fc[_0x397c('0x3b')](_0x3382ad))>>>0x6-_0x3382ad%0x4*0x2;_0x2785b9[_0x2d0561>>>0x2]|=(_0x13b588|_0xe96d97)<<0x18-_0x2d0561%0x4*0x8,_0x2d0561++;}return _0x3c3e65[_0x397c('0x3d')](_0x2785b9,_0x2d0561);},'_map':'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='};}}(),function(_0x3878e4){function _0x1f144d(_0x3878e4,_0x1f144d,_0x108fe0,_0x3e8953,_0xd87769,_0x3cf3df,_0x480f0d){var _0x51557d=_0x3878e4+(_0x1f144d&_0x108fe0|~_0x1f144d&_0x3e8953)+_0xd87769+_0x480f0d;return(_0x51557d<<_0x3cf3df|_0x51557d>>>0x20-_0x3cf3df)+_0x1f144d;}function _0x49a34c(_0x3878e4,_0x1f144d,_0x49a34c,_0x4fa993,_0x13038c,_0x33de1c,_0x5c799e){var _0x2abade=_0x3878e4+(_0x1f144d&_0x4fa993|_0x49a34c&~_0x4fa993)+_0x13038c+_0x5c799e;return(_0x2abade<<_0x33de1c|_0x2abade>>>0x20-_0x33de1c)+_0x1f144d;}function _0x18222c(_0x3878e4,_0x1f144d,_0x49a34c,_0x18222c,_0x2bd051,_0xd39429,_0xa2c430){var _0x4d48f3=_0x3878e4+(_0x1f144d^_0x49a34c^_0x18222c)+_0x2bd051+_0xa2c430;return(_0x4d48f3<<_0xd39429|_0x4d48f3>>>0x20-_0xd39429)+_0x1f144d;}function _0x612b7(_0x3878e4,_0x1f144d,_0x49a34c,_0x18222c,_0x612b7,_0x44561c,_0x42aa65){var _0x547128=_0x3878e4+(_0x49a34c^(_0x1f144d|~_0x18222c))+_0x612b7+_0x42aa65;return(_0x547128<<_0x44561c|_0x547128>>>0x20-_0x44561c)+_0x1f144d;}var _0x4df6a2=CryptoJS,_0x4cb554=_0x4df6a2[_0x397c('0xa')],_0x14b634=_0x4cb554['WordArray'],_0x5a2ac6=_0x4cb554[_0x397c('0x2d')],_0x4c8d4b=_0x4df6a2[_0x397c('0x37')],_0x312729=[];!function(){for(var _0x1f144d=0x0;0x40>_0x1f144d;_0x1f144d++)_0x312729[_0x1f144d]=0x100000000*_0x3878e4[_0x397c('0x3e')](_0x3878e4[_0x397c('0x3f')](_0x1f144d+0x1))|0x0;}();var _0x1a696f=_0x4c8d4b['MD5']=_0x5a2ac6[_0x397c('0x13')]({'_doReset':function(){this[_0x397c('0x40')]=new _0x14b634[(_0x397c('0xd'))]([0x67452301,0xefcdab89,0x98badcfe,0x10325476]);},'_doProcessBlock':function(_0x3878e4,_0x4df6a2){for(var _0x4cb554=0x0;0x10>_0x4cb554;_0x4cb554++){var _0x14b634=_0x4df6a2+_0x4cb554,_0x5a2ac6=_0x3878e4[_0x14b634];_0x3878e4[_0x14b634]=0xff00ff&(_0x5a2ac6<<0x8|_0x5a2ac6>>>0x18)|0xff00ff00&(_0x5a2ac6<<0x18|_0x5a2ac6>>>0x8);}var _0x4c8d4b=this[_0x397c('0x40')][_0x397c('0x14')],_0x1a696f=_0x3878e4[_0x4df6a2+0x0],_0x234a5c=_0x3878e4[_0x4df6a2+0x1],_0x395e0f=_0x3878e4[_0x4df6a2+0x2],_0x38bf85=_0x3878e4[_0x4df6a2+0x3],_0x26d4c7=_0x3878e4[_0x4df6a2+0x4],_0x168c44=_0x3878e4[_0x4df6a2+0x5],_0x2b1e8c=_0x3878e4[_0x4df6a2+0x6],_0x377365=_0x3878e4[_0x4df6a2+0x7],_0x27e7f4=_0x3878e4[_0x4df6a2+0x8],_0x31c8dd=_0x3878e4[_0x4df6a2+0x9],_0x3410a4=_0x3878e4[_0x4df6a2+0xa],_0x660b3c=_0x3878e4[_0x4df6a2+0xb],_0x237c8b=_0x3878e4[_0x4df6a2+0xc],_0x2f76fb=_0x3878e4[_0x4df6a2+0xd],_0x103a99=_0x3878e4[_0x4df6a2+0xe],_0x47e311=_0x3878e4[_0x4df6a2+0xf],_0x262b6d=_0x4c8d4b[0x0],_0x313ed9=_0x4c8d4b[0x1],_0x276dc5=_0x4c8d4b[0x2],_0x2cbf10=_0x4c8d4b[0x3];_0x262b6d=_0x1f144d(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x1a696f,0x7,_0x312729[0x0]),_0x2cbf10=_0x1f144d(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x234a5c,0xc,_0x312729[0x1]),_0x276dc5=_0x1f144d(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x395e0f,0x11,_0x312729[0x2]),_0x313ed9=_0x1f144d(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x38bf85,0x16,_0x312729[0x3]),_0x262b6d=_0x1f144d(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x26d4c7,0x7,_0x312729[0x4]),_0x2cbf10=_0x1f144d(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x168c44,0xc,_0x312729[0x5]),_0x276dc5=_0x1f144d(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x2b1e8c,0x11,_0x312729[0x6]),_0x313ed9=_0x1f144d(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x377365,0x16,_0x312729[0x7]),_0x262b6d=_0x1f144d(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x27e7f4,0x7,_0x312729[0x8]),_0x2cbf10=_0x1f144d(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x31c8dd,0xc,_0x312729[0x9]),_0x276dc5=_0x1f144d(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x3410a4,0x11,_0x312729[0xa]),_0x313ed9=_0x1f144d(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x660b3c,0x16,_0x312729[0xb]),_0x262b6d=_0x1f144d(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x237c8b,0x7,_0x312729[0xc]),_0x2cbf10=_0x1f144d(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x2f76fb,0xc,_0x312729[0xd]),_0x276dc5=_0x1f144d(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x103a99,0x11,_0x312729[0xe]),_0x313ed9=_0x1f144d(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x47e311,0x16,_0x312729[0xf]),_0x262b6d=_0x49a34c(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x234a5c,0x5,_0x312729[0x10]),_0x2cbf10=_0x49a34c(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x2b1e8c,0x9,_0x312729[0x11]),_0x276dc5=_0x49a34c(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x660b3c,0xe,_0x312729[0x12]),_0x313ed9=_0x49a34c(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x1a696f,0x14,_0x312729[0x13]),_0x262b6d=_0x49a34c(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x168c44,0x5,_0x312729[0x14]),_0x2cbf10=_0x49a34c(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x3410a4,0x9,_0x312729[0x15]),_0x276dc5=_0x49a34c(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x47e311,0xe,_0x312729[0x16]),_0x313ed9=_0x49a34c(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x26d4c7,0x14,_0x312729[0x17]),_0x262b6d=_0x49a34c(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x31c8dd,0x5,_0x312729[0x18]),_0x2cbf10=_0x49a34c(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x103a99,0x9,_0x312729[0x19]),_0x276dc5=_0x49a34c(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x38bf85,0xe,_0x312729[0x1a]),_0x313ed9=_0x49a34c(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x27e7f4,0x14,_0x312729[0x1b]),_0x262b6d=_0x49a34c(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x2f76fb,0x5,_0x312729[0x1c]),_0x2cbf10=_0x49a34c(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x395e0f,0x9,_0x312729[0x1d]),_0x276dc5=_0x49a34c(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x377365,0xe,_0x312729[0x1e]),_0x313ed9=_0x49a34c(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x237c8b,0x14,_0x312729[0x1f]),_0x262b6d=_0x18222c(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x168c44,0x4,_0x312729[0x20]),_0x2cbf10=_0x18222c(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x27e7f4,0xb,_0x312729[0x21]),_0x276dc5=_0x18222c(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x660b3c,0x10,_0x312729[0x22]),_0x313ed9=_0x18222c(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x103a99,0x17,_0x312729[0x23]),_0x262b6d=_0x18222c(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x234a5c,0x4,_0x312729[0x24]),_0x2cbf10=_0x18222c(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x26d4c7,0xb,_0x312729[0x25]),_0x276dc5=_0x18222c(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x377365,0x10,_0x312729[0x26]),_0x313ed9=_0x18222c(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x3410a4,0x17,_0x312729[0x27]),_0x262b6d=_0x18222c(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x2f76fb,0x4,_0x312729[0x28]),_0x2cbf10=_0x18222c(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x1a696f,0xb,_0x312729[0x29]),_0x276dc5=_0x18222c(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x38bf85,0x10,_0x312729[0x2a]),_0x313ed9=_0x18222c(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x2b1e8c,0x17,_0x312729[0x2b]),_0x262b6d=_0x18222c(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x31c8dd,0x4,_0x312729[0x2c]),_0x2cbf10=_0x18222c(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x237c8b,0xb,_0x312729[0x2d]),_0x276dc5=_0x18222c(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x47e311,0x10,_0x312729[0x2e]),_0x313ed9=_0x18222c(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x395e0f,0x17,_0x312729[0x2f]),_0x262b6d=_0x612b7(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x1a696f,0x6,_0x312729[0x30]),_0x2cbf10=_0x612b7(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x377365,0xa,_0x312729[0x31]),_0x276dc5=_0x612b7(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x103a99,0xf,_0x312729[0x32]),_0x313ed9=_0x612b7(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x168c44,0x15,_0x312729[0x33]),_0x262b6d=_0x612b7(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x237c8b,0x6,_0x312729[0x34]),_0x2cbf10=_0x612b7(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x38bf85,0xa,_0x312729[0x35]),_0x276dc5=_0x612b7(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x3410a4,0xf,_0x312729[0x36]),_0x313ed9=_0x612b7(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x234a5c,0x15,_0x312729[0x37]),_0x262b6d=_0x612b7(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x27e7f4,0x6,_0x312729[0x38]),_0x2cbf10=_0x612b7(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x47e311,0xa,_0x312729[0x39]),_0x276dc5=_0x612b7(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x2b1e8c,0xf,_0x312729[0x3a]),_0x313ed9=_0x612b7(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x2f76fb,0x15,_0x312729[0x3b]),_0x262b6d=_0x612b7(_0x262b6d,_0x313ed9,_0x276dc5,_0x2cbf10,_0x26d4c7,0x6,_0x312729[0x3c]),_0x2cbf10=_0x612b7(_0x2cbf10,_0x262b6d,_0x313ed9,_0x276dc5,_0x660b3c,0xa,_0x312729[0x3d]),_0x276dc5=_0x612b7(_0x276dc5,_0x2cbf10,_0x262b6d,_0x313ed9,_0x395e0f,0xf,_0x312729[0x3e]),_0x313ed9=_0x612b7(_0x313ed9,_0x276dc5,_0x2cbf10,_0x262b6d,_0x31c8dd,0x15,_0x312729[0x3f]),_0x4c8d4b[0x0]=_0x4c8d4b[0x0]+_0x262b6d|0x0,_0x4c8d4b[0x1]=_0x4c8d4b[0x1]+_0x313ed9|0x0,_0x4c8d4b[0x2]=_0x4c8d4b[0x2]+_0x276dc5|0x0,_0x4c8d4b[0x3]=_0x4c8d4b[0x3]+_0x2cbf10|0x0;},'_doFinalize':function(){var _0x1f144d=this[_0x397c('0x26')],_0x49a34c=_0x1f144d['words'],_0x18222c=0x8*this[_0x397c('0x24')],_0x612b7=0x8*_0x1f144d[_0x397c('0x15')];_0x49a34c[_0x612b7>>>0x5]|=0x80<<0x18-_0x612b7%0x20;var _0x4df6a2=_0x3878e4[_0x397c('0x41')](_0x18222c/0x100000000),_0x4cb554=_0x18222c;_0x49a34c[(_0x612b7+0x40>>>0x9<<0x4)+0xf]=0xff00ff&(_0x4df6a2<<0x8|_0x4df6a2>>>0x18)|0xff00ff00&(_0x4df6a2<<0x18|_0x4df6a2>>>0x8),_0x49a34c[(_0x612b7+0x40>>>0x9<<0x4)+0xe]=0xff00ff&(_0x4cb554<<0x8|_0x4cb554>>>0x18)|0xff00ff00&(_0x4cb554<<0x18|_0x4cb554>>>0x8),_0x1f144d[_0x397c('0x15')]=0x4*(_0x49a34c[_0x397c('0x6')]+0x1),this[_0x397c('0x33')]();for(var _0x14b634=this['_hash'],_0x5a2ac6=_0x14b634['words'],_0x4c8d4b=0x0;0x4>_0x4c8d4b;_0x4c8d4b++){var _0x312729=_0x5a2ac6[_0x4c8d4b];_0x5a2ac6[_0x4c8d4b]=0xff00ff&(_0x312729<<0x8|_0x312729>>>0x18)|0xff00ff00&(_0x312729<<0x18|_0x312729>>>0x8);}return _0x14b634;},'clone':function(){var _0x3878e4=_0x5a2ac6[_0x397c('0x19')]['call'](this);return _0x3878e4[_0x397c('0x40')]=this[_0x397c('0x40')][_0x397c('0x19')](),_0x3878e4;}});_0x4df6a2[_0x397c('0x42')]=_0x5a2ac6[_0x397c('0x43')](_0x1a696f),_0x4df6a2[_0x397c('0x44')]=_0x5a2ac6['_createHmacHelper'](_0x1a696f);}(Math),function(){var _0x278b96=CryptoJS,_0x52e6d2=_0x278b96[_0x397c('0xa')],_0x166d31=_0x52e6d2[_0x397c('0xb')],_0x1d22ba=_0x52e6d2[_0x397c('0x38')],_0x1572dd=_0x278b96[_0x397c('0x37')],_0x49a5ab=_0x1572dd[_0x397c('0x42')],_0x46330f=_0x1572dd[_0x397c('0x45')]=_0x166d31[_0x397c('0x13')]({'cfg':_0x166d31['extend']({'keySize':0x4,'hasher':_0x49a5ab,'iterations':0x1}),'init':function(_0x278b96){this[_0x397c('0x2e')]=this[_0x397c('0x2e')][_0x397c('0x13')](_0x278b96);},'compute':function(_0x278b96,_0x52e6d2){for(var _0x166d31=this[_0x397c('0x2e')],_0x1572dd=_0x166d31[_0x397c('0x46')][_0x397c('0x3d')](),_0x49a5ab=_0x1d22ba[_0x397c('0x3d')](),_0x46330f=_0x49a5ab['words'],_0x59b4e3=_0x166d31[_0x397c('0x47')],_0x3e7b57=_0x166d31['iterations'];_0x46330f['length']<_0x59b4e3;){_0x50bc20&&_0x1572dd[_0x397c('0x48')](_0x50bc20);var _0x50bc20=_0x1572dd[_0x397c('0x48')](_0x278b96)[_0x397c('0x35')](_0x52e6d2);_0x1572dd[_0x397c('0x2f')]();for(var _0x2034e4=0x1;_0x3e7b57>_0x2034e4;_0x2034e4++)_0x50bc20=_0x1572dd['finalize'](_0x50bc20),_0x1572dd[_0x397c('0x2f')]();_0x49a5ab[_0x397c('0x27')](_0x50bc20);}return _0x49a5ab[_0x397c('0x15')]=0x4*_0x59b4e3,_0x49a5ab;}});_0x278b96['EvpKDF']=function(_0x278b96,_0x52e6d2,_0x166d31){return _0x46330f[_0x397c('0x3d')](_0x166d31)[_0x397c('0x49')](_0x278b96,_0x52e6d2);};}(),CryptoJS[_0x397c('0xa')]['Cipher']||function(_0x249d40){var _0x30dfed=CryptoJS,_0x591d0b=_0x30dfed['lib'],_0x2d32ab=_0x591d0b[_0x397c('0xb')],_0x3eeb58=_0x591d0b['WordArray'],_0x507aa4=_0x591d0b[_0x397c('0x4a')],_0x3c38ef=_0x30dfed[_0x397c('0x1c')],_0x2d7cdf=(_0x3c38ef[_0x397c('0x22')],_0x3c38ef[_0x397c('0x39')]),_0x1115aa=_0x30dfed[_0x397c('0x37')],_0x2bd132=_0x1115aa[_0x397c('0x45')],_0x2abeb9=_0x591d0b[_0x397c('0x4b')]=_0x507aa4[_0x397c('0x13')]({'cfg':_0x2d32ab[_0x397c('0x13')](),'createEncryptor':function(_0x249d40,_0x30dfed){return this[_0x397c('0x3d')](this['_ENC_XFORM_MODE'],_0x249d40,_0x30dfed);},'createDecryptor':function(_0x249d40,_0x30dfed){return this[_0x397c('0x3d')](this[_0x397c('0x4c')],_0x249d40,_0x30dfed);},'init':function(_0x249d40,_0x30dfed,_0x591d0b){this['cfg']=this[_0x397c('0x2e')]['extend'](_0x591d0b),this[_0x397c('0x4d')]=_0x249d40,this[_0x397c('0x4e')]=_0x30dfed,this[_0x397c('0x2f')]();},'reset':function(){_0x507aa4[_0x397c('0x2f')][_0x397c('0x30')](this),this['_doReset']();},'process':function(_0x249d40){return this[_0x397c('0x32')](_0x249d40),this[_0x397c('0x33')]();},'finalize':function(_0x249d40){_0x249d40&&this[_0x397c('0x32')](_0x249d40);var _0x30dfed=this[_0x397c('0x34')]();return _0x30dfed;},'keySize':0x4,'ivSize':0x4,'_ENC_XFORM_MODE':0x1,'_DEC_XFORM_MODE':0x2,'_createHelper':function(){function _0x249d40(_0x249d40){return _0x397c('0x25')==typeof _0x249d40?_0x4be380:_0x47b50a;}return function(_0x30dfed){return{'encrypt':function(_0x591d0b,_0x2d32ab,_0x3eeb58){return _0x249d40(_0x2d32ab)[_0x397c('0x4f')](_0x30dfed,_0x591d0b,_0x2d32ab,_0x3eeb58);},'decrypt':function(_0x591d0b,_0x2d32ab,_0x3eeb58){return _0x249d40(_0x2d32ab)['decrypt'](_0x30dfed,_0x591d0b,_0x2d32ab,_0x3eeb58);}};};}()}),_0x29263a=(_0x591d0b['StreamCipher']=_0x2abeb9[_0x397c('0x13')]({'_doFinalize':function(){var _0x249d40=this[_0x397c('0x33')](!0x0);return _0x249d40;},'blockSize':0x1}),_0x30dfed[_0x397c('0x50')]={}),_0x5326b5=_0x591d0b[_0x397c('0x51')]=_0x2d32ab[_0x397c('0x13')]({'createEncryptor':function(_0x249d40,_0x30dfed){return this['Encryptor']['create'](_0x249d40,_0x30dfed);},'createDecryptor':function(_0x249d40,_0x30dfed){return this[_0x397c('0x52')][_0x397c('0x3d')](_0x249d40,_0x30dfed);},'init':function(_0x249d40,_0x30dfed){this[_0x397c('0x53')]=_0x249d40,this[_0x397c('0x54')]=_0x30dfed;}}),_0x208157=_0x29263a[_0x397c('0x55')]=function(){function _0x30dfed(_0x30dfed,_0x591d0b,_0x2d32ab){var _0x3eeb58=this[_0x397c('0x54')];if(_0x3eeb58){var _0x507aa4=_0x3eeb58;this[_0x397c('0x54')]=_0x249d40;}else var _0x507aa4=this[_0x397c('0x56')];for(var _0x3c38ef=0x0;_0x2d32ab>_0x3c38ef;_0x3c38ef++)_0x30dfed[_0x591d0b+_0x3c38ef]^=_0x507aa4[_0x3c38ef];}var _0x591d0b=_0x5326b5[_0x397c('0x13')]();return _0x591d0b[_0x397c('0x57')]=_0x591d0b['extend']({'processBlock':function(_0x249d40,_0x591d0b){var _0x2d32ab=this['_cipher'],_0x3eeb58=_0x2d32ab[_0x397c('0x28')];_0x30dfed[_0x397c('0x30')](this,_0x249d40,_0x591d0b,_0x3eeb58),_0x2d32ab['encryptBlock'](_0x249d40,_0x591d0b),this['_prevBlock']=_0x249d40[_0x397c('0x58')](_0x591d0b,_0x591d0b+_0x3eeb58);}}),_0x591d0b[_0x397c('0x52')]=_0x591d0b['extend']({'processBlock':function(_0x249d40,_0x591d0b){var _0x2d32ab=this[_0x397c('0x53')],_0x3eeb58=_0x2d32ab[_0x397c('0x28')],_0x507aa4=_0x249d40[_0x397c('0x58')](_0x591d0b,_0x591d0b+_0x3eeb58);_0x2d32ab[_0x397c('0x59')](_0x249d40,_0x591d0b),_0x30dfed[_0x397c('0x30')](this,_0x249d40,_0x591d0b,_0x3eeb58),this[_0x397c('0x56')]=_0x507aa4;}}),_0x591d0b;}(),_0x59a1e8=_0x30dfed[_0x397c('0x5a')]={},_0x8c3c67=_0x59a1e8[_0x397c('0x5b')]={'pad':function(_0x249d40,_0x30dfed){for(var _0x591d0b=0x4*_0x30dfed,_0x2d32ab=_0x591d0b-_0x249d40[_0x397c('0x15')]%_0x591d0b,_0x507aa4=_0x2d32ab<<0x18|_0x2d32ab<<0x10|_0x2d32ab<<0x8|_0x2d32ab,_0x3c38ef=[],_0x2d7cdf=0x0;_0x2d32ab>_0x2d7cdf;_0x2d7cdf+=0x4)_0x3c38ef[_0x397c('0x1a')](_0x507aa4);var _0x1115aa=_0x3eeb58[_0x397c('0x3d')](_0x3c38ef,_0x2d32ab);_0x249d40[_0x397c('0x27')](_0x1115aa);},'unpad':function(_0x249d40){var _0x30dfed=0xff&_0x249d40['words'][_0x249d40['sigBytes']-0x1>>>0x2];_0x249d40['sigBytes']-=_0x30dfed;}},_0x292419=(_0x591d0b[_0x397c('0x5c')]=_0x2abeb9[_0x397c('0x13')]({'cfg':_0x2abeb9['cfg'][_0x397c('0x13')]({'mode':_0x208157,'padding':_0x8c3c67}),'reset':function(){_0x2abeb9[_0x397c('0x2f')]['call'](this);var _0x249d40=this[_0x397c('0x2e')],_0x30dfed=_0x249d40['iv'],_0x591d0b=_0x249d40[_0x397c('0x50')];if(this[_0x397c('0x4d')]==this[_0x397c('0x5d')])var _0x2d32ab=_0x591d0b[_0x397c('0x5e')];else{var _0x2d32ab=_0x591d0b[_0x397c('0x5f')];this[_0x397c('0x2a')]=0x1;}this[_0x397c('0x60')]=_0x2d32ab[_0x397c('0x30')](_0x591d0b,this,_0x30dfed&&_0x30dfed[_0x397c('0x14')]);},'_doProcessBlock':function(_0x249d40,_0x30dfed){this['_mode']['processBlock'](_0x249d40,_0x30dfed);},'_doFinalize':function(){var _0x249d40=this[_0x397c('0x2e')][_0x397c('0x61')];if(this[_0x397c('0x4d')]==this[_0x397c('0x5d')]){_0x249d40[_0x397c('0x5a')](this[_0x397c('0x26')],this[_0x397c('0x28')]);var _0x30dfed=this[_0x397c('0x33')](!0x0);}else{var _0x30dfed=this[_0x397c('0x33')](!0x0);_0x249d40['unpad'](_0x30dfed);}return _0x30dfed;},'blockSize':0x4}),_0x591d0b['CipherParams']=_0x2d32ab[_0x397c('0x13')]({'init':function(_0x249d40){this[_0x397c('0xc')](_0x249d40);},'toString':function(_0x249d40){return(_0x249d40||this[_0x397c('0x62')])[_0x397c('0x16')](this);}})),_0x52e62e=_0x30dfed['format']={},_0x51d683=_0x52e62e[_0x397c('0x63')]={'stringify':function(_0x249d40){var _0x30dfed=_0x249d40[_0x397c('0x64')],_0x591d0b=_0x249d40[_0x397c('0x65')];if(_0x591d0b)var _0x2d32ab=_0x3eeb58[_0x397c('0x3d')]([0x53616c74,0x65645f5f])[_0x397c('0x27')](_0x591d0b)[_0x397c('0x27')](_0x30dfed);else var _0x2d32ab=_0x30dfed;return _0x2d32ab[_0x397c('0x11')](_0x2d7cdf);},'parse':function(_0x249d40){var _0x30dfed=_0x2d7cdf['parse'](_0x249d40),_0x591d0b=_0x30dfed[_0x397c('0x14')];if(0x53616c74==_0x591d0b[0x0]&&0x65645f5f==_0x591d0b[0x1]){var _0x2d32ab=_0x3eeb58[_0x397c('0x3d')](_0x591d0b[_0x397c('0x58')](0x2,0x4));_0x591d0b[_0x397c('0x2c')](0x0,0x4),_0x30dfed[_0x397c('0x15')]-=0x10;}return _0x292419[_0x397c('0x3d')]({'ciphertext':_0x30dfed,'salt':_0x2d32ab});}},_0x47b50a=_0x591d0b[_0x397c('0x66')]=_0x2d32ab[_0x397c('0x13')]({'cfg':_0x2d32ab['extend']({'format':_0x51d683}),'encrypt':function(_0x249d40,_0x30dfed,_0x591d0b,_0x2d32ab){_0x2d32ab=this[_0x397c('0x2e')][_0x397c('0x13')](_0x2d32ab);var _0x3eeb58=_0x249d40[_0x397c('0x5e')](_0x591d0b,_0x2d32ab),_0x507aa4=_0x3eeb58[_0x397c('0x35')](_0x30dfed),_0x3c38ef=_0x3eeb58[_0x397c('0x2e')];return _0x292419[_0x397c('0x3d')]({'ciphertext':_0x507aa4,'key':_0x591d0b,'iv':_0x3c38ef['iv'],'algorithm':_0x249d40,'mode':_0x3c38ef[_0x397c('0x50')],'padding':_0x3c38ef[_0x397c('0x61')],'blockSize':_0x249d40[_0x397c('0x28')],'formatter':_0x2d32ab[_0x397c('0x67')]});},'decrypt':function(_0x249d40,_0x30dfed,_0x591d0b,_0x2d32ab){_0x2d32ab=this[_0x397c('0x2e')]['extend'](_0x2d32ab),_0x30dfed=this[_0x397c('0x68')](_0x30dfed,_0x2d32ab[_0x397c('0x67')]);var _0x3eeb58=_0x249d40[_0x397c('0x5f')](_0x591d0b,_0x2d32ab)[_0x397c('0x35')](_0x30dfed[_0x397c('0x64')]);return _0x3eeb58;},'_parse':function(_0x249d40,_0x30dfed){return _0x397c('0x25')==typeof _0x249d40?_0x30dfed[_0x397c('0x69')](_0x249d40,this):_0x249d40;}}),_0x180522=_0x30dfed[_0x397c('0x6a')]={},_0x4ff761=_0x180522[_0x397c('0x63')]={'execute':function(_0x249d40,_0x30dfed,_0x591d0b,_0x2d32ab){_0x2d32ab||(_0x2d32ab=_0x3eeb58[_0x397c('0x1b')](0x8));var _0x507aa4=_0x2bd132[_0x397c('0x3d')]({'keySize':_0x30dfed+_0x591d0b})[_0x397c('0x49')](_0x249d40,_0x2d32ab),_0x3c38ef=_0x3eeb58[_0x397c('0x3d')](_0x507aa4[_0x397c('0x14')][_0x397c('0x58')](_0x30dfed),0x4*_0x591d0b);return _0x507aa4[_0x397c('0x15')]=0x4*_0x30dfed,_0x292419['create']({'key':_0x507aa4,'iv':_0x3c38ef,'salt':_0x2d32ab});}},_0x4be380=_0x591d0b['PasswordBasedCipher']=_0x47b50a[_0x397c('0x13')]({'cfg':_0x47b50a[_0x397c('0x2e')][_0x397c('0x13')]({'kdf':_0x4ff761}),'encrypt':function(_0x249d40,_0x30dfed,_0x591d0b,_0x2d32ab){_0x2d32ab=this[_0x397c('0x2e')][_0x397c('0x13')](_0x2d32ab);var _0x3eeb58=_0x2d32ab[_0x397c('0x6a')][_0x397c('0x6b')](_0x591d0b,_0x249d40[_0x397c('0x47')],_0x249d40[_0x397c('0x6c')]);_0x2d32ab['iv']=_0x3eeb58['iv'];var _0x507aa4=_0x47b50a[_0x397c('0x4f')][_0x397c('0x30')](this,_0x249d40,_0x30dfed,_0x3eeb58[_0x397c('0x6d')],_0x2d32ab);return _0x507aa4[_0x397c('0xc')](_0x3eeb58),_0x507aa4;},'decrypt':function(_0x249d40,_0x30dfed,_0x591d0b,_0x2d32ab){_0x2d32ab=this[_0x397c('0x2e')]['extend'](_0x2d32ab),_0x30dfed=this[_0x397c('0x68')](_0x30dfed,_0x2d32ab[_0x397c('0x67')]);var _0x3eeb58=_0x2d32ab[_0x397c('0x6a')][_0x397c('0x6b')](_0x591d0b,_0x249d40[_0x397c('0x47')],_0x249d40['ivSize'],_0x30dfed[_0x397c('0x65')]);_0x2d32ab['iv']=_0x3eeb58['iv'];var _0x507aa4=_0x47b50a['decrypt']['call'](this,_0x249d40,_0x30dfed,_0x3eeb58[_0x397c('0x6d')],_0x2d32ab);return _0x507aa4;}});}(),function(){var _0x1cbb04=CryptoJS,_0x562eb0=_0x1cbb04[_0x397c('0xa')],_0x2a11ab=_0x562eb0[_0x397c('0x5c')],_0x5e3f21=_0x1cbb04[_0x397c('0x37')],_0xfad128=[],_0x3f21db=[],_0x1e5b19=[],_0x2f4778=[],_0x2b08fe=[],_0x3fb87a=[],_0x2a0084=[],_0xb9cef8=[],_0x136779=[],_0x2d0695=[];!function(){for(var _0x1cbb04=[],_0x562eb0=0x0;0x100>_0x562eb0;_0x562eb0++)_0x1cbb04[_0x562eb0]=0x80>_0x562eb0?_0x562eb0<<0x1:_0x562eb0<<0x1^0x11b;for(var _0x2a11ab=0x0,_0x5e3f21=0x0,_0x562eb0=0x0;0x100>_0x562eb0;_0x562eb0++){var _0x4d7baf=_0x5e3f21^_0x5e3f21<<0x1^_0x5e3f21<<0x2^_0x5e3f21<<0x3^_0x5e3f21<<0x4;_0x4d7baf=_0x4d7baf>>>0x8^0xff&_0x4d7baf^0x63,_0xfad128[_0x2a11ab]=_0x4d7baf,_0x3f21db[_0x4d7baf]=_0x2a11ab;var _0xa4221c=_0x1cbb04[_0x2a11ab],_0x423c75=_0x1cbb04[_0xa4221c],_0xd11b56=_0x1cbb04[_0x423c75],_0x4fbd9d=0x101*_0x1cbb04[_0x4d7baf]^0x1010100*_0x4d7baf;_0x1e5b19[_0x2a11ab]=_0x4fbd9d<<0x18|_0x4fbd9d>>>0x8,_0x2f4778[_0x2a11ab]=_0x4fbd9d<<0x10|_0x4fbd9d>>>0x10,_0x2b08fe[_0x2a11ab]=_0x4fbd9d<<0x8|_0x4fbd9d>>>0x18,_0x3fb87a[_0x2a11ab]=_0x4fbd9d;var _0x4fbd9d=0x1010101*_0xd11b56^0x10001*_0x423c75^0x101*_0xa4221c^0x1010100*_0x2a11ab;_0x2a0084[_0x4d7baf]=_0x4fbd9d<<0x18|_0x4fbd9d>>>0x8,_0xb9cef8[_0x4d7baf]=_0x4fbd9d<<0x10|_0x4fbd9d>>>0x10,_0x136779[_0x4d7baf]=_0x4fbd9d<<0x8|_0x4fbd9d>>>0x18,_0x2d0695[_0x4d7baf]=_0x4fbd9d,_0x2a11ab?(_0x2a11ab=_0xa4221c^_0x1cbb04[_0x1cbb04[_0x1cbb04[_0xd11b56^_0xa4221c]]],_0x5e3f21^=_0x1cbb04[_0x1cbb04[_0x5e3f21]]):_0x2a11ab=_0x5e3f21=0x1;}}();var _0x259b2a=[0x0,0x1,0x2,0x4,0x8,0x10,0x20,0x40,0x80,0x1b,0x36],_0x3f135c=_0x5e3f21[_0x397c('0x6e')]=_0x2a11ab[_0x397c('0x13')]({'_doReset':function(){for(var _0x1cbb04=this[_0x397c('0x4e')],_0x562eb0=_0x1cbb04[_0x397c('0x14')],_0x2a11ab=_0x1cbb04[_0x397c('0x15')]/0x4,_0x5e3f21=this[_0x397c('0x6f')]=_0x2a11ab+0x6,_0x3f21db=0x4*(_0x5e3f21+0x1),_0x1e5b19=this[_0x397c('0x70')]=[],_0x2f4778=0x0;_0x3f21db>_0x2f4778;_0x2f4778++)if(_0x2a11ab>_0x2f4778)_0x1e5b19[_0x2f4778]=_0x562eb0[_0x2f4778];else{var _0x2b08fe=_0x1e5b19[_0x2f4778-0x1];_0x2f4778%_0x2a11ab?_0x2a11ab>0x6&&_0x2f4778%_0x2a11ab==0x4&&(_0x2b08fe=_0xfad128[_0x2b08fe>>>0x18]<<0x18|_0xfad128[_0x2b08fe>>>0x10&0xff]<<0x10|_0xfad128[_0x2b08fe>>>0x8&0xff]<<0x8|_0xfad128[0xff&_0x2b08fe]):(_0x2b08fe=_0x2b08fe<<0x8|_0x2b08fe>>>0x18,_0x2b08fe=_0xfad128[_0x2b08fe>>>0x18]<<0x18|_0xfad128[_0x2b08fe>>>0x10&0xff]<<0x10|_0xfad128[_0x2b08fe>>>0x8&0xff]<<0x8|_0xfad128[0xff&_0x2b08fe],_0x2b08fe^=_0x259b2a[_0x2f4778/_0x2a11ab|0x0]<<0x18),_0x1e5b19[_0x2f4778]=_0x1e5b19[_0x2f4778-_0x2a11ab]^_0x2b08fe;}for(var _0x3fb87a=this['_invKeySchedule']=[],_0x3f135c=0x0;_0x3f21db>_0x3f135c;_0x3f135c++){var _0x2f4778=_0x3f21db-_0x3f135c;if(_0x3f135c%0x4)var _0x2b08fe=_0x1e5b19[_0x2f4778];else var _0x2b08fe=_0x1e5b19[_0x2f4778-0x4];_0x3fb87a[_0x3f135c]=0x4>_0x3f135c||0x4>=_0x2f4778?_0x2b08fe:_0x2a0084[_0xfad128[_0x2b08fe>>>0x18]]^_0xb9cef8[_0xfad128[_0x2b08fe>>>0x10&0xff]]^_0x136779[_0xfad128[_0x2b08fe>>>0x8&0xff]]^_0x2d0695[_0xfad128[0xff&_0x2b08fe]];}},'encryptBlock':function(_0x1cbb04,_0x562eb0){this[_0x397c('0x71')](_0x1cbb04,_0x562eb0,this[_0x397c('0x70')],_0x1e5b19,_0x2f4778,_0x2b08fe,_0x3fb87a,_0xfad128);},'decryptBlock':function(_0x1cbb04,_0x562eb0){var _0x2a11ab=_0x1cbb04[_0x562eb0+0x1];_0x1cbb04[_0x562eb0+0x1]=_0x1cbb04[_0x562eb0+0x3],_0x1cbb04[_0x562eb0+0x3]=_0x2a11ab,this[_0x397c('0x71')](_0x1cbb04,_0x562eb0,this[_0x397c('0x72')],_0x2a0084,_0xb9cef8,_0x136779,_0x2d0695,_0x3f21db);var _0x2a11ab=_0x1cbb04[_0x562eb0+0x1];_0x1cbb04[_0x562eb0+0x1]=_0x1cbb04[_0x562eb0+0x3],_0x1cbb04[_0x562eb0+0x3]=_0x2a11ab;},'_doCryptBlock':function(_0x1cbb04,_0x562eb0,_0x2a11ab,_0x5e3f21,_0xfad128,_0x3f21db,_0x1e5b19,_0x2f4778){for(var _0x2b08fe=this[_0x397c('0x6f')],_0x3fb87a=_0x1cbb04[_0x562eb0]^_0x2a11ab[0x0],_0x2a0084=_0x1cbb04[_0x562eb0+0x1]^_0x2a11ab[0x1],_0xb9cef8=_0x1cbb04[_0x562eb0+0x2]^_0x2a11ab[0x2],_0x136779=_0x1cbb04[_0x562eb0+0x3]^_0x2a11ab[0x3],_0x2d0695=0x4,_0x259b2a=0x1;_0x2b08fe>_0x259b2a;_0x259b2a++){var _0x3f135c=_0x5e3f21[_0x3fb87a>>>0x18]^_0xfad128[_0x2a0084>>>0x10&0xff]^_0x3f21db[_0xb9cef8>>>0x8&0xff]^_0x1e5b19[0xff&_0x136779]^_0x2a11ab[_0x2d0695++],_0x166ec9=_0x5e3f21[_0x2a0084>>>0x18]^_0xfad128[_0xb9cef8>>>0x10&0xff]^_0x3f21db[_0x136779>>>0x8&0xff]^_0x1e5b19[0xff&_0x3fb87a]^_0x2a11ab[_0x2d0695++],_0x349a78=_0x5e3f21[_0xb9cef8>>>0x18]^_0xfad128[_0x136779>>>0x10&0xff]^_0x3f21db[_0x3fb87a>>>0x8&0xff]^_0x1e5b19[0xff&_0x2a0084]^_0x2a11ab[_0x2d0695++],_0x29a21f=_0x5e3f21[_0x136779>>>0x18]^_0xfad128[_0x3fb87a>>>0x10&0xff]^_0x3f21db[_0x2a0084>>>0x8&0xff]^_0x1e5b19[0xff&_0xb9cef8]^_0x2a11ab[_0x2d0695++];_0x3fb87a=_0x3f135c,_0x2a0084=_0x166ec9,_0xb9cef8=_0x349a78,_0x136779=_0x29a21f;}var _0x3f135c=(_0x2f4778[_0x3fb87a>>>0x18]<<0x18|_0x2f4778[_0x2a0084>>>0x10&0xff]<<0x10|_0x2f4778[_0xb9cef8>>>0x8&0xff]<<0x8|_0x2f4778[0xff&_0x136779])^_0x2a11ab[_0x2d0695++],_0x166ec9=(_0x2f4778[_0x2a0084>>>0x18]<<0x18|_0x2f4778[_0xb9cef8>>>0x10&0xff]<<0x10|_0x2f4778[_0x136779>>>0x8&0xff]<<0x8|_0x2f4778[0xff&_0x3fb87a])^_0x2a11ab[_0x2d0695++],_0x349a78=(_0x2f4778[_0xb9cef8>>>0x18]<<0x18|_0x2f4778[_0x136779>>>0x10&0xff]<<0x10|_0x2f4778[_0x3fb87a>>>0x8&0xff]<<0x8|_0x2f4778[0xff&_0x2a0084])^_0x2a11ab[_0x2d0695++],_0x29a21f=(_0x2f4778[_0x136779>>>0x18]<<0x18|_0x2f4778[_0x3fb87a>>>0x10&0xff]<<0x10|_0x2f4778[_0x2a0084>>>0x8&0xff]<<0x8|_0x2f4778[0xff&_0xb9cef8])^_0x2a11ab[_0x2d0695++];_0x1cbb04[_0x562eb0]=_0x3f135c,_0x1cbb04[_0x562eb0+0x1]=_0x166ec9,_0x1cbb04[_0x562eb0+0x2]=_0x349a78,_0x1cbb04[_0x562eb0+0x3]=_0x29a21f;},'keySize':0x8});_0x1cbb04[_0x397c('0x6e')]=_0x2a11ab['_createHelper'](_0x3f135c);}();var aesCrypto={};!function(_0x4d2437){'use strict';_0x4d2437[_0x397c('0x62')]={'prefix':'','stringify':function(_0x4d2437){var _0xae8bb0=this[_0x397c('0x73')];return _0xae8bb0+=_0x4d2437[_0x397c('0x65')][_0x397c('0x11')](),_0xae8bb0+=_0x4d2437[_0x397c('0x64')][_0x397c('0x11')]();},'parse':function(_0x4d2437){var _0x1606fa=CryptoJS['lib'][_0x397c('0x74')][_0x397c('0x3d')]({}),_0x5264d0=this[_0x397c('0x73')]['length'];return 0x0!==_0x4d2437[_0x397c('0x3c')](this[_0x397c('0x73')])?_0x1606fa:(_0x1606fa[_0x397c('0x64')]=CryptoJS[_0x397c('0x1c')][_0x397c('0x75')][_0x397c('0x69')](_0x4d2437[_0x397c('0x76')](0x10+_0x5264d0)),_0x1606fa[_0x397c('0x65')]=CryptoJS['enc'][_0x397c('0x75')][_0x397c('0x69')](_0x4d2437[_0x397c('0x76')](_0x5264d0,0x10+_0x5264d0)),_0x1606fa);}},_0x4d2437[_0x397c('0x4f')]=function(_0x156e4e,_0x548c74){try{return CryptoJS[_0x397c('0x6e')][_0x397c('0x4f')](_0x156e4e,_0x548c74,{'format':_0x4d2437[_0x397c('0x62')]})[_0x397c('0x11')]();}catch(_0x4f01d6){return'';}},_0x4d2437[_0x397c('0x77')]=function(_0x3a919a,_0x2084df){try{var _0x148f49=CryptoJS[_0x397c('0x6e')][_0x397c('0x77')](_0x3a919a,_0x2084df,{'format':_0x4d2437['formatter']});return _0x148f49[_0x397c('0x11')](CryptoJS[_0x397c('0x1c')][_0x397c('0x22')]);}catch(_0x154fc1){return'';}};}(aesCrypto);
+/* ==========================================================================
+ADBLOCK PLUGIN
+========================================================================== */
+!function(t){var e=function(e){this._options={checkOnLoad:!1,resetOnEnd:!1,loopCheckTime:50,loopMaxNumber:5,baitClass:"pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links",baitStyle:"width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;",debug:!1},this._var={version:"3.2.1",bait:null,checking:!1,loop:null,loopNumber:0,event:{detected:[],notDetected:[]}},void 0!==e&&this.setOption(e);var i=this,o=function(){setTimeout(function(){i._options.checkOnLoad===!0&&(i._options.debug===!0&&i._log("onload->eventCallback","A check loading is launched"),null===i._var.bait&&i._creatBait(),setTimeout(function(){i.check()},1))},1)};void 0!==t.addEventListener?t.addEventListener("load",o,!1):t.attachEvent("onload",o)};e.prototype._options=null,e.prototype._var=null,e.prototype._bait=null,e.prototype._log=function(t,e){console.log("[FuckAdBlock]["+t+"] "+e)},e.prototype.setOption=function(t,e){if(void 0!==e){var i=t;t={},t[i]=e}for(var o in t)this._options[o]=t[o],this._options.debug===!0&&this._log("setOption",'The option "'+o+'" he was assigned to "'+t[o]+'"');return this},e.prototype._creatBait=function(){var e=document.createElement("div");e.setAttribute("class",this._options.baitClass),e.setAttribute("style",this._options.baitStyle),this._var.bait=t.document.body.appendChild(e),this._var.bait.offsetParent,this._var.bait.offsetHeight,this._var.bait.offsetLeft,this._var.bait.offsetTop,this._var.bait.offsetWidth,this._var.bait.clientHeight,this._var.bait.clientWidth,this._options.debug===!0&&this._log("_creatBait","Bait has been created")},e.prototype._destroyBait=function(){t.document.body.removeChild(this._var.bait),this._var.bait=null,this._options.debug===!0&&this._log("_destroyBait","Bait has been removed")},e.prototype.check=function(t){if(void 0===t&&(t=!0),this._options.debug===!0&&this._log("check","An audit was requested "+(t===!0?"with a":"without")+" loop"),this._var.checking===!0)return this._options.debug===!0&&this._log("check","A check was canceled because there is already an ongoing"),!1;this._var.checking=!0,null===this._var.bait&&this._creatBait();var e=this;return this._var.loopNumber=0,t===!0&&(this._var.loop=setInterval(function(){e._checkBait(t)},this._options.loopCheckTime)),setTimeout(function(){e._checkBait(t)},1),this._options.debug===!0&&this._log("check","A check is in progress ..."),!0},e.prototype._checkBait=function(e){var i=!1;if(null===this._var.bait&&this._creatBait(),(null!==t.document.body.getAttribute("abp")||null===this._var.bait.offsetParent||0==this._var.bait.offsetHeight||0==this._var.bait.offsetLeft||0==this._var.bait.offsetTop||0==this._var.bait.offsetWidth||0==this._var.bait.clientHeight||0==this._var.bait.clientWidth)&&(i=!0),void 0!==t.getComputedStyle){var o=t.getComputedStyle(this._var.bait,null);!o||"none"!=o.getPropertyValue("display")&&"hidden"!=o.getPropertyValue("visibility")||(i=!0)}this._options.debug===!0&&this._log("_checkBait","A check ("+(this._var.loopNumber+1)+"/"+this._options.loopMaxNumber+" ~"+(1+this._var.loopNumber*this._options.loopCheckTime)+"ms) was conducted and detection is "+(i===!0?"positive":"negative")),e===!0&&(this._var.loopNumber++,this._var.loopNumber>=this._options.loopMaxNumber&&this._stopLoop()),i===!0?(this._stopLoop(),this._destroyBait(),this.emitEvent(!0),e===!0&&(this._var.checking=!1)):(null===this._var.loop||e===!1)&&(this._destroyBait(),this.emitEvent(!1),e===!0&&(this._var.checking=!1))},e.prototype._stopLoop=function(t){clearInterval(this._var.loop),this._var.loop=null,this._var.loopNumber=0,this._options.debug===!0&&this._log("_stopLoop","A loop has been stopped")},e.prototype.emitEvent=function(t){this._options.debug===!0&&this._log("emitEvent","An event with a "+(t===!0?"positive":"negative")+" detection was called");var e=this._var.event[t===!0?"detected":"notDetected"];for(var i in e)this._options.debug===!0&&this._log("emitEvent","Call function "+(parseInt(i)+1)+"/"+e.length),e.hasOwnProperty(i)&&e[i]();return this._options.resetOnEnd===!0&&this.clearEvent(),this},e.prototype.clearEvent=function(){this._var.event.detected=[],this._var.event.notDetected=[],this._options.debug===!0&&this._log("clearEvent","The event list has been cleared")},e.prototype.on=function(t,e){return this._var.event[t===!0?"detected":"notDetected"].push(e),this._options.debug===!0&&this._log("on",'A type of event "'+(t===!0?"detected":"notDetected")+'" was added'),this},e.prototype.onDetected=function(t){return this.on(!0,t)},e.prototype.onNotDetected=function(t){return this.on(!1,t)},t.FuckAdBlock=e,void 0===t.fuckAdBlock&&(t.fuckAdBlock=new e({checkOnLoad:!0,resetOnEnd:!0}))}(window);
+//]]>
+</script>	
+
+<b:if cond='data:blog.pageType in [&quot;index&quot;]'>
+<style>
+#recent-posts li,.recenthd{webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);background:#fff;overflow:hidden}
+#recent-posts li:hover{box-shadow:0 2px 2px 0 rgba(0,0,0,0.14), 0 5px 10px 0 rgba(0,0,0,0.12), 0 5px 10px -5px rgba(0,0,0,0.2)}
+#recent-posts{display: grid;grid-template-columns: repeat(4, 1fr);grid-gap: 15px;}
+#recent-posts li{transition:all .3s ease-in-out;}
+#recent-posts .title_post{text-align:center;padding-top:0;}
+.title_post a{color:#515151;font-weight: 700}
+.title_post{height:40px;overflow:hidden;padding:10px;line-height:1.4;font-size:12px;}
+#recent-posts li img{height:180px;width:100%;transition:all .3s ease-in-out;}
+#recent-posts li:hover img{-webkit-filter: brightness(80%);filter: brightness(80%);}
+@media only screen and (max-width: 599px) {#recent-posts{display: grid;grid-template-columns: repeat(2, 1fr);grid-gap: 10px;}}@media only screen and (max-width: 440px) {#recent-posts li img{height:100px;width:100%;}}
+</style>
+<script type='text/javascript'>
+//<![CDATA[
+// Recent Post Settings
+var recentpost_url = "https://technohalab.com";
+var numPosts = 12;
+// Recent Post
+function recentPosts(e){if(document.getElementById("recent-posts")){for(var t,s,r=e.feed.entry,n="",a=document.getElementById("recent-posts"),l=0;l<numPosts;l++){for(var c=0;c<numPosts;c++)if("alternate"==r[l].link[c].rel){s=r[l].link[c].href;break}"media$thumbnail"in r[l]?u=r[l].media$thumbnail.url.replace(/.*?:\/\//g,"//").replace(/\/s[0-9]+\-c/g,"/s300"):u="https://1.bp.blogspot.com/-jHWwEwTEwQ4/WJJ4k71QSYI/AAAAAAAApVc/XO_OitR_VGQS_Wquq1pv1h1D-dgiejSuQCLcB/s90/nothumb_large.png";var t=r[l].title.$t;n+='<li class="recent-posts"><a href="'+s+'" title="'+t+'" target="_blank"><img src="'+u+'" alt="'+t+'"></a><div class="title_post"><a href="'+s+'" title="'+t+'" target="_blank">'+t+"</div></li>"}a.innerHTML=n}}var rcp=document.createElement("script");rcp.src=recentpost_url+"/feeds/posts/default/?orderby=published&alt=json-in-script&max-results="+numPosts+"&callback=recentPosts",document.getElementsByTagName("head")[0].appendChild(rcp);
+//]]>
+</script>
+</b:if>
+
+&lt;!--</body>--&gt;&lt;/body&gt;
+</html>

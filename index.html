@@ -15,6 +15,12 @@
       font-family: Arial, sans-serif;
     }
 
+    /* Dark theme styles */
+    body.dark-mode {
+      background-color: #333;
+      color: #fff;
+    }
+
     header {
       background-color: #007bff;
       padding: 30px;
@@ -39,13 +45,13 @@
   </style>
 </head>
 
-<body class="bg-light">
+<body class="dark-mode">
 
   <!-- Dark theme button -->
-  <button id="themeToggle" class="btn btn-dark btn-sm float-right m-3">Dark Theme</button>
+  <button id="themeToggle" class="btn btn-light btn-sm float-right m-3">Light Theme</button>
 
   <!-- Header -->
-  <header class="container mt-5">
+  <header class="container mt-5" id="header" onclick="activateEasterEgg()">
     <div class="jumbotron bg-primary text-white">
       <div class="row">
         <div class="col-md-6">
@@ -142,6 +148,13 @@
       const currentTheme = document.body.classList.contains("dark-mode") ? "Light Theme" : "Dark Theme";
       document.getElementById("themeToggle").textContent = currentTheme;
     });
+
+    // Easter Egg Theme
+    function activateEasterEgg() {
+      document.body.classList.toggle("easter-egg");
+      const currentTheme = document.body.classList.contains("easter-egg") ? "Default Theme" : "Dark Theme";
+      document.getElementById("themeToggle").textContent = currentTheme;
+    }
   </script>
 </body>
 

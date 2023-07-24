@@ -48,6 +48,15 @@
       max-width: 600px;
       margin: auto;
     }
+
+    /* Skills and Projects text color for light and easter egg themes */
+    .text-light-mode {
+      color: #000 !important;
+    }
+
+    .text-easter-egg {
+      color: #fff !important;
+    }
   </style>
 </head>
 
@@ -83,8 +92,8 @@
         <p>I continuously strive to stay updated with the latest trends and best practices in the tech industry, and I'm always eager to collaborate on exciting projects.</p>
       </div>
       <div class="col-md-6">
-        <h2>Skills</h2>
-        <ul class="list-group">
+        <h2 class="text-light-mode">Skills</h2>
+        <ul class="list-group text-light-mode">
           <li class="list-group-item">Web Development: HTML, CSS, JavaScript, React, Node.js</li>
           <li class="list-group-item">Minecraft Plugin Development: Java, Bukkit, Spigot</li>
           <li class="list-group-item">Discord.js: Bot Development, API Integration</li>
@@ -98,7 +107,7 @@
 
   <!-- Projects Section -->
   <section class="container my-5">
-    <h2>Projects</h2>
+    <h2 class="text-light-mode">Projects</h2>
     <div class="card-deck">
       <!-- Add your project cards here -->
       <div class="card">
@@ -123,19 +132,19 @@
 
   <!-- Contact Section -->
   <section class="container my-5">
-    <h2>Contact Me</h2>
+    <h2 class="text-light-mode">Contact Me</h2>
     <p>If you'd like to collaborate, discuss a project, or just say hello, feel free to reach out to me using the form below:</p>
     <form>
       <div class="form-group">
-        <label for="name">Your Name</label>
+        <label for="name" class="text-light-mode">Your Name</label>
         <input type="text" class="form-control" id="name" required>
       </div>
       <div class="form-group">
-        <label for="email">Email address</label>
+        <label for="email" class="text-light-mode">Email address</label>
         <input type="email" class="form-control" id="email" required>
       </div>
       <div class="form-group">
-        <label for="message">Message</label>
+        <label for="message" class="text-light-mode">Message</label>
         <textarea class="form-control" id="message" rows="5" required></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Send Message</button>

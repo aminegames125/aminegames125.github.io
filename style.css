@@ -1,0 +1,9 @@
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.jumbotron.bg-white.text-dark {
+  background-color: #fff;
+  color: #333;
+}

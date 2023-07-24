@@ -13,23 +13,19 @@
 
     body {
       font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
     }
 
-    /* Dark theme styles */
-    body.dark-mode {
-      background-color: #333;
-      color: #fff;
-    }
-
-    /* Easter egg theme styles */
-    body.easter-egg {
-      background-color: purple;
-      color: #fff;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     header {
       background-color: #007bff;
       padding: 30px;
+      color: #fff;
     }
 
     .profile-img {
@@ -49,21 +45,104 @@
       margin: auto;
     }
 
-    /* Skills and Projects text color for light and easter egg themes */
-    .text-light-mode {
-      color: #000 !important;
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #333;
+      color: #fff;
     }
 
-    .text-easter-egg {
+    /* Easter egg theme styles */
+    body.easter-egg {
+      background-color: purple;
+      color: #fff;
+    }
+
+    /* Navbar styles */
+    .navbar {
+      background-color: #007bff;
+      padding: 10px 20px;
+      color: #fff;
+    }
+
+    .navbar-brand {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-link {
       color: #fff !important;
+    }
+
+    /* Button styles */
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #007bff;
+      padding: 20px;
+      color: #fff;
+    }
+
+    /* About Me section styles */
+    .about-me-content {
+      line-height: 1.8;
+    }
+
+    /* Skills and Projects section styles */
+    .skills-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .skills-list li:before {
+      content: "\2022";
+      color: #007bff;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    /* Contact form styles */
+    .form-group label {
+      font-weight: bold;
     }
   </style>
 </head>
 
 <body class="dark-mode">
 
-  <!-- Dark theme button -->
-  <button id="themeToggle" class="btn btn-light btn-sm float-right m-3">Light Theme</button>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">Amineos</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#about-me">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
   <!-- Header -->
   <header class="container mt-5" id="header" onclick="activateEasterEgg()">
@@ -82,32 +161,34 @@
   </header>
 
   <!-- About Me Section -->
-  <section class="container my-5">
+  <section class="container my-5" id="about-me">
     <div class="row">
       <div class="col-md-6">
         <h2>About Me</h2>
-        <p>Hello, I'm a passionate and innovative developer with expertise in web development, Minecraft plugin development, and Discord.js bot development. I enjoy building robust, scalable, and user-friendly applications that make a positive impact.</p>
-        <p>My journey began with Minecraft, where I learned the art of plugin development to create unique experiences for server players. This led me to explore web development, and I quickly fell in love with crafting interactive websites and web applications.</p>
-        <p>I'm well-versed in technologies like HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB. I have hands-on experience in creating Discord bots using Discord.js to automate tasks and engage communities.</p>
-        <p>I continuously strive to stay updated with the latest trends and best practices in the tech industry, and I'm always eager to collaborate on exciting projects.</p>
+        <div class="about-me-content">
+          <p>Hello, I'm a passionate and innovative developer with expertise in web development, Minecraft plugin development, and Discord.js bot development. I enjoy building robust, scalable, and user-friendly applications that make a positive impact.</p>
+          <p>My journey began with Minecraft, where I learned the art of plugin development to create unique experiences for server players. This led me to explore web development, and I quickly fell in love with crafting interactive websites and web applications.</p>
+          <p>I'm well-versed in technologies like HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB. I have hands-on experience in creating Discord bots using Discord.js to automate tasks and engage communities.</p>
+          <p>I continuously strive to stay updated with the latest trends and best practices in the tech industry, and I'm always eager to collaborate on exciting projects.</p>
+        </div>
       </div>
       <div class="col-md-6">
-        <h2 class="text-light-mode">Skills</h2>
-        <ul class="list-group text-light-mode">
-          <li class="list-group-item">Web Development: HTML, CSS, JavaScript, React, Node.js</li>
-          <li class="list-group-item">Minecraft Plugin Development: Java, Bukkit, Spigot</li>
-          <li class="list-group-item">Discord.js: Bot Development, API Integration</li>
-          <li class="list-group-item">Version Control: Git, GitHub</li>
-          <li class="list-group-item">Database: MongoDB, MySQL</li>
-          <li class="list-group-item">UI/UX Design: Figma, Adobe XD</li>
+        <h2>Skills</h2>
+        <ul class="skills-list">
+          <li>Web Development: HTML, CSS, JavaScript, React, Node.js</li>
+          <li>Minecraft Plugin Development: Java, Bukkit, Spigot</li>
+          <li>Discord.js: Bot Development, API Integration</li>
+          <li>Version Control: Git, GitHub</li>
+          <li>Database: MongoDB, MySQL</li>
+          <li>UI/UX Design: Figma, Adobe XD</li>
         </ul>
       </div>
     </div>
   </section>
 
   <!-- Projects Section -->
-  <section class="container my-5">
-    <h2 class="text-light-mode">Projects</h2>
+  <section class="container my-5" id="projects">
+    <h2>Projects</h2>
     <div class="card-deck">
       <!-- Add your project cards here -->
       <div class="card">
@@ -131,25 +212,30 @@
   </section>
 
   <!-- Contact Section -->
-  <section class="container my-5">
-    <h2 class="text-light-mode">Contact Me</h2>
+  <section class="container my-5" id="contact">
+    <h2>Contact Me</h2>
     <p>If you'd like to collaborate, discuss a project, or just say hello, feel free to reach out to me using the form below:</p>
     <form>
       <div class="form-group">
-        <label for="name" class="text-light-mode">Your Name</label>
+        <label for="name">Your Name</label>
         <input type="text" class="form-control" id="name" required>
       </div>
       <div class="form-group">
-        <label for="email" class="text-light-mode">Email address</label>
+        <label for="email">Email address</label>
         <input type="email" class="form-control" id="email" required>
       </div>
       <div class="form-group">
-        <label for="message" class="text-light-mode">Message</label>
+        <label for="message">Message</label>
         <textarea class="form-control" id="message" rows="5" required></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Send Message</button>
     </form>
   </section>
+
+  <!-- Footer -->
+  <footer class="container-fluid text-center">
+    <p>&copy; 2023 Amineos. All rights reserved.</p>
+  </footer>
 
   <!-- Add Bootstrap JS and jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

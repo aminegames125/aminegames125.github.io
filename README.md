@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Amineos Portfolio
 
-## Getting Started
+A high-performance, premium portfolio built with **Next.js 15**, **Framer Motion**, and **Tailwind CSS**. Designed with a "Liquid Glass" aesthetic, this site features scroll-driven parallax effects, staggered animations, and a responsive glassmorphism UI.
 
-First, run the development server:
+## 🚀 Features
+
+- **Liquid Glass Design**: Custom glassmorphism system with frosted-glass effects.
+- **Micro-Interactions**: Smooth animations powered by `framer-motion`.
+- **Discord Integration**: Real-time "Quick Message" form that sends directly to a Discord webhook.
+- **Static Export**: Fully compatible with GitHub Pages (`output: export`).
+- **Modern Tech Stack**: React 19, Lucide Icons, and Next.js App Router.
+- **SEO Optimized**: Semantic HTML and enhanced metadata for search engines.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Font**: Playfair Display (Serif) & JetBrains Mono (Monospace)
+
+## 📦 Getting Started
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Static Export (GitHub Pages)
 
-## Learn More
+To build and export the static site:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The output will be in the `out/` directory, ready to be deployed to GitHub Pages or any static host.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ⚙️ Configuration
 
-## Deploy on Vercel
+### Discord Webhook
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project uses an environment variable to handle the Discord Webhook URL securely.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1.  Create a file named `.env.local` in the root directory.
+2.  Add your webhook URL to the file:
+
+```env
+NEXT_PUBLIC_DISCORD_WEBHOOK_URL="your-actual-discord-webhook-url"
+```
+
+*Note: Since this is a static site (`output: export`), values prefixed with `NEXT_PUBLIC_` are baked into the production bundle during build time.*
+
+### GitHub Pages
+
+The project is already configured for static export in `next.config.ts`. Ensure your GitHub Pages settings point to the `/out` folder or a relevant deployment branch.
+
+---
+
+Built with intent by **Amineos**.

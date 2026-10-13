@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { label: "Bio", href: "#bio" },
-  { label: "Portfolio", href: "#projects" },
+  { label: "About", href: "#bio" },
+  { label: "Projects", href: "#projects" },
   { label: "Stack", href: "#stack" },
-  { label: "Vibe", href: "#vibe" },
+  { label: "Off the clock", href: "#vibe" },
 ];
 
 export default function NavBar() {
@@ -16,75 +16,68 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 8);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[100] flex justify-center p-0 transition-all duration-500 ease-in-out">
-      <nav
-        className={`
-          transition-all duration-500 ease-in-out flex items-center justify-between
-          ${
-            scrolled
-              ? "mt-6 w-[95%] md:w-fit rounded-full py-2 px-8 liquid-glass gap-12"
-              : "w-full border-b border-white/[0.06] bg-transparent py-6 px-12"
-          }
-        `}
-      >
-        <div className="flex items-center">
-          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-white">amineos</span>
-        </div>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+        scrolled || isOpen ? "border-white/10 bg-black/70 backdrop-blur-md" : "border-transparent"
+      }`}
+    >
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:px-8">
+        <a href="#hero" className="flex items-center gap-2 text-sm font-semibold tracking-tight text-white">
+          <span className="flex h-6 w-6 items-center justify-center rounded-md bg-white font-mono text-xs font-bold text-black">a</span>
+          amineos
+        </a>
 
-        {/* Desktop Links */}
-        <ul className="hidden items-center gap-12 md:flex">
+        <ul className="hidden items-center gap-1 md:flex">
           {links.map((l) => (
             <li key={l.href}>
-              <a
-                href={l.href}
-                className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-colors"
-              >
+              <a href={l.href} className="rounded-md px-3 py-2 text-sm text-neutral-400 transition-colors hover:bg-white/[0.06] hover:text-white">
                 {l.label}
               </a>
             </li>
           ))}
+          <li className="ml-3">
+            <a href="#contact" className="inline-flex h-8 items-center rounded-md bg-white px-3 text-sm font-medium text-black transition-colors hover:bg-neutral-200">
+              Contact
+            </a>
+          </li>
         </ul>
 
-        {/* Mobile Toggle */}
-        <button 
+        <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-slate-300 md:hidden"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          className="flex h-9 w-9 items-center justify-center rounded-md border border-white/10 text-neutral-300 md:hidden"
         >
-          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
         </button>
       </nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-24 left-4 right-4 liquid-glass rounded-3xl p-8 md:hidden shadow-2xl"
+          <motion.ul
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden border-t border-white/10 px-6 md:hidden"
           >
-            <ul className="flex flex-col gap-6 text-center">
-              {links.map((l) => (
-                <li key={l.href}>
-                  <a
-                    href={l.href}
-                    onClick={() => setIsOpen(false)}
-                    className="block text-sm font-bold uppercase tracking-widest text-white"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+            {[...links, { label: "Contact", href: "#contact" }].map((l) => (
+              <li key={l.href} className="border-b border-white/10 last:border-b-0">
+                <a href={l.href} onClick={() => setIsOpen(false)} className="block py-4 text-sm text-neutral-300">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </motion.ul>
         )}
       </AnimatePresence>
-    </div>
+    </header>
   );
 }

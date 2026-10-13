@@ -1,2 +1,44 @@
 "use client";
-export default function Vibe() { return <section id="vibe" className="relative z-10 mx-auto max-w-6xl px-8 py-32"><p className="mb-4 font-mono text-xs tracking-[0.25em] text-violet-400/60">04 / VIBE</p><h2 className="mb-16 font-playfair text-5xl font-bold text-white md:text-6xl">The person behind <span className="shimmer-text">the terminal.</span></h2><div className="grid grid-cols-1 gap-4 md:grid-cols-3"><div className="glass rounded-2xl p-6 md:col-span-2"><h3 className="mb-3 font-playfair text-3xl font-bold text-white">2AM is when things get done.</h3><p className="text-sm leading-relaxed text-slate-400">The rest of the world is quiet and the only sound is a fan and a terminal.</p></div><div className="glass rounded-2xl p-6"><h3 className="mb-2 font-playfair text-xl font-bold text-white">Anime kid, unironically.</h3><p className="text-sm leading-relaxed text-slate-400">Ben 10. Teen Titans. Ninjago. One Piece plays while I debug.</p></div></div></section>; }
+
+import { motion } from "framer-motion";
+import { Moon, Tv } from "lucide-react";
+import { Reveal, Section, SectionHeader, fadeUp } from "../ui";
+
+const cards = [
+  {
+    icon: Moon,
+    title: "Most of my work happens at 2AM.",
+    text: "Everything is quiet, nobody is messaging me, and it's just me, a fan and a terminal.",
+    wide: true,
+  },
+  {
+    icon: Tv,
+    title: "Anime kid, unironically.",
+    text: "Grew up on Ben 10, Teen Titans and Ninjago. One Piece is usually on while I debug.",
+    wide: false,
+  },
+];
+
+export default function Vibe() {
+  return (
+    <Section id="vibe">
+      <SectionHeader index="04" label="Off the clock" title="The person behind the terminal." />
+
+      <Reveal className="grid gap-4 md:grid-cols-3">
+        {cards.map((c) => (
+          <motion.div
+            key={c.title}
+            variants={fadeUp}
+            className={`group rounded-xl border border-white/10 bg-neutral-950 p-6 transition-colors hover:border-white/20 md:p-8 ${
+              c.wide ? "md:col-span-2" : ""
+            }`}
+          >
+            <c.icon className="mb-8 h-5 w-5 text-neutral-500 transition-colors group-hover:text-white" />
+            <h3 className="mb-2 text-xl font-semibold tracking-tight text-white">{c.title}</h3>
+            <p className="text-sm leading-relaxed text-neutral-400">{c.text}</p>
+          </motion.div>
+        ))}
+      </Reveal>
+    </Section>
+  );
+}

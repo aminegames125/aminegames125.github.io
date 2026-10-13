@@ -1,71 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Cpu } from "lucide-react";
+import { Reveal, Section, SectionHeader, fadeUp } from "../ui";
 
-const stack = [
-  "Next.js", "TypeScript", "Docker", "PostgreSQL", "Prisma", "Nginx",
-  "Cloudflare", "Node.js", "Python", "Go", "Solidity", "Mailu"
+const groups = [
+  { label: "Frontend", tools: ["Next.js", "TypeScript"] },
+  { label: "Backend", tools: ["Node.js", "Python", "Go", "Prisma"] },
+  { label: "Data", tools: ["PostgreSQL"] },
+  { label: "Infrastructure", tools: ["Docker", "Nginx", "Cloudflare", "Mailu"] },
+  { label: "Web3", tools: ["Solidity", "Ethereum"] },
 ];
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const item = {
-  hidden: { opacity: 0, y: 10 },
-  show: { opacity: 1, y: 0 }
-};
 
 export default function Stack() {
   return (
-    <section id="stack" className="relative z-10 mx-auto max-w-6xl px-8 py-32">
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        className="flex items-center gap-4 mb-4"
-      >
-        <div className="h-px w-8 bg-violet-500/50" />
-        <p className="font-mono text-xs tracking-[0.25em] text-violet-400/60 uppercase">
-          03 / STACK
-        </p>
-      </motion.div>
-      
-      <motion.h2 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-4 font-playfair text-6xl font-black text-white md:text-7xl flex items-center gap-6 flex-wrap"
-      >
-        Tools with <span className="shimmer-text">opinions.</span>
-        <Cpu className="h-12 w-12 text-violet-500/30" />
-      </motion.h2>
+    <Section id="stack">
+      <SectionHeader index="03" label="Stack" title="What I use" intro="The tools I reach for most, grouped by where they sit." />
 
-      <motion.div 
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-6"
-      >
-        {stack.map((t) => (
-          <motion.div 
-            key={t} 
-            variants={item}
-            whileHover={{ y: -5, backgroundColor: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(139, 92, 246, 0.3)" }}
-            className="glass flex aspect-square items-center justify-center rounded-[1.5rem] p-4 text-center font-mono text-xs text-slate-300 transition-all cursor-default border border-white/5 shadow-xl"
+      <Reveal as="ul" className="overflow-hidden rounded-xl border border-white/10">
+        {groups.map((g) => (
+          <motion.li
+            key={g.label}
+            variants={fadeUp}
+            className="grid gap-3 border-b border-white/10 px-6 py-5 transition-colors last:border-b-0 hover:bg-white/[0.02] sm:grid-cols-[180px_1fr] sm:items-center"
           >
-            {t}
-          </motion.div>
+            <p className="font-mono text-xs text-neutral-500">{g.label}</p>
+            <ul className="flex flex-wrap gap-2">
+              {g.tools.map((t) => (
+                <li
+                  key={t}
+                  className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 text-sm text-neutral-200 transition-colors hover:border-white/25"
+                >
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </motion.li>
         ))}
-      </motion.div>
-    </section>
+      </Reveal>
+    </Section>
   );
 }

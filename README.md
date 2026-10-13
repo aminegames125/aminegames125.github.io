@@ -1,11 +1,11 @@
 # Amineos Portfolio
 
-A high-performance, premium portfolio built with **Next.js 15**, **Framer Motion**, and **Tailwind CSS**. Designed with a "Liquid Glass" aesthetic, this site features scroll-driven parallax effects, staggered animations, and a responsive glassmorphism UI.
+My personal site, built with **Next.js 16**, **Framer Motion** and **Tailwind CSS**. Plain black-and-white design, Geist type, thin borders and short fade-in animations.
 
 ## 🚀 Features
 
-- **Liquid Glass Design**: Custom glassmorphism system with frosted-glass effects.
-- **Micro-Interactions**: Smooth animations powered by `framer-motion`.
+- **Minimal design**: Neutral palette, bordered cards and a faint grid background.
+- **Animations**: Staggered fade-ins with `framer-motion`, turned off when the visitor prefers reduced motion.
 - **Discord Integration**: Real-time "Quick Message" form that sends directly to a Discord webhook.
 - **Static Export**: Fully compatible with GitHub Pages (`output: export`).
 - **Modern Tech Stack**: React 19, Lucide Icons, and Next.js App Router.
@@ -17,7 +17,7 @@ A high-performance, premium portfolio built with **Next.js 15**, **Framer Motion
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **Icons**: [Lucide React](https://lucide.dev/)
-- **Font**: Playfair Display (Serif) & JetBrains Mono (Monospace)
+- **Font**: Geist & Geist Mono, self-hosted with `next/font`
 
 ## 📦 Getting Started
 

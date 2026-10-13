@@ -1,25 +1,18 @@
-import NavBar from "./components/NavBar";
 import Hero from "./components/sections/Hero";
-import Work from "./components/sections/Work";
-import About from "./components/sections/About";
+import Bio from "./components/sections/Bio";
+import Projects from "./components/sections/Projects";
 import Stack from "./components/sections/Stack";
+import Vibe from "./components/sections/Vibe";
 import Contact from "./components/sections/Contact";
-import Footer from "./components/Footer";
-import { ScrollProgress } from "./components/ui";
+import CursorGlow from "./components/CursorGlow";
+import BackgroundBlobs from "./components/BackgroundBlobs";
+import NavBar from "./components/NavBar";
 
 export default function Page() {
-  return (
-    <>
-      <ScrollProgress />
-      <NavBar />
-      <main>
-        <Hero />
-        <Work />
-        <About />
-        <Stack />
-        <Contact />
-      </main>
-      <Footer />
-    </>
-  );
+  return <>
+    <CursorGlow />
+    <BackgroundBlobs />
+    <NavBar />
+    <main><Hero /><Bio /><Projects /><Stack /><Vibe /><Contact /></main>
+  </>;
 }

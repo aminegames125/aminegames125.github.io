@@ -1,47 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap");
 @import "tailwindcss";
 
-@theme inline {
-  --font-sans: var(--font-geist), system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+@theme {
+  --font-playfair: "Playfair Display", Georgia, serif;
+  --font-dm: "DM Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --color-bg: #080810;
 }
+
+@keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+@keyframes cursor { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 
 @layer base {
-  html { scroll-behavior: smooth; color-scheme: dark; }
-  body {
-    background: #000;
-    color: #ededed;
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-  ::selection { background: #ededed; color: #000; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { background: #080810; color: #e2e8f0; font-family: var(--font-dm); overflow-x: hidden; cursor: none; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+@utility glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-/* Faint 64px grid, faded out toward the edges */
-@utility grid-lines {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+@utility liquid-glass {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.37),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-@utility marquee-track {
-  animation: marquee 40s linear infinite;
+@utility shimmer-text {
+  background: linear-gradient(
+    90deg, 
+    #c084fc 0%, 
+    #818cf8 25%, 
+    #ddd6fe 50%, 
+    #818cf8 75%, 
+    #c084fc 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 8s linear infinite; /* Slower, more elegant shimmer */
 }
 
-@utility caret {
-  animation: blink 1s step-end infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track, .caret { animation: none; }
-}
+@utility blink { animation: cursor 1s step-end infinite; }

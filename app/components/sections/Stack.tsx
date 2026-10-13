@@ -1,52 +1,71 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Reveal, Section, SectionHeader, fadeUp } from "../ui";
+import { Cpu } from "lucide-react";
 
-const groups = [
-  { label: "Mobile", tools: ["Flutter", "Dart"] },
-  { label: "Web", tools: ["Next.js", "TypeScript", "Node.js"] },
-  { label: "Plugins", tools: ["Java", "Kotlin"] },
-  { label: "Data", tools: ["PostgreSQL", "Prisma"] },
-  { label: "Infrastructure", tools: ["Docker", "Nginx", "Cloudflare"] },
+const stack = [
+  "Next.js", "TypeScript", "Docker", "PostgreSQL", "Prisma", "Nginx",
+  "Cloudflare", "Node.js", "Python", "Go", "Solidity", "Mailu"
 ];
 
-const strip = ["Flutter", "Dart", "TypeScript", "Next.js", "Node.js", "PostgreSQL", "Docker", "Nginx", "Java", "Kotlin", "Cloudflare", "Prisma"];
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const item = {
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0 }
+};
 
 export default function Stack() {
   return (
-    <Section id="stack">
-      <SectionHeader index="03" label="Stack" title="What I use" />
+    <section id="stack" className="relative z-10 mx-auto max-w-6xl px-8 py-32">
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="flex items-center gap-4 mb-4"
+      >
+        <div className="h-px w-8 bg-violet-500/50" />
+        <p className="font-mono text-xs tracking-[0.25em] text-violet-400/60 uppercase">
+          03 / STACK
+        </p>
+      </motion.div>
+      
+      <motion.h2 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-4 font-playfair text-6xl font-black text-white md:text-7xl flex items-center gap-6 flex-wrap"
+      >
+        Tools with <span className="shimmer-text">opinions.</span>
+        <Cpu className="h-12 w-12 text-violet-500/30" />
+      </motion.h2>
 
-      <Reveal as="ul" className="mb-12 overflow-hidden rounded-xl border border-white/10">
-        {groups.map((g) => (
-          <motion.li
-            key={g.label}
-            variants={fadeUp}
-            className="grid gap-3 border-b border-white/10 px-6 py-5 transition-colors last:border-b-0 hover:bg-white/[0.02] sm:grid-cols-[180px_1fr] sm:items-center"
+      <motion.div 
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-6"
+      >
+        {stack.map((t) => (
+          <motion.div 
+            key={t} 
+            variants={item}
+            whileHover={{ y: -5, backgroundColor: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(139, 92, 246, 0.3)" }}
+            className="glass flex aspect-square items-center justify-center rounded-[1.5rem] p-4 text-center font-mono text-xs text-slate-300 transition-all cursor-default border border-white/5 shadow-xl"
           >
-            <p className="font-mono text-xs text-neutral-500">{g.label}</p>
-            <ul className="flex flex-wrap gap-2">
-              {g.tools.map((t) => (
-                <li key={t} className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 text-sm text-neutral-200 transition-colors hover:border-white/30">
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </motion.li>
+            {t}
+          </motion.div>
         ))}
-      </Reveal>
-
-      <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
-        <div className="marquee-track flex w-max gap-12 whitespace-nowrap font-mono text-2xl text-neutral-600">
-          {[...strip, ...strip].map((t, i) => (
-            <span key={i} className="flex items-center gap-12">
-              {t}
-              <span className="text-neutral-800">/</span>
-            </span>
-          ))}
-        </div>
-      </div>
-    </Section>
+      </motion.div>
+    </section>
   );
 }

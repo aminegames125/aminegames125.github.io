@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Server, Box, Cpu, Code2 } from "lucide-react";
+import { Server, Box, Code2 } from "lucide-react";
 
 export default function Bio() {
   const ref = useRef(null);
@@ -39,11 +39,12 @@ export default function Bio() {
           </h2>
           <div className="space-y-6 text-lg leading-relaxed text-slate-400 max-w-lg">
             <p>
-              I&apos;m Amineos — a full-stack engineer from Tunis who SSHes into a VPS at 2AM to fix an Nginx rewrite rule. 
-              I value <span className="text-white font-medium italic underline decoration-violet-500/50 underline-offset-4">ownership</span> over abstraction.
+              I&apos;m Amineos, a full-stack developer from Tunis. I build web apps and host them on a server I set up myself,
+              so when something breaks, <span className="text-white font-medium italic underline decoration-violet-500/50 underline-offset-4">I&apos;m the one fixing it</span>. Usually at 2AM.
             </p>
             <p>
-              My main project is perfect-shop — a commerce platform I built end-to-end on a bare VPS, managing everything from the database to the reverse proxy.
+              Right now most of my time goes into perfect-shop, an online store I&apos;m building from scratch. I wrote the frontend and the backend,
+              designed the database, and configured the server, Docker and Nginx myself.
             </p>
           </div>
         </motion.div>
@@ -61,9 +62,9 @@ export default function Bio() {
           >
              <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-violet-500/10 blur-2xl group-hover:bg-violet-500/20 transition-all" />
              <Server className="mb-6 h-8 w-8 text-violet-400" />
-             <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">Infrastructure</p>
-             <p className="mb-2 font-playfair text-4xl font-bold text-white">1 bare</p>
-             <p className="font-mono text-xs text-slate-500 leading-relaxed">No cloud providers. Just Linux and high-level intent.</p>
+             <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">Server</p>
+             <p className="mb-2 font-playfair text-4xl font-bold text-white">1 VPS</p>
+             <p className="font-mono text-xs text-slate-500 leading-relaxed">One Linux box that I set up and look after. No managed hosting.</p>
           </motion.div>
           
           <motion.div 
@@ -75,9 +76,9 @@ export default function Bio() {
           >
              <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-blue-500/10 blur-2xl group-hover:bg-blue-500/20 transition-all" />
              <Box className="mb-6 h-8 w-8 text-blue-400" />
-             <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">Deployment</p>
+             <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">Containers</p>
              <p className="mb-2 font-playfair text-4xl font-bold text-white">11+</p>
-             <p className="font-mono text-xs text-slate-500 leading-relaxed">Dockerized services manually orchestrated for maximum control.</p>
+             <p className="font-mono text-xs text-slate-500 leading-relaxed">Docker services running on it, configured by hand.</p>
           </motion.div>
 
           <motion.div 
@@ -90,9 +91,9 @@ export default function Bio() {
              <div className="flex items-start gap-6">
                 <Code2 className="h-10 w-10 text-emerald-400 shrink-0" />
                 <div>
-                   <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">Methodology</p>
-                   <p className="mb-2 font-playfair text-2xl font-bold text-white">End-to-End Ownership</p>
-                   <p className="font-mono text-xs text-slate-500 leading-relaxed">From database schemas to UI micro-interactions, I build the whole pipe.</p>
+                   <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">How I work</p>
+                   <p className="mb-2 font-playfair text-2xl font-bold text-white">Front to back</p>
+                   <p className="font-mono text-xs text-slate-500 leading-relaxed">Database, API, UI and deploys. I like knowing how every piece works, so I build all of it.</p>
                 </div>
              </div>
           </motion.div>

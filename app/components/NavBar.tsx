@@ -5,10 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { label: "About", href: "#bio" },
-  { label: "Projects", href: "#projects" },
+  { label: "Work", href: "#work" },
+  { label: "About", href: "#about" },
   { label: "Stack", href: "#stack" },
-  { label: "Off the clock", href: "#vibe" },
 ];
 
 export default function NavBar() {

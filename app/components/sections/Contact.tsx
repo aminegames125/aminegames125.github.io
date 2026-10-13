@@ -52,14 +52,14 @@ export default function Contact() {
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <motion.p variants={fadeUp} className="mb-4 font-mono text-xs uppercase tracking-widest text-neutral-500">
-            05 / Contact
+            04 / Contact
           </motion.p>
           <motion.h2 variants={fadeUp} className="mb-6 text-4xl font-semibold tracking-[-0.03em] text-white md:text-5xl">
             Let&apos;s build something.
           </motion.h2>
           <motion.p variants={fadeUp} className="mb-10 max-w-md leading-relaxed text-neutral-400">
-            I&apos;m open to new projects. If you need something built and hosted, send me a message and tell me what
-            you have in mind.
+            I&apos;m open to remote work and new projects. If you need an app built, or a server set up to run it, send me a
+            message.
           </motion.p>
           <motion.a
             variants={fadeUp}

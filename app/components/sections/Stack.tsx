@@ -11,12 +11,14 @@ const groups = [
   { label: "Infrastructure", tools: ["Docker", "Nginx", "Cloudflare"] },
 ];
 
+const strip = ["Flutter", "Dart", "TypeScript", "Next.js", "Node.js", "PostgreSQL", "Docker", "Nginx", "Java", "Kotlin", "Cloudflare", "Prisma"];
+
 export default function Stack() {
   return (
     <Section id="stack">
       <SectionHeader index="03" label="Stack" title="What I use" />
 
-      <Reveal as="ul" className="overflow-hidden rounded-xl border border-white/10">
+      <Reveal as="ul" className="mb-12 overflow-hidden rounded-xl border border-white/10">
         {groups.map((g) => (
           <motion.li
             key={g.label}
@@ -26,7 +28,7 @@ export default function Stack() {
             <p className="font-mono text-xs text-neutral-500">{g.label}</p>
             <ul className="flex flex-wrap gap-2">
               {g.tools.map((t) => (
-                <li key={t} className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 text-sm text-neutral-200">
+                <li key={t} className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 text-sm text-neutral-200 transition-colors hover:border-white/30">
                   {t}
                 </li>
               ))}
@@ -34,6 +36,17 @@ export default function Stack() {
           </motion.li>
         ))}
       </Reveal>
+
+      <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+        <div className="marquee-track flex w-max gap-12 whitespace-nowrap font-mono text-2xl text-neutral-600">
+          {[...strip, ...strip].map((t, i) => (
+            <span key={i} className="flex items-center gap-12">
+              {t}
+              <span className="text-neutral-800">/</span>
+            </span>
+          ))}
+        </div>
+      </div>
     </Section>
   );
 }

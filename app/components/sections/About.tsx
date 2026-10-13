@@ -23,8 +23,8 @@ export default function About() {
             usually late at night.
           </motion.p>
           <motion.p variants={fadeUp}>
-            Outside work I play Minecraft and build plugins for it, and I&apos;ve watched too many episodes of Ben 10 and One Piece
-            to count.
+            Most of my real work happens between midnight and 4AM, when the messages stop and it&apos;s just me, a fan and a
+            terminal. Outside work I build Minecraft plugins and mods, and One Piece usually plays in the background.
           </motion.p>
         </Reveal>
 

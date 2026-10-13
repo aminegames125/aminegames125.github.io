@@ -5,10 +5,12 @@ import About from "./components/sections/About";
 import Stack from "./components/sections/Stack";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/Footer";
+import { ScrollProgress } from "./components/ui";
 
 export default function Page() {
   return (
     <>
+      <ScrollProgress />
       <NavBar />
       <main>
         <Hero />

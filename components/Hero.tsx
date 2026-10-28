@@ -4,10 +4,10 @@ import MetaLine from "./MetaLine";
 
 export default function Hero() {
   return (
-    <HeroMotion className="hero-fill mx-auto flex max-w-wrap flex-col justify-center gap-10 px-margin py-10 md:gap-14">
+    <HeroMotion className="hero-fill relative isolate mx-auto flex max-w-wrap flex-col justify-center gap-10 px-margin py-10 md:gap-14">
       <h1 id="hero-title" className="font-display text-display font-bold">
         {hero.lines.map((line) => (
-          <span key={line} data-hero-line className="gsap-hide block">
+          <span key={line} data-hero-line className="block">
             {line}
           </span>
         ))}
@@ -25,17 +25,19 @@ export default function Hero() {
             {hero.cta}
           </a>
         </div>
-        <div
-          data-hero-item
-          className="gsap-hide flex flex-col items-start gap-6 rounded-slot border-2 border-b-4 border-line bg-surface p-6 md:col-span-5 md:col-start-8 md:p-8"
-        >
-          {site.availability && (
-            <p className="flex items-center gap-3 text-muted">
-              <span aria-hidden="true" className="pulse size-2.5 rounded-pill bg-accent" />
-              {site.availability}
-            </p>
-          )}
-          <MetaLine />
+        <div className="md:col-span-5 md:col-start-8">
+          <div
+            data-hero-item
+            className="gsap-hide flex flex-col items-start gap-6 rounded-slot border-2 border-b-4 border-line bg-surface p-6 md:p-8"
+          >
+            {site.availability && (
+              <p className="flex items-center gap-3 text-muted">
+                <span aria-hidden="true" className="pulse size-2.5 rounded-pill bg-accent" />
+                {site.availability}
+              </p>
+            )}
+            <MetaLine />
+          </div>
         </div>
       </div>
     </HeroMotion>

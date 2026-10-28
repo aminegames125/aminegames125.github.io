@@ -19,7 +19,10 @@ export default function Hotbar() {
     const sectionObserver = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.id);
+          const { id } = entry.target;
+          if (entry.isIntersecting) setActive(id);
+          // Left through the bottom edge, so the reader scrolled up past it: drop the highlight.
+          else if (entry.boundingClientRect.top > 0) setActive((current) => (current === id ? "" : current));
         }
       },
       { rootMargin: "-45% 0px -50% 0px" },
@@ -84,21 +87,18 @@ export default function Hotbar() {
       aria-label="Sections"
       inert={atFooter}
       data-hidden={atFooter ? "" : undefined}
-      className="gsap-slide fixed inset-x-0 bottom-3 z-10 flex justify-center px-margin opacity-100 transition-opacity duration-(--dur-row) ease-brand data-hidden:pointer-events-none data-hidden:opacity-0"
+      className="gsap-slide fixed inset-x-0 bottom-[max(0.75rem,env(safe-area-inset-bottom))] z-10 flex justify-center px-margin opacity-100 transition-opacity duration-(--dur-row) ease-brand data-hidden:pointer-events-none data-hidden:opacity-0"
     >
       <div className="relative rounded-slot border-2 border-b-4 border-line bg-surface p-1.5">
         <ul className="flex gap-1.5">
-          {nav.map((item, index) => (
-            <li key={item.id} className="w-20 sm:w-24">
+          {nav.map((item) => (
+            <li key={item.id} className="w-[4.5rem] sm:w-24">
               <a
                 href={`#${item.id}`}
                 data-active={active === item.id ? "" : undefined}
                 aria-current={active === item.id ? "location" : undefined}
-                className="relative flex h-14 w-full items-end justify-center rounded-tag border-2 border-b-4 border-line bg-inset px-1 pb-2 font-semibold hover:bg-surface data-active:text-accent"
+                className="relative flex h-14 w-full items-center justify-center rounded-tag border-2 border-b-4 border-edge bg-inset px-1 text-small font-semibold hover:bg-surface data-active:text-accent sm:text-body"
               >
-                <span aria-hidden="true" className="absolute top-0.5 left-1.5 text-small text-muted">
-                  {index + 1}
-                </span>
                 {item.label}
               </a>
             </li>
@@ -107,7 +107,7 @@ export default function Hotbar() {
         <span
           ref={frame}
           aria-hidden="true"
-          className="pointer-events-none invisible absolute top-0 left-0 h-14 w-20 rounded-tag border-2 border-accent sm:w-24"
+          className="pointer-events-none invisible absolute top-0 left-0 h-14 w-[4.5rem] rounded-tag border-2 border-accent sm:w-24"
         />
       </div>
     </nav>

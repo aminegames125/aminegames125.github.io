@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { contact, site } from "../content/site";
 import TopicPills from "./TopicPills";
 
@@ -19,19 +19,25 @@ const notices: Record<Status, string> = {
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const notice = useRef<HTMLParagraphElement>(null);
   const connected = site.contactEndpoint !== "";
+  const sending = status === "sending";
+  const failed = status === "limited" || status === "error";
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (sending) return;
     const form = event.currentTarget;
     const data = new FormData(form);
     setStatus("sending");
+    let next: Status = "error";
     try {
       const response = await fetch(site.contactEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: data.get("name"),
+          reply: data.get("reply"),
           topic: data.get("topic") ?? "",
           message: data.get("message"),
           website: data.get("website"),
@@ -40,21 +46,56 @@ export default function ContactForm() {
       });
       if (response.ok) {
         form.reset();
-        setStatus("success");
-      } else {
-        setStatus(response.status === 429 ? "limited" : "error");
+        next = "success";
+      } else if (response.status === 429) {
+        next = "limited";
       }
     } catch {
-      setStatus("error");
+      // The status stays "error": the request failed or timed out.
     }
+    setStatus(next);
+    // The notice sits below the button, so bring it to the person who just pressed Send.
+    if (next !== "success") requestAnimationFrame(() => notice.current?.focus());
   }
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-6">
-      <fieldset disabled={!connected || status === "sending"} className="grid gap-6">
+      {!connected && (
+        <p className="rounded-slot border-2 border-b-4 border-accent bg-surface p-5">
+          {contact.unavailable}{" "}
+          <a
+            href={site.github}
+            className="font-semibold underline decoration-1 underline-offset-4 hover:decoration-4 hover:decoration-accent"
+          >
+            {contact.githubLabel}
+          </a>
+        </p>
+      )}
+      <fieldset disabled={!connected} className="grid gap-6 disabled:opacity-50">
         <label className="grid gap-2">
           <span className="text-small text-muted">{contact.nameLabel}</span>
-          <input name="name" type="text" required maxLength={80} autoComplete="name" className={field} />
+          <input
+            name="name"
+            type="text"
+            required
+            maxLength={80}
+            autoComplete="name"
+            readOnly={sending}
+            className={field}
+          />
+        </label>
+        <label className="grid gap-2">
+          <span className="text-small text-muted">{contact.replyLabel}</span>
+          <input
+            name="reply"
+            type="text"
+            required
+            maxLength={120}
+            autoComplete="email"
+            spellCheck={false}
+            readOnly={sending}
+            className={field}
+          />
         </label>
         <TopicPills />
         <label className="grid gap-2">
@@ -64,6 +105,7 @@ export default function ContactForm() {
             required
             rows={5}
             maxLength={1500}
+            readOnly={sending}
             className={`${field} resize-y py-4`}
           />
         </label>
@@ -72,13 +114,27 @@ export default function ContactForm() {
         </div>
         <button
           type="submit"
-          className="layer layer-text min-h-12 w-fit rounded-pill bg-accent px-8 font-semibold text-accent-ink transition-transform duration-(--dur-fast) ease-brand active:scale-97 disabled:opacity-60"
+          aria-disabled={sending}
+          className="layer layer-text inline-flex min-h-12 w-fit items-center gap-3 rounded-pill bg-accent px-8 font-semibold text-accent-ink transition-transform duration-(--dur-fast) ease-brand active:scale-97 aria-disabled:opacity-60"
         >
-          {status === "sending" ? contact.sending : contact.send}
+          {sending && (
+            <span
+              aria-hidden="true"
+              className="spin size-4 rounded-pill border-2 border-current border-t-transparent"
+            />
+          )}
+          {sending ? contact.sending : contact.send}
         </button>
       </fieldset>
-      <p role="status" aria-live="polite" className="min-h-6 text-muted">
-        {connected ? notices[status] : contact.unavailable}
+      <p
+        ref={notice}
+        role="status"
+        aria-live="polite"
+        tabIndex={-1}
+        data-failed={failed ? "" : undefined}
+        className="min-h-6 rounded-tag text-muted data-failed:border-l-4 data-failed:border-alert data-failed:pl-4 data-failed:text-alert"
+      >
+        {notices[status]}
       </p>
     </form>
   );

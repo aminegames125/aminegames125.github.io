@@ -11,7 +11,7 @@ export default function SiteFooter() {
             <a
               key={link.label}
               href={link.href}
-              className="font-semibold underline decoration-1 underline-offset-4 hover:decoration-4"
+              className="inline-flex min-h-11 items-center font-semibold underline decoration-1 underline-offset-4 hover:decoration-4"
             >
               {link.label}
             </a>

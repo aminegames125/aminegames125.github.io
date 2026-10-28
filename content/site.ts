@@ -129,8 +129,11 @@ export const tools = {
 export const contact = {
   heading: "Send a message.",
   body: "It goes to my Discord. You can also find me on",
+  /** Shown instead of `body` while the form has no endpoint. */
+  offlineBody: "The form is not connected yet. You can reach me on",
   githubLabel: "GitHub",
   nameLabel: "Name",
+  replyLabel: "How can I reach you? Email or Discord",
   topicLabel: "Project type",
   /** Placeholder options. The owner confirms or replaces them. */
   topics: ["Full-stack build", "Backend or infrastructure", "Mobile app", "Something else"],
@@ -140,8 +143,7 @@ export const contact = {
   success: "Message sent.",
   rateLimited: "Could not send the message: too many requests from this address. Try again in 10 minutes.",
   error: "Could not send the message: the server did not answer. Try again in a few minutes.",
-  unavailable: "The form is not connected yet. Write to me on GitHub instead.",
-} as const;
+  unavailable: "The form is not connected yet. Write to me on GitHub instead.",} as const;
 
 export const footer = {
   meta: "Built and hosted by me.",

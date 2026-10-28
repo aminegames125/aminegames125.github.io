@@ -13,6 +13,7 @@
   --muted: #a3a7b3;
   --accent: #8dff4f; /* XP orb */
   --accent-ink: #0e1a06;
+  --alert: #ff8f80; /* errors */
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-fast: 160ms;
@@ -41,7 +42,7 @@
   --tracking-wordmark: -0.04em;
   --container-wrap: 1280px;
 
-  --text-display: clamp(3rem, 20vw, 11rem);
+  --text-display: clamp(3rem, 20vw, 7rem);
   --text-display--line-height: 0.92;
   --text-display--letter-spacing: -0.035em;
   --text-h2: clamp(2.25rem, 5.5vw, 4.5rem);
@@ -70,6 +71,7 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
+  --color-alert: var(--alert);
 
   --font-display: var(--font-funnel), "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --font-body: var(--font-jakarta), "Segoe UI", system-ui, sans-serif;
@@ -82,6 +84,12 @@
   @media (min-width: 64rem) {
     :root {
       --text-display: clamp(7rem, 11vw, 9rem);
+    }
+  }
+  /* A slimmer header on phones, so header and hotbar leave room for content. */
+  @media (max-width: 47.99rem) {
+    :root {
+      --spacing-header: 4rem;
     }
   }
   html {
@@ -123,6 +131,14 @@
   }
   button {
     cursor: pointer;
+  }
+  a,
+  button,
+  input,
+  textarea,
+  label {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgb(141 255 79 / 0.25);
   }
 }
 
@@ -180,16 +196,16 @@
   }
   /*
    * Elements GSAP brings in on load start hidden, so there is no flash before hydration.
-   * Only when scripting is on. The animation shows them anyway after 2.5s if the script never runs.
+   * Only when scripting is on. The animation shows them anyway after 1.5s if the script never runs.
    */
   @media (scripting: enabled) {
     .gsap-hide {
       visibility: hidden;
-      animation: reveal-visible 0s 2.5s forwards;
+      animation: reveal-visible 0s 1.5s forwards;
     }
     .gsap-slide {
       transform: translateY(150%);
-      animation: reveal-slide 0s 2.5s forwards;
+      animation: reveal-slide 0s 1.5s forwards;
     }
     @keyframes reveal-visible {
       to {
@@ -208,6 +224,14 @@
   @keyframes pulse {
     50% {
       opacity: 0.4;
+    }
+  }
+  .spin {
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
     }
   }
 }

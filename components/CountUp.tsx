@@ -16,7 +16,8 @@ export default function CountUp({ value, suffix }: CountUpProps) {
   useGSAP(
     () => {
       const node = target.current;
-      if (!node) return;
+      // A count from 0 to 1 is only a flip, so single figures just sit there.
+      if (!node || value < 2) return;
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         const counter = { value: 0 };
@@ -26,7 +27,12 @@ export default function CountUp({ value, suffix }: CountUpProps) {
           duration: 0.9,
           delay: 0.9,
           ease: "power3.out",
-          scrollTrigger: { trigger: node, start: "top 90%", once: true },
+          scrollTrigger: {
+            trigger: node,
+            start: "top 90%",
+            toggleActions: "play none none none",
+            once: true,
+          },
           onUpdate: () => {
             node.textContent = String(Math.round(counter.value));
           },

@@ -26,10 +26,16 @@ export const metadata: Metadata = {
     type: "website",
     url: site.url,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+  },
 };
 
 export const viewport: Viewport = {
   themeColor: "#16181d",
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

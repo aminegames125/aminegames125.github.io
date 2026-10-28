@@ -7,21 +7,17 @@ type ItemPaneProps = { project: Project; slot: number; total: number };
 export default function ItemPane({ project, slot, total }: ItemPaneProps) {
   return (
     <article
+      id="project-pane"
       aria-label={project.name}
       data-pane
-      className="rounded-slot border-2 border-b-4 border-line bg-surface p-6 md:p-8 lg:min-h-96"
+      className="min-h-80 rounded-slot border-2 border-b-4 border-line bg-surface p-6 md:p-8 lg:min-h-96"
     >
       <p className="mb-4 text-small text-accent tabular-nums">
         Slot {slot} of {total}
       </p>
-      <p className="text-small text-muted">
-        {project.kind}
-        {project.updated && (
-          <>
-            {" · "}
-            <time dateTime={project.updated}>{formatMonth(project.updated)}</time>
-          </>
-        )}
+      <p className="flex flex-wrap gap-x-4 text-small text-muted">
+        <span>{project.kind}</span>
+        {project.updated && <time dateTime={project.updated}>{formatMonth(project.updated)}</time>}
       </p>
       <h3 className="mt-3 font-display text-name font-bold wrap-break-word">
         {project.name}

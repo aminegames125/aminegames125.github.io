@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-/** Outline while the hero is on screen, filled red once it has scrolled out. */
+/** Outline while the hero is on screen, filled lime once it has scrolled out. */
 export default function HeaderCta({ label }: { label: string }) {
   const [filled, setFilled] = useState(false);
 

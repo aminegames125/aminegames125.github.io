@@ -13,8 +13,8 @@ Receives the contact form and forwards it to a Discord webhook, so the webhook U
 
 ## Behaviour
 
-- `POST /contact` with JSON `{ name, topic, message, website }`. `website` is a honeypot: when it is filled in, the request is dropped and still answered with 200.
-- Limits: 5 requests per 10 minutes per IP (429 after that), body up to 8 KB, name up to 80, project type up to 40, message up to 1500 characters.
+- `POST /contact` with JSON `{ name, reply, topic, message, website }`. `website` is a honeypot: when it is filled in, the request is dropped and still answered with 200.
+- Limits: 5 requests per 10 minutes per IP (429 after that), body up to 8 KB, name up to 80, reply address up to 120, project type up to 40, message up to 1500 characters.
 - CORS: only the listed origins. Requests with another or no `Origin` get 403.
 - `GET /healthz` returns 200.
 - Mentions in the message are disabled (`allowed_mentions.parse` is empty).

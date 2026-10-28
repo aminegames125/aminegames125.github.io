@@ -16,7 +16,7 @@ const trustProxy = process.env.TRUST_PROXY === "1";
 const LIMIT = 5;
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_BODY_BYTES = 8192;
-const MAX = { name: 80, topic: 40, message: 1500 };
+const MAX = { name: 80, reply: 120, topic: 40, message: 1500 };
 
 const hits = new Map();
 
@@ -68,11 +68,19 @@ const clean = (value) =>
 
 function validate(payload) {
   const name = clean(payload.name);
+  const reply = clean(payload.reply);
   const topic = clean(payload.topic ?? "");
   const message = clean(payload.message);
   const fits = (value, max, min) => value !== null && value.length >= min && value.length <= max;
-  if (!fits(name, MAX.name, 1) || !fits(message, MAX.message, 1) || !fits(topic, MAX.topic, 0)) return null;
-  return { name, topic, message };
+  if (
+    !fits(name, MAX.name, 1) ||
+    !fits(reply, MAX.reply, 1) ||
+    !fits(message, MAX.message, 1) ||
+    !fits(topic, MAX.topic, 0)
+  ) {
+    return null;
+  }
+  return { name, reply, topic, message };
 }
 
 const server = createServer(async (req, res) => {
@@ -123,6 +131,7 @@ const server = createServer(async (req, res) => {
   const content = [
     "**New message from the portfolio**",
     `**Name:** ${fields.name}`,
+    `**Reply to:** ${fields.reply}`,
     `**Type:** ${fields.topic || "not given"}`,
     `**Message:** ${fields.message}`,
   ].join("\n");

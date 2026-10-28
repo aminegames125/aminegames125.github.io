@@ -23,7 +23,12 @@ export default function Wordmark({ text }: { text: string }) {
                 duration: 0.8,
                 stagger: 0.05,
                 ease: "power4.out",
-                scrollTrigger: { trigger: root.current, start: "top 95%", once: true },
+                scrollTrigger: {
+                  trigger: root.current,
+                  start: "top 95%",
+                  toggleActions: "play none none none",
+                  once: true,
+                },
               }),
           });
         },

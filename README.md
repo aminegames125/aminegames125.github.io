@@ -34,6 +34,20 @@ It is fully static. There is no server, no database and no third-party form serv
 - **Accessible by default.** Skip link, visible focus rings, a radio-group inventory with roving focus, and `prefers-reduced-motion` honoured in every animation.
 - **Share-ready.** Generated Open Graph image, Twitter card, `robots.txt` and sitemap.
 
+## Logo
+
+The mark is a 5 by 5 grid of rounded blocks drawn as an A, like letters in a game. The middle block of the crossbar is lime: the one lit slot.
+
+| File | Use |
+| --- | --- |
+| [`amineos-mark.svg`](public/logo/amineos-mark.svg) | Main mark, for dark backgrounds |
+| [`amineos-mark-light.svg`](public/logo/amineos-mark-light.svg) | For light backgrounds |
+| [`amineos-mark-black.svg`](public/logo/amineos-mark-black.svg), [`white`](public/logo/amineos-mark-white.svg) | One-colour versions |
+| [`amineos-mark-small.svg`](public/logo/amineos-mark-small.svg) | Tighter cut for sizes under 24 px |
+| [`amineos-mark-animated.svg`](public/logo/amineos-mark-animated.svg) | Self-contained intro: blocks build the A from the ground up, the lit block lands last with a ring. Honours `prefers-reduced-motion` |
+
+The header uses a GSAP version of the same animation ([`LogoLink.tsx`](components/LogoLink.tsx)): it plays once on load, and hovering or focusing the logo sends a ripple out from the lit block. Colours: off-white `#eceae4`, lime `#8dff4f`, ground `#16181d`.
+
 ## Tech stack
 
 | Area | Choice |

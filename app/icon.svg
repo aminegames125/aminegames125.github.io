@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <title>Amineos</title>
+  <rect width="256" height="256" rx="56" fill="#16181d"/>
+  <g transform="translate(128 128) scale(0.74) translate(-128 -128)">
+  <rect x="54" y="4" width="48" height="48" rx="4" fill="#eceae4"/>
+  <rect x="104" y="4" width="48" height="48" rx="4" fill="#eceae4"/>
+  <rect x="154" y="4" width="48" height="48" rx="4" fill="#eceae4"/>
+  <rect x="4" y="54" width="48" height="48" rx="4" fill="#eceae4"/>
+  <rect x="204" y="54" width="48" height="48" rx="4" fill="#eceae4"/>
+  <rect x="4" y="104" width="48" height="48" rx="4" fill="#eceae4"/>
+  <rect x="54" y="104" width="48" height="48" rx="4" fill="#eceae4"/>
+  <rect x="104" y="104" width="48" height="48" rx="4" fill="#8dff4f"/>
+  <rect x="154" y="104" width="48" height="48" rx="4" fill="#eceae4"/>
+  <rect x="204" y="104" width="48" height="48" rx="4" fill="#eceae4"/>
+  <rect x="4" y="154" width="48" height="48" rx="4" fill="#eceae4"/>
+  <rect x="204" y="154" width="48" height="48" rx="4" fill="#eceae4"/>
+  <rect x="4" y="204" width="48" height="48" rx="4" fill="#eceae4"/>
+  <rect x="204" y="204" width="48" height="48" rx="4" fill="#eceae4"/>
+  </g>
+</svg>

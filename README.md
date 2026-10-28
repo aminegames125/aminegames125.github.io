@@ -14,6 +14,7 @@ One VPS. No cloud provider.
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06b6d4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![GSAP](https://img.shields.io/badge/GSAP-3-88ce02?logo=greensock&logoColor=white)](https://gsap.com)
 [![Hosted on GitHub Pages](https://img.shields.io/badge/hosted_on-GitHub_Pages-222222?logo=github&logoColor=white)](https://pages.github.com)
+[![License: all rights reserved](https://img.shields.io/badge/license-all_rights_reserved-d33?labelColor=222)](LICENSE)
 
 </div>
 
@@ -108,6 +109,10 @@ The form adds a honeypot field, a minimum fill time, a ten-minute cooldown per b
 ## Deployment
 
 Pushing to `main` runs [`deploy.yml`](.github/workflows/deploy.yml), which builds the static export and publishes it to GitHub Pages. The custom domain is set in [`CNAME`](CNAME).
+
+## License
+
+Copyright (c) 2026 Amineos. **All rights reserved.** The code is public to read, not to reuse. The logo, the animations, the design and the copy may not be copied, modified or redistributed without written permission. See [LICENSE](LICENSE).
 
 ## Author
 

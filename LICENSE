@@ -1,0 +1,42 @@
+Copyright (c) 2026 Amineos (https://github.com/aminegames125). All rights reserved.
+
+This repository is public so that people can read it and see the work. It is not open source.
+
+1. What is protected
+
+   Everything in this repository is the property of the copyright holder, including:
+
+   - the Amineos logo and mark in every version (colour, light, black, white, small and
+     animated), the favicon, the app icons and the Open Graph image;
+   - the animations, including the animated SVG and the GSAP motion code in the
+     components folder;
+   - the design, layout, colours, copy, source code and styles of the site.
+
+2. What you may not do
+
+   Without written permission from the copyright holder you may not copy, modify, merge,
+   publish, distribute, sublicense, sell, host, or create derivative works from any part of
+   this repository, in whole or in part, for any purpose. This includes reusing the logo or
+   the animations in your own site, product, template, theme or tutorial, and using the name
+   "Amineos" or the mark in a way that suggests you are the owner or are affiliated with the
+   owner.
+
+3. What you may do
+
+   - Read the code and look at the work.
+   - Do what the GitHub Terms of Service allow for a public repository, such as viewing and
+     forking it on GitHub in order to view it or to propose changes back to this repository.
+     Forking does not give you any license to the material beyond that. A fork may not be
+     used, published or redistributed as your own work.
+   - Quote short excerpts for review or commentary, with credit and a link here.
+
+4. Third-party software
+
+   The dependencies listed in package.json are not covered by this license. Each keeps its
+   own license, and you must follow it.
+
+5. No warranty
+
+   The material is provided as is, without warranty of any kind.
+
+To ask for permission, write to the owner through https://github.com/aminegames125.

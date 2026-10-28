@@ -38,9 +38,6 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Build with Next.js
-        # This is where we safely inject the hidden secret during the build
-        env:
-          NEXT_PUBLIC_DISCORD_SECRET: ${{ secrets.DISCORD_SECRET }}
         run: pnpm build
 
       - name: Upload artifact

@@ -2,8 +2,6 @@ import { contact, site } from "../content/site";
 import ContactForm from "./ContactForm";
 
 export default function Contact() {
-  const connected = site.contactEndpoint !== "";
-
   return (
     <section id="contact" aria-labelledby="contact-title" className="mx-auto max-w-wrap px-margin">
       <div className="grid gap-10 md:grid-cols-12">
@@ -12,7 +10,7 @@ export default function Contact() {
             {contact.heading}
           </h2>
           <p className="mt-4 max-w-sm text-lede text-pretty">
-            {connected ? contact.body : contact.offlineBody}{" "}
+            {contact.body}{" "}
             <a
               href={site.github}
               className="underline decoration-1 underline-offset-4 hover:decoration-4 hover:decoration-accent"

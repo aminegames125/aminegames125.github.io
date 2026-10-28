@@ -12,8 +12,8 @@ export const site = {
   title: "Amineos | Full-Stack Engineer",
   description:
     "Independent full-stack engineer. I design the product, build the backend and ship it myself.",
-  /** URL of the deployed relay service in /relay. Empty until it is deployed. */
-  contactEndpoint: "" as string,
+  /** Opens a prefilled new issue. A workflow in .github/workflows posts each one to Discord. */
+  issueUrl: "https://github.com/aminegames125/aminegames125.github.io/issues/new",
   /** From the owner's GitHub bio. Empty hides the availability dot. */
   availability: "Open to remote work." as string,
 } as const;
@@ -128,22 +128,16 @@ export const tools = {
 
 export const contact = {
   heading: "Send a message.",
-  body: "It goes to my Discord. You can also find me on",
-  /** Shown instead of `body` while the form has no endpoint. */
-  offlineBody: "The form is not connected yet. You can reach me on",
+  body: "It opens a GitHub issue that lands in my Discord, and you need a free GitHub account. Issues are public, so keep private details out. You can also find me on",
   githubLabel: "GitHub",
-  nameLabel: "Name",
-  replyLabel: "How can I reach you? Email or Discord",
   topicLabel: "Project type",
   /** Placeholder options. The owner confirms or replaces them. */
   topics: ["Full-stack build", "Backend or infrastructure", "Mobile app", "Something else"],
   messageLabel: "Message",
-  send: "Send",
-  sending: "Sending",
-  success: "Message sent.",
-  rateLimited: "Could not send the message: too many requests from this address. Try again in 10 minutes.",
-  error: "Could not send the message: the server did not answer. Try again in a few minutes.",
-  unavailable: "The form is not connected yet. Write to me on GitHub instead.",} as const;
+  send: "Write it on GitHub",
+  opened: "GitHub is open in a new tab. Press Submit new issue there to send the message.",
+  titlePrefix: "Contact",
+} as const;
 
 export const footer = {
   meta: "Built and hosted by me.",

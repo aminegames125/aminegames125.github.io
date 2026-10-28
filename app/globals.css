@@ -141,9 +141,13 @@
     transition: opacity var(--dur-row) var(--ease);
   }
   .layer:hover::before,
-  .layer:focus-within::before,
-  .layer[data-on="true"]::before {
+  .layer:focus-within::before {
     opacity: 1;
+  }
+
+  .row:has(:focus-visible) {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
   }
 
   .layer-text {

@@ -13,9 +13,9 @@ export const site = {
   description:
     "Independent full-stack engineer in Tunis. I design the product, build the backend and ship it myself.",
   /** URL of the deployed relay service in /relay. Empty until it is deployed. */
-  contactEndpoint: "",
+  contactEndpoint: "" as string,
   /** One line, for example "Open to remote work." Empty hides the availability dot. */
-  availability: "",
+  availability: "" as string,
 } as const;
 
 export const header = {

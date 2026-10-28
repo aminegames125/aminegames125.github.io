@@ -1,5 +1,6 @@
 import { contact, site } from "../content/site";
 import ContactForm from "./ContactForm";
+import { contactConnected } from "./webhook";
 
 export default function Contact() {
   return (
@@ -10,7 +11,7 @@ export default function Contact() {
             {contact.heading}
           </h2>
           <p className="mt-4 max-w-sm text-lede text-pretty">
-            {contact.body}{" "}
+            {contactConnected ? contact.body : contact.offlineBody}{" "}
             <a
               href={site.github}
               className="underline decoration-1 underline-offset-4 hover:decoration-4 hover:decoration-accent"

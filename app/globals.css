@@ -13,6 +13,7 @@
   --muted: #a3a7b3;
   --accent: #8dff4f; /* XP orb */
   --accent-ink: #0e1a06;
+  --alert: #ff8f80; /* errors */
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-fast: 160ms;
@@ -70,6 +71,7 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
+  --color-alert: var(--alert);
 
   --font-display: var(--font-funnel), "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --font-body: var(--font-jakarta), "Segoe UI", system-ui, sans-serif;

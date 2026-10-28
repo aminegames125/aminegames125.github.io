@@ -38,6 +38,9 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Build with Next.js
+        # Packed and encoded by next.config.ts. Never commit the URL itself.
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: pnpm build
 
       - name: Upload artifact

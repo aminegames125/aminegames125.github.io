@@ -18,8 +18,8 @@
   --dur-row: 200ms;
   --dur-move: 300ms;
   --dur-enter: 400ms;
-  --header-h: 5.75rem;
-  --wordmark-ratio: 3.9; /* width of "Amineos" in em, measured at weight 800, tracking -0.04em */
+
+  --wordmark-ratio: 3.65; /* width of "Amineos" in em, measured at weight 800, tracking -0.04em */
 }
 
 @theme {
@@ -34,9 +34,13 @@
 
   --spacing-margin: clamp(16px, 4vw, 48px);
   --spacing-section: clamp(64px, 9vw, 128px);
+  --spacing-header: 5.75rem;
+  --spacing-wordmark: clamp(32px, 6vw, 72px);
+  --tracking-brand: -0.02em;
+  --tracking-wordmark: -0.04em;
   --container-wrap: 1280px;
 
-  --text-display: clamp(2.5rem, 10.4vw, 9rem);
+  --text-display: clamp(3rem, 22vw, 11rem);
   --text-display--line-height: 0.92;
   --text-display--letter-spacing: -0.035em;
   --text-h2: clamp(2.25rem, 5.5vw, 4.5rem);
@@ -72,9 +76,15 @@
 }
 
 @layer base {
+  /* Two lines from 64rem up: "No cloud provider." is 7.31em wide and fills the 1280px wrap at 10rem. */
+  @media (min-width: 64rem) {
+    :root {
+      --text-display: clamp(7rem, 12.2vw, 10rem);
+    }
+  }
   html {
     background: var(--bg);
-    scroll-padding-top: calc(var(--header-h) + 16px);
+    scroll-padding-top: calc(var(--spacing-header) + 16px);
     scrollbar-color: var(--line) var(--bg);
   }
   @media (prefers-reduced-motion: no-preference) {
@@ -136,8 +146,12 @@
     opacity: 1;
   }
 
+  .layer-text {
+    --layer: var(--text);
+  }
+
   .hero-fill {
-    min-height: calc(100svh - var(--header-h));
+    min-height: calc(100svh - var(--spacing-header));
   }
 
   .wordmark-box {

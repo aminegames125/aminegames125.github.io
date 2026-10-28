@@ -1,19 +1,18 @@
-import { Fragment } from "react";
 import { hero } from "../content/site";
 import CountUp from "./CountUp";
 
+/** The two facts as big figures. The number is bold and counts up once, the rest is muted. */
 export default function MetaLine() {
   return (
-    <p className="text-muted">
-      {hero.stats.map((stat, index) => (
-        <Fragment key={stat.label}>
-          {index > 0 && ", "}
-          <strong className="font-semibold text-text">
+    <dl className="grid w-full grid-cols-2 gap-6">
+      {hero.stats.map((stat) => (
+        <div key={stat.label} className="flex flex-col-reverse">
+          <dt className="text-muted">{stat.label}</dt>
+          <dd className="font-display text-h2 font-bold">
             <CountUp value={stat.value} suffix={stat.suffix} />
-          </strong>{" "}
-          {stat.label}
-        </Fragment>
+          </dd>
+        </div>
       ))}
-    </p>
+    </dl>
   );
 }

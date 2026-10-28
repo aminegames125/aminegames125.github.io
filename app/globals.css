@@ -178,6 +178,20 @@
       transform: translateY(12px);
     }
   }
+  /* Items load into their slots as the grid scrolls in. Browsers without scroll timelines show them as-is. */
+  @supports (animation-timeline: view()) {
+    .pop {
+      animation: pop linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+    @keyframes pop {
+      from {
+        opacity: 0;
+        transform: scale(0.94);
+      }
+    }
+  }
   .pulse {
     animation: pulse 2s ease-in-out infinite;
   }

@@ -2,12 +2,17 @@ import { work, type Project } from "../content/site";
 import Arrow from "./Arrow";
 import { formatMonth } from "./formatMonth";
 
-export default function ItemPane({ project }: { project: Project }) {
+type ItemPaneProps = { project: Project; slot: number; total: number };
+
+export default function ItemPane({ project, slot, total }: ItemPaneProps) {
   return (
     <article
       aria-label={project.name}
       className="rounded-slot border-2 border-b-4 border-line bg-surface p-6 md:p-8 lg:min-h-96"
     >
+      <p className="mb-4 text-small text-accent tabular-nums">
+        Slot {slot} of {total}
+      </p>
       <p className="text-small text-muted">
         {project.kind}
         {project.updated && (
@@ -17,7 +22,7 @@ export default function ItemPane({ project }: { project: Project }) {
           </>
         )}
       </p>
-      <h3 className="mt-3 font-display text-name font-bold break-words">
+      <h3 className="mt-3 font-display text-name font-bold wrap-break-word">
         {project.name}
         {project.live && (
           <span className="ml-3 inline-block rounded-pill bg-accent px-3 py-0.5 align-middle font-body text-small font-semibold tracking-normal text-accent-ink">

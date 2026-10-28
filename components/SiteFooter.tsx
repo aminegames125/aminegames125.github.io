@@ -1,4 +1,5 @@
 import { footer, site } from "../content/site";
+import Wordmark from "./Wordmark";
 
 export default function SiteFooter() {
   return (
@@ -17,12 +18,7 @@ export default function SiteFooter() {
           ))}
         </div>
         <div className="wordmark-box mt-wordmark">
-          <div
-            aria-hidden="true"
-            className="wordmark select-none font-display font-extrabold tracking-wordmark"
-          >
-            {site.name}
-          </div>
+          <Wordmark text={site.name} />
         </div>
       </div>
     </footer>

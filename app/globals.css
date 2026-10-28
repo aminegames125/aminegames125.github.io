@@ -20,7 +20,7 @@
   --dur-move: 300ms;
   --dur-enter: 400ms;
 
-  --wordmark-ratio: 4; /* width of "Amineos" in em at weight 800, tracking -0.04em */
+  --wordmark-ratio: 4.07; /* width of "Amineos" in em at weight 800, tracking -0.04em, split into letters */
 }
 
 @theme {
@@ -178,17 +178,27 @@
       transform: translateY(12px);
     }
   }
-  /* Items load into their slots as the grid scrolls in. Browsers without scroll timelines show them as-is. */
-  @supports (animation-timeline: view()) {
-    .pop {
-      animation: pop linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 70%;
+  /*
+   * Elements GSAP brings in on load start hidden, so there is no flash before hydration.
+   * Only when scripting is on. The animation shows them anyway after 2.5s if the script never runs.
+   */
+  @media (scripting: enabled) {
+    .gsap-hide {
+      visibility: hidden;
+      animation: reveal-visible 0s 2.5s forwards;
     }
-    @keyframes pop {
-      from {
-        opacity: 0;
-        transform: scale(0.94);
+    .gsap-slide {
+      transform: translateY(150%);
+      animation: reveal-slide 0s 2.5s forwards;
+    }
+    @keyframes reveal-visible {
+      to {
+        visibility: visible;
+      }
+    }
+    @keyframes reveal-slide {
+      to {
+        transform: none;
       }
     }
   }

@@ -8,6 +8,7 @@ export default function ItemPane({ project, slot, total }: ItemPaneProps) {
   return (
     <article
       aria-label={project.name}
+      data-pane
       className="rounded-slot border-2 border-b-4 border-line bg-surface p-6 md:p-8 lg:min-h-96"
     >
       <p className="mb-4 text-small text-accent tabular-nums">

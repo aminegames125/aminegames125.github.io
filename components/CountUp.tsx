@@ -1,34 +1,47 @@
 "use client";
 
-import { animate, useInView, useReducedMotion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { gsap, useGSAP } from "./motion";
 
 type CountUpProps = { value: number; suffix: string };
 
 /**
- * Renders the final number on the server and without JavaScript, then counts up once on enter.
- * The final value is also laid out invisibly, so the width never changes.
+ * Renders the final number on the server and without JavaScript, then counts up once as the
+ * hero's stats arrive. The final value is also laid out invisibly, so the width never changes.
  */
 export default function CountUp({ value, suffix }: CountUpProps) {
+  const wrapper = useRef<HTMLSpanElement>(null);
   const target = useRef<HTMLSpanElement>(null);
-  const inView = useInView(target, { once: true, amount: 0.6 });
-  const reduceMotion = useReducedMotion();
 
-  useEffect(() => {
-    const node = target.current;
-    if (!node || !inView || reduceMotion) return;
-    const controls = animate(0, value, {
-      duration: 0.9,
-      ease: [0.16, 1, 0.3, 1],
-      onUpdate: (current) => {
-        node.textContent = String(Math.round(current));
-      },
-    });
-    return () => controls.stop();
-  }, [inView, reduceMotion, value]);
+  useGSAP(
+    () => {
+      const node = target.current;
+      if (!node) return;
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const counter = { value: 0 };
+        node.textContent = "0";
+        gsap.to(counter, {
+          value,
+          duration: 0.9,
+          delay: 0.9,
+          ease: "power3.out",
+          scrollTrigger: { trigger: node, start: "top 90%", once: true },
+          onUpdate: () => {
+            node.textContent = String(Math.round(counter.value));
+          },
+        });
+        return () => {
+          node.textContent = String(value);
+        };
+      });
+      return () => mm.revert();
+    },
+    { scope: wrapper },
+  );
 
   return (
-    <>
+    <span ref={wrapper}>
       <span className="sr-only">
         {value}
         {suffix}
@@ -40,6 +53,6 @@ export default function CountUp({ value, suffix }: CountUpProps) {
         </span>
       </span>
       <span aria-hidden="true">{suffix}</span>
-    </>
+    </span>
   );
 }

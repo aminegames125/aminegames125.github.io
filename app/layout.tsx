@@ -1,25 +1,48 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Bricolage_Grotesque, Schibsted_Grotesk } from "next/font/google";
+import { site } from "../content/site";
 import "./globals.css";
 
+const display = Bricolage_Grotesque({
+  subsets: ["latin"],
+  axes: ["opsz"],
+  variable: "--font-bricolage",
+  display: "swap",
+});
+
+const body = Schibsted_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-schibsted",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Amineos | Full-Stack Engineer & Infrastructure Architect",
-  description: "Senior Full-Stack Developer specializing in high-performance systems, Docker orchestration, and end-to-end software architecture. Explore my portfolio of flagship projects.",
-  keywords: ["Full-Stack Developer", "Software Engineer", "Tunis", "React", "Next.js", "Infrastructure", "Docker", "DevOps"],
-  authors: [{ name: "Amineos" }],
+  metadataBase: new URL(site.url),
+  title: site.title,
+  description: site.description,
+  authors: [{ name: site.name }],
   openGraph: {
-    title: "Amineos | Full-Stack Engineer",
-    description: "Building resilient systems with intent.",
+    title: site.title,
+    description: site.description,
     type: "website",
+    url: site.url,
   },
 };
 
-import Preloader from "./components/Preloader";
+export const viewport: Viewport = {
+  themeColor: "#12070a",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body suppressHydrationWarning>
-        <Preloader />
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
+      <body>
+        <a
+          href="#main"
+          className="absolute left-margin -top-20 z-20 rounded-pill bg-accent px-4 py-2.5 font-semibold text-accent-ink focus:top-3"
+        >
+          Skip to content
+        </a>
         {children}
       </body>
     </html>

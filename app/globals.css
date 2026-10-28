@@ -1,57 +1,172 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap");
 @import "tailwindcss";
 
-@theme {
-  --font-playfair: "Playfair Display", Georgia, serif;
-  --font-dm: "DM Sans", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
-  --color-bg: #080810;
+/* Tokens. Structure from spacymineos.github.io, palette from docs/BRAND.md. */
+:root {
+  color-scheme: dark;
+
+  --bg: #12070a;
+  --surface: #1e0b0f;
+  --line: #2e1418;
+  --edge: #796265; /* control boundaries, 3:1 on bg and surface (WCAG 1.4.11) */
+  --text: #f6ecec;
+  --muted: #b09497;
+  --accent: #fc4351;
+  --accent-ink: #290b0b;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 160ms;
+  --dur-row: 200ms;
+  --dur-move: 300ms;
+  --dur-enter: 400ms;
+  --header-h: 5.75rem;
+  --wordmark-ratio: 3.9; /* width of "Amineos" in em, measured at weight 800, tracking -0.04em */
 }
 
-@keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
-@keyframes cursor { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+@theme {
+  --color-*: initial;
+  --font-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+
+  --radius-pill: 999px;
+  --radius-field: 16px;
+  --radius-row: 20px;
+
+  --spacing-margin: clamp(16px, 4vw, 48px);
+  --spacing-section: clamp(64px, 9vw, 128px);
+  --container-wrap: 1280px;
+
+  --text-display: clamp(2.5rem, 10.4vw, 9rem);
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.035em;
+  --text-h2: clamp(2.25rem, 5.5vw, 4.5rem);
+  --text-h2--line-height: 0.96;
+  --text-h2--letter-spacing: -0.03em;
+  --text-name: clamp(1.625rem, 3.4vw, 2.5rem);
+  --text-name--line-height: 1.05;
+  --text-name--letter-spacing: -0.025em;
+  --text-lede: clamp(1.25rem, 2.2vw, 1.625rem);
+  --text-lede--line-height: 1.35;
+  --text-about: clamp(1.375rem, 1.2rem + 0.9vw, 1.625rem);
+  --text-about--line-height: 1.4;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.55;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.4;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-edge: var(--edge);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+
+  --font-display: var(--font-bricolage), "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body: var(--font-schibsted), "Segoe UI", system-ui, sans-serif;
+
+  --ease-brand: var(--ease);
+}
 
 @layer base {
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; overflow-x: hidden; }
-  body { background: #080810; color: #e2e8f0; font-family: var(--font-dm); overflow-x: hidden; cursor: none; }
+  html {
+    background: var(--bg);
+    scroll-padding-top: calc(var(--header-h) + 16px);
+    scrollbar-color: var(--line) var(--bg);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    min-height: 100svh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  a {
+    color: inherit;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+  :focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+  input,
+  textarea,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+  button {
+    cursor: pointer;
+  }
 }
 
-@utility glass {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+@layer components {
+  /* A colour layer that fades in on hover, so only opacity animates. */
+  .layer {
+    position: relative;
+    isolation: isolate;
+  }
+  .layer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--layer, var(--surface));
+    opacity: 0;
+    transition: opacity var(--dur-row) var(--ease);
+  }
+  .layer:hover::before,
+  .layer:focus-within::before,
+  .layer[data-on="true"]::before {
+    opacity: 1;
+  }
+
+  .hero-fill {
+    min-height: calc(100svh - var(--header-h));
+  }
+
+  .wordmark-box {
+    container-type: inline-size;
+  }
+  .wordmark {
+    font-size: calc(100cqw / var(--wordmark-ratio));
+    line-height: 0.8;
+    margin-bottom: -0.06em;
+    white-space: nowrap;
+  }
 }
 
-@utility liquid-glass {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0.03) 100%
-  );
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 
-    0 8px 32px 0 rgba(0, 0, 0, 0.37),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise var(--dur-enter) var(--ease) both;
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+  .pulse {
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    50% {
+      opacity: 0.4;
+    }
+  }
 }
-
-@utility shimmer-text {
-  background: linear-gradient(
-    90deg, 
-    #c084fc 0%, 
-    #818cf8 25%, 
-    #ddd6fe 50%, 
-    #818cf8 75%, 
-    #c084fc 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 8s linear infinite; /* Slower, more elegant shimmer */
-}
-
-@utility blink { animation: cursor 1s step-end infinite; }

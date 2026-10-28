@@ -11,7 +11,7 @@ export default function Contact() {
           </h2>
           <p className="mt-4 max-w-sm text-lede text-pretty">
             {contact.body}{" "}
-            <a href={site.github} className="underline decoration-1 underline-offset-4 hover:text-accent">
+            <a href={site.github} className="underline decoration-1 underline-offset-4 hover:decoration-4 hover:decoration-accent">
               {contact.githubLabel}
             </a>
             .

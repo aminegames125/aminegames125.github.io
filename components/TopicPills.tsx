@@ -8,7 +8,7 @@ export default function TopicPills() {
         {contact.topics.map((topic) => (
           <label key={topic} className="relative cursor-pointer">
             <input type="radio" name="topic" value={topic} className="peer sr-only" />
-            <span className="inline-flex min-h-11 items-center rounded-pill border border-edge bg-surface px-4.5 transition-transform duration-(--dur-fast) ease-brand hover:bg-line peer-checked:border-accent peer-checked:bg-accent peer-checked:text-accent-ink peer-focus-visible:outline-3 peer-focus-visible:outline-offset-3 peer-focus-visible:outline-accent peer-active:scale-97">
+            <span className="inline-flex min-h-12 items-center rounded-slot border-2 border-b-4 border-edge bg-inset px-4 hover:bg-surface peer-checked:border-accent peer-checked:bg-accent peer-checked:text-accent-ink peer-focus-visible:outline-3 peer-focus-visible:outline-offset-3 peer-focus-visible:outline-accent">
               {topic}
             </span>
           </label>

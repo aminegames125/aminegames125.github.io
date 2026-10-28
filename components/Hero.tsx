@@ -1,6 +1,5 @@
 import { hero, site } from "../content/site";
 import MetaLine from "./MetaLine";
-
 export default function Hero() {
   return (
     <section

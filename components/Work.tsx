@@ -1,5 +1,5 @@
 import { work } from "../content/site";
-import ProjectRow from "./ProjectRow";
+import Inventory from "./Inventory";
 
 export default function Work() {
   return (
@@ -8,11 +8,9 @@ export default function Work() {
         {work.heading}
       </h2>
       <p className="mt-4 text-muted">{work.intro}</p>
-      <ul className="mt-10 md:mt-12">
-        {work.projects.map((project) => (
-          <ProjectRow key={project.name} project={project} />
-        ))}
-      </ul>
+      <div className="mt-10 md:mt-12">
+        <Inventory projects={work.projects} />
+      </div>
     </section>
   );
 }

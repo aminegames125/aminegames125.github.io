@@ -11,12 +11,19 @@ export const site = {
   spacymineos: "https://spacymineos.github.io",
   title: "Amineos | Full-Stack Engineer",
   description:
-    "Independent full-stack engineer in Tunis. I design the product, build the backend and ship it myself.",
+    "Independent full-stack engineer. I design the product, build the backend and ship it myself.",
   /** URL of the deployed relay service in /relay. Empty until it is deployed. */
   contactEndpoint: "" as string,
-  /** One line, for example "Open to remote work." Empty hides the availability dot. */
-  availability: "" as string,
+  /** From the owner's GitHub bio. Empty hides the availability dot. */
+  availability: "Open to remote work." as string,
 } as const;
+
+export const nav = [
+  { id: "about", label: "About" },
+  { id: "work", label: "Work" },
+  { id: "tools", label: "Tools" },
+  { id: "contact", label: "Contact" },
+] as const;
 
 export const header = {
   cta: "Hire me",
@@ -35,7 +42,7 @@ export const hero = {
 export const about = {
   lead: "Working alone.",
   paragraphs: [
-    "I'm an independent full-stack engineer in Tunis. I work on product design, backend architecture and shipping fast.",
+    "I'm an independent full-stack engineer. I work on product design, backend architecture and shipping fast.",
     "Nobody hands me the work, so I choose it and I answer for it. When something breaks, I'm the one who fixes it, usually late at night.",
     "Most of the work happens between midnight and 4AM, with One Piece playing. I also make art, independently.",
   ],
@@ -46,6 +53,8 @@ export type Project = {
   kind: string;
   detail: string;
   href?: string;
+  /** Date of the last push to the repository, ISO format. Empty for projects without a public repository. */
+  updated?: string;
   /** Set to true only for projects that are live. Empty until the owner confirms each one. */
   live?: boolean;
 };
@@ -62,34 +71,46 @@ export const work = {
       detail: "Storefront, backend, database and reverse proxy, built end to end on the bare VPS.",
     },
     {
-      name: "matmate",
-      kind: "Flutter app",
-      detail: "Solves an equation you type in. Parses the expression and renders the LaTeX on screen.",
-      href: "https://github.com/aminegames125/matmate",
+      name: "daftar",
+      kind: "Android app",
+      detail: "Offline-first wallet of cards for prices, places, menus and money. Reads menus from a photo on the device, and the data stays on the phone.",
+      href: "https://github.com/aminegames125/daftar",
+      updated: "2026-10-25",
     },
     {
       name: "Veil",
       kind: "Minecraft mod",
-      detail: "Permission-gated passages between places, built on Immersive Portals for Fabric 1.21.1.",
+      detail: "Permission-gated passages between places, built on Immersive Portals for Fabric 1.21.1. Expiring keycards, delegated access and an audit log.",
       href: "https://github.com/aminegames125/Veil",
-    },
-    {
-      name: "refund_tracker_pro",
-      kind: "Cross-platform app",
-      detail: "Tracks purchase refunds, due dates and statuses on mobile, web and desktop from one codebase.",
-      href: "https://github.com/aminegames125/refund_tracker_pro",
-    },
-    {
-      name: "VoidTP",
-      kind: "Spigot plugin",
-      detail: "Teleports players back to safety when they fall into the void.",
-      href: "https://github.com/aminegames125/VoidTP",
+      updated: "2026-05-17",
     },
     {
       name: "bio-builder",
       kind: "Tool",
       detail: "Generates personal bios for GitHub, portfolios and social profiles.",
       href: "https://github.com/aminegames125/bio-builder",
+      updated: "2025-12-11",
+    },
+    {
+      name: "matmate",
+      kind: "Flutter app",
+      detail: "Solves an equation you type in. Parses the expression and renders the LaTeX on screen.",
+      href: "https://github.com/aminegames125/matmate",
+      updated: "2025-08-25",
+    },
+    {
+      name: "refund_tracker_pro",
+      kind: "Cross-platform app",
+      detail: "Tracks purchase refunds, due dates and statuses on mobile, web and desktop from one codebase.",
+      href: "https://github.com/aminegames125/refund_tracker_pro",
+      updated: "2025-08-25",
+    },
+    {
+      name: "VoidTP",
+      kind: "Spigot plugin",
+      detail: "Teleports players back to safety when they fall into the void.",
+      href: "https://github.com/aminegames125/VoidTP",
+      updated: "2024-05-14",
     },
   ] satisfies Project[],
 };

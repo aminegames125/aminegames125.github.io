@@ -7,7 +7,7 @@ import TopicPills from "./TopicPills";
 type Status = "idle" | "sending" | "success" | "limited" | "error";
 
 const field =
-  "min-h-16 w-full rounded-field border border-edge bg-surface px-6 text-xl placeholder:text-muted focus-visible:bg-line";
+  "min-h-16 w-full rounded-slot border-2 border-b-4 border-edge bg-inset px-5 text-xl placeholder:text-muted focus-visible:border-accent";
 
 const notices: Record<Status, string> = {
   idle: "",

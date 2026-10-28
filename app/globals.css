@@ -1,17 +1,18 @@
 @import "tailwindcss";
 
-/* Tokens. Structure from spacymineos.github.io, palette from docs/BRAND.md. */
+/* Tokens. The style is a game inventory: charcoal ground, inset slots, one XP-orb lime accent. */
 :root {
   color-scheme: dark;
 
-  --bg: #12070a;
-  --surface: #1e0b0f;
-  --line: #2e1418;
-  --edge: #796265; /* control boundaries, 3:1 on bg and surface (WCAG 1.4.11) */
-  --text: #f6ecec;
-  --muted: #b09497;
-  --accent: #fc4351;
-  --accent-ink: #290b0b;
+  --bg: #16181d; /* ground */
+  --surface: #22252c; /* panels, hovered slots */
+  --inset: #0f1115; /* slot interiors, fields */
+  --line: #3a3f4a; /* slot borders */
+  --edge: #747b8b; /* control boundaries, 3:1 on bg and surface (WCAG 1.4.11) */
+  --text: #eceae4;
+  --muted: #a3a7b3;
+  --accent: #8dff4f; /* XP orb */
+  --accent-ink: #0e1a06;
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-fast: 160ms;
@@ -19,7 +20,7 @@
   --dur-move: 300ms;
   --dur-enter: 400ms;
 
-  --wordmark-ratio: 3.65; /* width of "Amineos" in em, measured at weight 800, tracking -0.04em */
+  --wordmark-ratio: 4; /* width of "Amineos" in em at weight 800, tracking -0.04em */
 }
 
 @theme {
@@ -29,8 +30,8 @@
   --shadow-*: initial;
 
   --radius-pill: 999px;
-  --radius-field: 16px;
-  --radius-row: 20px;
+  --radius-slot: 12px;
+  --radius-tag: 8px;
 
   --spacing-margin: clamp(16px, 4vw, 48px);
   --spacing-section: clamp(64px, 9vw, 128px);
@@ -40,7 +41,7 @@
   --tracking-wordmark: -0.04em;
   --container-wrap: 1280px;
 
-  --text-display: clamp(3rem, 22vw, 11rem);
+  --text-display: clamp(3rem, 20vw, 11rem);
   --text-display--line-height: 0.92;
   --text-display--letter-spacing: -0.035em;
   --text-h2: clamp(2.25rem, 5.5vw, 4.5rem);
@@ -62,6 +63,7 @@
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
+  --color-inset: var(--inset);
   --color-line: var(--line);
   --color-edge: var(--edge);
   --color-text: var(--text);
@@ -69,17 +71,17 @@
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
 
-  --font-display: var(--font-bricolage), "Avenir Next", "Segoe UI", system-ui, sans-serif;
-  --font-body: var(--font-schibsted), "Segoe UI", system-ui, sans-serif;
+  --font-display: var(--font-funnel), "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body: var(--font-jakarta), "Segoe UI", system-ui, sans-serif;
 
   --ease-brand: var(--ease);
 }
 
 @layer base {
-  /* Two lines from 64rem up: "No cloud provider." is 7.31em wide and fills the 1280px wrap at 10rem. */
+  /* Two lines from 64rem up: "No cloud provider." is 8.17em wide and fills the 1280px wrap at 9rem. */
   @media (min-width: 64rem) {
     :root {
-      --text-display: clamp(7rem, 12.2vw, 10rem);
+      --text-display: clamp(7rem, 11vw, 9rem);
     }
   }
   html {
@@ -144,14 +146,11 @@
   .layer:focus-within::before {
     opacity: 1;
   }
-
-  .row:has(:focus-visible) {
-    outline: 3px solid var(--accent);
-    outline-offset: 3px;
-  }
-
   .layer-text {
     --layer: var(--text);
+  }
+  .layer-text:hover {
+    color: var(--bg);
   }
 
   .hero-fill {

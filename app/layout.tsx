@@ -1,18 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Schibsted_Grotesk } from "next/font/google";
+import { Funnel_Display, Plus_Jakarta_Sans } from "next/font/google";
 import { site } from "../content/site";
 import "./globals.css";
 
-const display = Bricolage_Grotesque({
+const display = Funnel_Display({
   subsets: ["latin"],
-  axes: ["opsz"],
-  variable: "--font-bricolage",
+  variable: "--font-funnel",
   display: "swap",
 });
 
-const body = Schibsted_Grotesk({
+const body = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-schibsted",
+  variable: "--font-jakarta",
   display: "swap",
 });
 
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#12070a",
+  themeColor: "#16181d",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

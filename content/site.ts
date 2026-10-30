@@ -51,6 +51,8 @@ export type Project = {
   kind: string;
   detail: string;
   href?: string;
+  /** Address of the running project. Shown as a second button next to the source link. */
+  demo?: string;
   /** Date of the last push to the repository, ISO format. Empty for projects without a public repository. */
   updated?: string;
   /** Set to true only for projects that are live. Empty until the owner confirms each one. */
@@ -61,8 +63,18 @@ export const work = {
   heading: "Public work.",
   intro: "Private and client work is available on request.",
   sourceLabel: "Source",
+  demoLabel: "Open demo",
   liveLabel: "Live",
   projects: [
+    {
+      name: "Plinth",
+      kind: "Site builder",
+      detail: "Builds link pages and documentation sites in the browser and exports them as a static zip. No account and no backend, so it hosts anywhere.",
+      href: "https://github.com/aminegames125/plinth",
+      updated: "2026-10-30",
+      demo: "https://amineos.dev/plinth/",
+      live: true,
+    },
     {
       name: "perfect-shop",
       kind: "Commerce platform",
@@ -81,13 +93,6 @@ export const work = {
       detail: "Permission-gated passages between places, built on Immersive Portals for Fabric 1.21.1. Expiring keycards, delegated access and an audit log.",
       href: "https://github.com/aminegames125/Veil",
       updated: "2026-05-17",
-    },
-    {
-      name: "bio-builder",
-      kind: "Tool",
-      detail: "Generates personal bios for GitHub, portfolios and social profiles.",
-      href: "https://github.com/aminegames125/bio-builder",
-      updated: "2025-12-11",
     },
     {
       name: "matmate",

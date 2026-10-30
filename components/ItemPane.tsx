@@ -28,15 +28,26 @@ export default function ItemPane({ project, slot, total }: ItemPaneProps) {
         )}
       </h3>
       <p className="mt-4 text-pretty">{project.detail}</p>
-      {project.href && (
-        <a
-          href={project.href}
-          className="layer layer-text mt-6 inline-flex min-h-12 items-center gap-1 rounded-pill bg-accent px-6 font-semibold text-accent-ink transition-transform duration-(--dur-fast) ease-brand active:scale-97"
-        >
-          {work.sourceLabel}
-          <Arrow className="size-5" />
-        </a>
-      )}
+      <div className="mt-6 flex flex-wrap gap-3">
+        {project.demo && (
+          <a
+            href={project.demo}
+            className="layer layer-text inline-flex min-h-12 items-center gap-1 rounded-pill bg-accent px-6 font-semibold text-accent-ink transition-transform duration-(--dur-fast) ease-brand active:scale-97"
+          >
+            {work.demoLabel}
+            <Arrow className="size-5" />
+          </a>
+        )}
+        {project.href && (
+          <a
+            href={project.href}
+            className="layer layer-text inline-flex min-h-12 items-center gap-1 rounded-pill bg-accent px-6 font-semibold text-accent-ink transition-transform duration-(--dur-fast) ease-brand active:scale-97"
+          >
+            {work.sourceLabel}
+            <Arrow className="size-5" />
+          </a>
+        )}
+      </div>
     </article>
   );
 }

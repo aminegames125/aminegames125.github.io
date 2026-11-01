@@ -76,6 +76,15 @@ export const work = {
       live: true,
     },
     {
+      name: "Vesper",
+      kind: "Kodi add-on and server",
+      detail: "Adds Record with Vesper to Kodi's Live TV and guide. A small Rust server on a machine that stays on does the recording, and you watch it in Kodi while it records.",
+      href: "https://github.com/aminegames125/vesper",
+      updated: "2026-11-01",
+      demo: "https://amineos.dev/vesper/",
+      live: true,
+    },
+    {
       name: "perfect-shop",
       kind: "Commerce platform",
       detail: "Storefront, backend, database and reverse proxy, built end to end on the bare VPS.",
